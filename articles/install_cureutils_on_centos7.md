@@ -3,6 +3,7 @@ title: CentOS7 に Cureutils をインストールする
 emoji: 🔥
 type: tech
 topics: ["linux", "centos", "centos7", "cureutils"]
+published: true
 ---
 
 この記事は Linux でのジョークプログラムとして割と有名で、[Twitter のシェル芸 Bot](https://twitter.com/minyoruminyon) でも一時期使われてた [Cureutils](https://github.com/greymd/cureutils) を CentOS 7 にインストールする備忘録記事です。
