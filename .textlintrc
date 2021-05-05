@@ -1,0 +1,26 @@
+{
+    "rules": {
+        "preset-ja-technical-writing": {
+            "sentence-length": false,
+            "ja-no-weak-phrase": false,
+            "ja-no-mixed-period": false,
+            "no-doubled-joshi": false
+        },
+        "prh": {
+            "rulePaths": [
+                "node_modules/prh/prh-rules/media/WEB+DB_PRESS.yml"
+            ]
+        }
+    },
+    "filters": {
+        "allowlist": {
+            "allow": [
+                "不正に",
+                "ならば",
+                "公開鍵認証方式",
+                "なってもどうか",
+                "止め"
+            ]
+        }
+    }
+}

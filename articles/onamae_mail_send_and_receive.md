@@ -48,7 +48,7 @@ published: true
 
 1. [Login to Cloudflare](https://dash.cloudflare.com/login)で Cloudflare にログインする。
 2. ログイン後、上側のナビゲーションバーの「`DNS`」をクリック、「`DNS Records`」とある `DNS` の設定画面を開く。
-3. 画像のように、「`MX`」を選択、「`Name`」欄に先ほどメモをとった「`ホスト名`」を入力、「`Click to Configure`」をクリックして、「`Server`」欄に先ほどメモをとった「`VALUE`」、「`Priority`」に先ほどメモをとった「`優先`」を入力し、「`Save`」をクリック。  
+3. 画像のように、「`MX`」を選択、「`Name`」欄に先ほどメモをとった「`ホスト名`」を入力、「`Click to Configure`」をクリックして、「`Server`」欄に先ほどメモをとった「`VALUE`」、「`Priority`」に先ほどメモをとった「`優先`」を入力し、「`Save`」をクリック。
    私の場合は、「Name」に「`tomacheese.com`」、「Server」に「`mailforward.dnsv.jp`」、「Priority」に「`10`」を入力した。
 4. 入力できたら、「Add Record」をクリックして、DNS にレコードを登録する。
 
