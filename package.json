@@ -13,6 +13,7 @@
   "homepage": "https://github.com/book000/zenn-docs#readme",
   "dependencies": {
     "textlint-rule-ja-space-around-link": "^2.1.0",
+    "textlint-rule-no-dead-link": "^4.7.0",
     "zenn-cli": "^0.1.22"
   },
   "devDependencies": {
