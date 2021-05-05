@@ -5,7 +5,9 @@
             "ja-no-weak-phrase": false,
             "ja-no-mixed-period": false,
             "no-doubled-joshi": false,
-            "no-doubled-conjunctive-particle-ga": false
+            "no-doubled-conjunctive-particle-ga": false,
+            "no-exclamation-question-mark": false,
+            "no-doubled-conjunction": false,
         },
         "prh": {
             "rulePaths": [
@@ -54,7 +56,9 @@
                 "公開鍵認証方式",
                 "なってもどうか",
                 "止め",
-                "なので"
+                "なので",
+                "しかたない",
+                "みつけた"
             ]
         }
     }
