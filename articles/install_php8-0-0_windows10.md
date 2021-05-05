@@ -3,11 +3,10 @@ title: PHP 8.0.0を導入してみる (Windows 10)
 emoji: ✨
 type: tech
 topics: ["php", "php8", "windows"]
+published: true
 ---
 
 2020/11/24 にリリースされた、PHP 8.0.0 を Windows10 に入れてみます。
-
-()
 
 ## 注意事項
 
@@ -34,7 +33,7 @@ topics: ["php", "php8", "windows"]
 
 ![](https://storage.googleapis.com/zenn-user-upload/930ohai5zrbkjqlcey8ljt7l8spa)
 
-`x64` か `x86` 、`Non Thread Safe` か `Thread Safe` どちらかを選び、 `Zip` をクリックしてダウンロードしましょう。(ここでは `x64` の `Thread Safe` をダウンロードします）
+`x64` か `x86` 、`Non Thread Safe` か `Thread Safe` どちらかを選び、 `Zip` をクリックしてダウンロードしましょう。（ここでは `x64` の `Thread Safe` をダウンロードします）
 
 - ちなみに、 `Thread Safe` の PHP をダウンロードしていますが、コマンドラインで使うのみの目的であれば実のところ Non Thread Safe の方が良いです。
 
@@ -78,7 +77,7 @@ Windows キーを押して（またはタスクバーの Windows ロゴを押し
 
 ![](https://storage.googleapis.com/zenn-user-upload/tmxtwiq7lelz06l8svve4c3ekx7m)
 
-タスクバーの Windows ロゴを右クリック（もしくは `Windows + X`)し、「`PowerShell`」または「`コマンドプロンプト`」をクリックし起動します。エクスプローラーのアドレス欄に `cmd` や `powershell` と入れて起動するなり、`Windows + R` で「`ファイル名を指定して実行`」を起動して `cmd` や `powershell` と入れ起動してもかまいません。
+タスクバーの Windows ロゴを右クリック（もしくは `Windows + X`）し、「`PowerShell`」または「`コマンドプロンプト`」をクリックし起動します。エクスプローラーのアドレス欄に `cmd` や `powershell` と入れて起動するなり、`Windows + R` で「`ファイル名を指定して実行`」を起動して `cmd` や `powershell` と入れ起動してもかまいません。
 
 ![](https://storage.googleapis.com/zenn-user-upload/nbkuncu7gaxwss4l0r0wrixqgxht)
 

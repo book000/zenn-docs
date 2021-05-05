@@ -3,6 +3,7 @@ title: PHP 7.4.5を導入してみる (CentOS 7)
 emoji: ✨
 type: tech
 topics: ["php", "php7", "centos7"]
+published: true
 ---
 
 2020/03/19 にリリースされた、PHP 7.4.4 を CentOS に入れてみます。
