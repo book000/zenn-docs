@@ -1,0 +1,17 @@
+{
+  "name": "zenn-docs",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/book000/zenn-docs.git"
+  },
+  "author": "Tomachi (book000)",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/book000/zenn-docs/issues"
+  },
+  "homepage": "https://github.com/book000/zenn-docs#readme",
+  "dependencies": {
+    "zenn-cli": "^0.1.79"
+  }
+}
