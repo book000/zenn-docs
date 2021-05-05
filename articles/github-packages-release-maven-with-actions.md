@@ -10,24 +10,24 @@ topics: []
 ## やりたいこと
 
   
-コミット・プッシュされたら7文字のハッシュ値をバージョンとしてリリース、パッケージをGitHub Packagesで公開する。  
+コミット・プッシュされたら 7 文字のハッシュ値をバージョンとしてリリース、パッケージを GitHub Packages で公開する。  
   
-作業したリポジトリは [book000/GitHubActionsTest](https://github.com/book000/GitHubActionsTest)
+作業したリポジトリは [book000/GitHubActionsTest](https://github.com/book000/GitHub-Actions-Test)
 
 ## 方法
 
   
-やることは3つ
+やることは 3 つ
 
 1. `pom.xml` に設定を追記する
 2. `deploy_settings.xml` を作る
-3. GitHub Actions用のYAMLファイルを書く
+3. GitHub Actions 用の YAML ファイルを書く
 
 ### pom.xml に設定を追記する
 
-まず、 `artifactId` に大文字を含むなら小文字に変える。これをしないとdeployするときに `422 Unprocessable Entity` で怒られる。
+まず、 `artifactId` に大文字を含むなら小文字に変える。これをしないと deploy するときに `422 Unprocessable Entity` で怒られる。
 
-#### `version`を引数で変更できるようにする
+#### `version` を引数で変更できるようにする
 
 ```
 <version>${revision}</version>
@@ -45,7 +45,7 @@ topics: []
 #### `maven-source-plugin` と `maven-javadoc-plugin` をビルドプラグイン設定に入れる
 
   
-これをすることで、ソースとJavaDocもアップされるようになる
+これをすることで、ソースと Javadoc もアップされるようになる
 
 ```
 <build>
@@ -96,7 +96,7 @@ OWNER と REPOSITORY は適当に置き換えること。
 ### `deploy_settings.xml` を作る
 
   
-ファイル名はなんでもよし。ほかのサイトでは `settings.xml` が一般的だったけど、何の設定かわからないから `deploy` とつけた。   
+ファイル名はなんでもよし。ほかのサイトでは `settings.xml` が一般的だったけど、何の設定かわからないから `deploy` と付け足。   
   
 OWNER は適当に置き換えること。
 
@@ -162,4 +162,4 @@ jobs:
 ```
 
   
-`actions/cache@v2` でローカルリポジトリのキャッシュがされることを初めて知った。`Set SHORT_SHA` で7文字ハッシュ値の作成をしている。
+`actions/cache@v2` でローカルリポジトリのキャッシュがされることを初めて知った。`Set SHORT_SHA` で 7 文字ハッシュ値の作成をしている。

@@ -10,7 +10,7 @@ published: true
 
 ## ニコニコ動画
 
-[ニコニコ動画](https://nicovideo.jp/) 関連
+[ニコニコ動画](https://www.nicovideo.jp/) 関連
 
 ### ニコレポ
 

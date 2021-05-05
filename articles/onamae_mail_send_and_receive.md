@@ -77,6 +77,6 @@ published: true
 
 ![](https://storage.googleapis.com/zenn-user-upload/tuvnmsuzlwe95ttqaqw3o621ueu5)
 
-1. [Google のアプリ パスワード](https://myaccount.google.com/apppasswords)で、アプリケーションパスワードを生成。
+1. [Google のアプリ パスワード](https://myaccount.google.com/not-supported)で、アプリケーションパスワードを生成。
 2. 「アプリケーションを選択」で「そのほか」を選択、そのあと出てくる入力欄に適当な名前（メールアドレスなど）を入力して「生成」をクリック。
    **発行されたパスワードは再度表示できないので、必ずメモをとっておくこと。**
