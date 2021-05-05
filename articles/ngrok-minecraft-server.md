@@ -1,8 +1,8 @@
 ---
 title: ngrokでMinecraftサーバを公開する
-emoji: 
+emoji:
 type: tech
-topics: ["minecraft","ngrok","windows"]
+topics: ["minecraft", "ngrok", "windows"]
 ---
 
 マルチプレイをしたいけどポート開放が面倒とか、ネットワーク上の問題でポート開放ができないとかで困っている人向けに ngrok を使って一時的に公開する方法。  
@@ -11,7 +11,7 @@ ngrok でポートフォワーディングします。Minecraft サーバ自体�
 ## 注意
 
 この方法は `0.tcp.ap.ngrok.io:<PORT>` で `<PORT>` を変えてアタックしまくれば誰でもサーバに入れてしまう環境になります。ホワイトリストやプラグインによる IP 制限などを実施し、知らない人が入ってきたり荒らされたりしないように十分注意しましょう。  
-この記事に記載されている内容を実行し、発生したいかなる問題について当サイト管理者は一切責任を負いません。自己責任でお願いします。  
+この記事に記載されている内容を実行し、発生したいかなる問題について執筆者は一切責任を負いません。自己責任でお願いします。  
 今回は説明のために割と画像やら GIF を多用します。
 
 ## 環境
@@ -24,18 +24,18 @@ Windows 以外の OS の場合は適量読み替えてください。
 
 ## やり方
 
-### ngrokへ登録
+### ngrok へ登録
 
 [ngrok.com](https://ngrok.com/)へアクセス、右上の `Sign up` から適当な名前（ハンネとかで良い）、有効な E-mail アドレス、パスワードを入れロボット認証を行い「Sign Up」をクリック。
 
-### ngrokのコマンドラインツールをダウンロード
+### ngrok のコマンドラインツールをダウンロード
 
 ![](https://images.microcms-assets.io/assets/aa728ef13efd493bb761daa672fe743f/c1e010c7818a43839b5f665213d71582/201126_040340_chrome_CDzzHI0at9%5B1%5D.png)  
 「`Download for Windows`」をクリックして、Windows 版の ngrok をダウンロードします。ZIP ファイルがダウンロードされるので展開して中にある `ngrok.exe` をデスクトップとかサーバのフォルダとかに移動させておきます。  
 もし PATH を通すという作業ができるのであれば、適当なところにおいて PATH を通すとどこをカレントディレクトリにしても使えるので楽ですが、この記事では PATH を通さない前提で話を進めます。  
 とりあえず、ここではデスクトップに「`test`」というフォルダを作りそこに `ngrok.exe` を移動させました。
 
-### ngrokのアカウントを連携
+### ngrok のアカウントを連携
 
 自分の PC に ngrok の認証情報を保存する必要があるので、アカウント連携をしなければなりません。この記事では PowerShell を使ってコマンドを入力・実行しますが、コマンドプロンプト（`cmd`)でもかまいません。  
 ![](https://images.microcms-assets.io/assets/aa728ef13efd493bb761daa672fe743f/6ff7c9957c2c459abab878d6afc5c2c0/201126_041305_JEaQ0o2SBZ%5B1%5D.gif)  
@@ -48,7 +48,7 @@ PowerShell が開いたら、先ほど ngrok をダウンロードしたペー�
 PowerShell に戻り、`.\ngrok.exe authtoken <TOKEN>` と実行します。当然実行する前に `<TOKEN>` の部分はページに記載されているコピーしたトークンに置き換えること。  
 `Authtoken saved to configuration file:` と表示されれば成功です。
 
-### ngrokでサーバ（ポート）を公開する
+### ngrok でサーバ（ポート）を公開する
 
 最終工程として、Minecraft サーバのデフォルトポートである `25565` ポートを ngrok で公開し外部からログイン可能にします。  
 ![](https://images.microcms-assets.io/assets/aa728ef13efd493bb761daa672fe743f/b344cd3c89dd43708ec9104463976482/201126_043037_cYXkv4e8mU%5B1%5D.gif)  
@@ -62,7 +62,7 @@ PowerShell に戻り、`.\ngrok.exe authtoken <TOKEN>` と実行します。当�
 ![](https://images.microcms-assets.io/assets/aa728ef13efd493bb761daa672fe743f/26a782d002fb4ae99874c23c6566e0e6/201126_043411_CmUDPbhJJa%5B1%5D.gif)  
 実際にログインできれば成功です。サーバを立ている自分自身はわざわざネットワーク上のサーバを介する必要はないので、`localhost:25565` でログインしましょう。
 
-## 2回目以降
+## 2 回目以降
 
 2 回目以降は、`.\ngrok.exe tcp --region ap 25565` を実行するだけで同じようにサーバ（ポート）を公開できます。しかし、いちいち PowerShell を開くのも面倒なのでこのコマンドを実行できるファイルを作っておきます。  
 ![](https://images.microcms-assets.io/assets/aa728ef13efd493bb761daa672fe743f/2f99c3e37b154956bf28599448aa7e94/201126_044502_qihM2fmpwi%5B1%5D.gif)  

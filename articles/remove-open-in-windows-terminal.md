@@ -1,18 +1,18 @@
 ---
 title: Windowsの右クリックメニューから「Open in Windows Terminal」を削除する
-emoji: 
+emoji:
 type: tech
 topics: ["windows"]
 ---
 
-Windows Terminal をインストール後、エクスプローラーの右クリックメニューに出てくる「Open in Windows Terminal」がよい加減うざったいので、それを削除する。  
-  
+Windows Terminal をインストール後、エクスプローラーの右クリックメニューに出てくる「Open in Windows Terminal」がよい加減うざったいので、それを削除する。
+
 ![](https://images.microcms-assets.io/assets/aa728ef13efd493bb761daa672fe743f/0b318f8a54da458f977ab75bec3ed6e0/20210225-075335-explorer-jQu5OQoJPq%5B1%5D.png)
 
 ## 注意事項
 
 この記事ではレジストリを操作します。操作を誤ってしまったり、バージョンなどが違うなどの原因でコンピュータ自体が動作しなくなる可能性があります。  
-**この記事に記載されている内容を実行し、発生したいかなる問題について当サイト管理者は一切責任を負いません。自己責任でお願いします。**
+**この記事に記載されている内容を実行し、発生したいかなる問題について執筆者は一切責任を負いません。自己責任でお願いします。**
 
 ### 方法
 
@@ -24,7 +24,7 @@ Windows Terminal をインストール後、エクスプローラーの右クリ
 - Windows キーを押して、「`レジストリ`」と検索し、「`レジストリ エディター`」を開く
 - 左下スタートボタンを右クリックし「`ファイル名を指定して実行`」もしくは「`Windows + R`」を押して「`ファイル名を指定して実行`」ダイアログを開き、「`regedit`」と打ち込み「`OK`」を押し開く
 
-#### 1. Shell Extensionsフォルダに移動する
+#### 1. Shell Extensions フォルダに移動する
 
 ![](https://images.microcms-assets.io/assets/aa728ef13efd493bb761daa672fe743f/7f3082d5420d45e29c0ddf432398f696/20210225-080047-regedit-hJL05A4AV3%5B1%5D.png)  
 上部アドレス欄に「`HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions`」と打ち込み、Enter を押して移動する。
