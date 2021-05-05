@@ -12,7 +12,8 @@
   },
   "homepage": "https://github.com/book000/zenn-docs#readme",
   "dependencies": {
-    "zenn-cli": "^0.1.79"
+    "textlint-rule-ja-space-around-link": "^2.1.0",
+    "zenn-cli": "^0.1.22"
   },
   "devDependencies": {
     "textlint": "^11.9.0",

@@ -6,7 +6,7 @@ topics: ["linux", "centos", "centos7", "afio"]
 published: true
 ---
 
-CentOS5 とかに afio をインストールする記事はあっても、CentOS7 に afio をインストールする日本語記事は特に見当たらなかったので(検索が下手だからかも)備忘録。
+CentOS5 とかに afio をインストールする記事はあっても、CentOS7 に afio をインストールする日本語記事は特に見当たらなかったので（検索が下手だからかも）備忘録。
 
 ## 概要
 
@@ -28,16 +28,16 @@ CentOS5 とかに afio をインストールする記事はあっても、CentOS
 
 ### wget などを使って、afio の rpm を取得する
 
-1. [pkgs.org/CentOS の afio パッケージページ](https://centos.pkgs.org/7/repoforge-x86_64/afio-2.5.1-1.el7.rf.x86_64.rpm.html)を開き、「Download」欄までスクロール。「Binary Package」に示されているリンクのリンク先をコピーしておく。(右クリック → リンクの URL をコピー、などから)
+1. [pkgs.org/CentOS の afio パッケージページ](https://centos.pkgs.org/7/repoforge-x86_64/afio-2.5.1-1.el7.rf.x86_64.rpm.html)を開き、「Download」欄までスクロール。「Binary Package」に示されているリンクのリンク先をコピーしておく。（右クリック → リンクの URL をコピー、などから）
 2. コピーしたリンク先を wget などでダウンロードする。(例: `wget http://ftp.tu-chemnitz.de/pub/linux/dag/redhat/el7/en/x86_64/rpmforge/RPMS/afio-2.5.1-1.el7.rf.x86_64.rpm`)
 
 ### root でダウンロードした rpm をインストール
 
-`rpm -ivh afio-2.5.1-1.el7.rf.x86_64.rpm`などで、ダウンロードした rpm ファイルをインストール。
+`rpm -ivh afio-2.5.1-1.el7.rf.x86_64.rpm` などで、ダウンロードした rpm ファイルをインストール。
 
 ### インストールできたかどうかを確認
 
-`afio`コマンドを実行して、インストールが完了したかどうかを確認。「`コマンドが見つかりません`」やら「`command not found`」やら出たら環境変数の設定や先のインストール作業でエラーが発生しているのかも。
+`afio` コマンドを実行して、インストールが完了したかどうかを確認。「`コマンドが見つかりません`」やら「`command not found`」やら出たら環境変数の設定や先のインストール作業でエラーが発生しているのかも。
 
 afio コマンドの使い方とかは他サイト様の記事が詳しいので、そちら参考。
 しかし、適当に試した限りパイプでファイル名を投げ込むしかファイル指定の手段がないというのも斬新なものだなという気持ち。ざっと検索してもっとよさげなものも出てくるので、インストールしても使うかはまた別の話になりそうだ。

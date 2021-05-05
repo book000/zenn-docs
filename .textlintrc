@@ -5,7 +5,7 @@
             "ja-no-weak-phrase": false,
             "ja-no-mixed-period": false,
             "no-doubled-joshi": false,
-            "no-doubled-conjunctive-particle-ga": false,
+            "no-doubled-conjunctive-particle-ga": false
         },
         "prh": {
             "rulePaths": [
@@ -13,13 +13,17 @@
             ]
         },
         "preset-ja-spacing": {
-            "ja-space-around-code": {
-                "before": true,
-                "after": true
-            },
             "ja-space-between-half-and-full-width": {
                 "space": "always"
             }
+        },
+        "ja-space-around-code": {
+            "before": true,
+            "after": true
+        },
+        "ja-space-around-link": {
+            "before": true,
+            "after": true
         },
         "preset-jtf-style": {
             "1.1.1.本文": false,
