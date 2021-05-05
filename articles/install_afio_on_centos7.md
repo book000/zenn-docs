@@ -1,8 +1,8 @@
 ---
-title: CentOS7にafioをインストールする
+title: CentOS7 に afio をインストールする
 emoji: 🔥
 type: tech
-topics: ["linux", "centos", "centos7"]
+topics: ["linux", "centos", "centos7", "afio"]
 published: true
 ---
 
