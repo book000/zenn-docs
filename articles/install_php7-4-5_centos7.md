@@ -1,8 +1,8 @@
 ---
 title: PHP 7.4.5を導入してみる (CentOS 7)
-emoji: 
+emoji: ✨
 type: tech
-topics: ["php"]
+topics: ["php", "php7", "centos7"]
 ---
 
 2020/03/19 にリリースされた、PHP 7.4.4 を CentOS に入れてみます。
@@ -19,28 +19,26 @@ topics: ["php"]
 
 ### CentOS
 
-- OS: CentOS 7.7.1908
-- `cat /etc/*-release`
-- アップデート前バージョン: 7.3.1
-- `php -v`
+- OS: CentOS 7.7.1908 (`cat /etc/*-release`)
+- アップデート前バージョン: 7.3.1 (`php -v`)
 
 ## アップデート作業
 
 すべての作業を `root` または `sudo` で行っているものとして記載します。
 
-### 0. 必要に応じて、epel-releaseとRemiリポジトリをインストールしておきます
+### 0. 必要に応じて、epel-release と Remi リポジトリをインストールしておきます
 
-```
+```shell
 yum install epel-release
 rpm -ivh http://ftp.riken.jp/Linux/remi/enterprise/remi-release-7.rpm
 ```
 
-### 1. php7.4があるかどうかを確認しておきます
+### 1. php7.4 があるかどうかを確認しておきます
 
-`yum list php74* --enablerepo=remi` を実行し、php7.4 が存在するかを確認しておきます。  
+`yum list php74* --enablerepo=remi` を実行し、php7.4 が存在するかを確認しておきます。
 さらに `yum info php74-php-cli` を実行しバージョンを確認しておきましょう。私の環境ではこう表示されておりました。
 
-```
+```text
 利用可能なパッケージ
 名前                : php74-php-cli
 アーキテクチャー    : x86_64
@@ -61,6 +59,6 @@ URL                 : http://www.php.net/
 
 `sudo yum install php74 php74-php-mbstring php74-php-gd php74-php-mysql php74-php-pdo --enablerepo=remi` で php7.4 とほかの関連のものをインストールします。
 
-#### 3. PHPのバージョンを確認しましょう
+#### 3. PHP のバージョンを確認しましょう
 
 `php74 -v` を実行し、PHP のバージョンを確認しましょう。これが 7.4.5 になっていればインストール成功です。
