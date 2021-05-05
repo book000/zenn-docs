@@ -28,7 +28,7 @@ CentOS5 とかに afio をインストールする記事はあっても、CentOS
 
 ### wget などを使って、afio の rpm を取得する
 
-1. [pkgs.org/CentOS の afio パッケージページ](https://centos.pkgs.org/7/repoforge-x86_64/afio-2.5.1-1.el7.rf.x86_64.rpm.html)を開き、「Download」欄までスクロール。「Binary Package」に示されているリンクのリンク先をコピーしておく。（右クリック → リンクの URL をコピー、などから）
+1. [pkgs.org/CentOS の afio 検索ページ](https://pkgs.org/search/?q=afio) 該当のパッケージを開き、「Download」欄までスクロール。「Binary Package」に示されているリンクのリンク先をコピーしておく。（右クリック → リンクの URL をコピー、などから）
 2. コピーしたリンク先を wget などでダウンロードする。(例: `wget http://ftp.tu-chemnitz.de/pub/linux/dag/redhat/el7/en/x86_64/rpmforge/RPMS/afio-2.5.1-1.el7.rf.x86_64.rpm`)
 
 ### root でダウンロードした rpm をインストール
