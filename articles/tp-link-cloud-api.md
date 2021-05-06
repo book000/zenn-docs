@@ -3,6 +3,7 @@ title: TP-Link cloud APIを使ってみる
 emoji: 🕹️
 type: tech
 topics: ["api", "tplink"]
+published: true
 ---
 
 以前、Amazon Echo 第 2 世代を買ったときに一緒に付いてきた TP-Link(Kasa)の HS105 という、スマートプラグスイッチなるものがあって、これがかなりの優れものだったので、さらに 2 個入りを買って現在家にこれが 3 つある。
