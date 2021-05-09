@@ -3,6 +3,7 @@ title: GitHub Actionsを使ってGitHub PackagesにMaven Packageを自動で公�
 emoji: 🔥
 type: tech
 topics: ["githubactions", "java", "maven"]
+published: true
 ---
 
 コミットしたら自動でパッケージを公開してほしいケースがあったので、作った。
