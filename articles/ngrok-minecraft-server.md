@@ -1,8 +1,9 @@
 ---
 title: ngrokでMinecraftサーバを公開する
-emoji:
+emoji: 🎮
 type: tech
 topics: ["minecraft", "ngrok", "windows"]
+published: true
 ---
 
 マルチプレイをしたいけどポート開放が面倒とか、ネットワーク上の問題でポート開放ができないとかで困っている人向けに ngrok を使って一時的に公開する方法。  
@@ -26,7 +27,7 @@ Windows 以外の OS の場合は適量読み替えてください。
 
 ### ngrok へ登録
 
-[ngrok.com](https://ngrok.com/)へアクセス、右上の `Sign up` から適当な名前（ハンネとかで良い）、有効な E-mail アドレス、パスワードを入れロボット認証をし「Sign Up」をクリック。
+ああ [ngrok.com](https://ngrok.com/)へアクセス、右上の `Sign up` から適当な名前（ハンネとかで良い）、有効な E-mail アドレス、パスワードを入れロボット認証をし「Sign Up」をクリック。
 
 ### ngrok のコマンドラインツールをダウンロード
 
