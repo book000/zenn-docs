@@ -47,8 +47,6 @@ http {
 }
 ```
 
-なお、 `config.output` を if でチェックしているのは `config.output` が undefined を返す場合があるからです。
-
 ## 経緯
 
 さて、結論は書いたのでここまでの経緯をちょこっと。
