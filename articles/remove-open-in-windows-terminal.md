@@ -6,7 +6,7 @@ topics: ["windows", "windowsterminal"]
 published: true
 ---
 
-Windows Terminal をインストール後、エクスプローラーの右クリックメニューに出てくる「Open in Windows Terminal」がよい加減うざったいので、それを削除する。
+Windows Terminal をインストール後、エクスプローラーの右クリックメニューに出てくる「Open in Windows Terminal」があまりにもうざったいので、それを削除する。
 
 ![](https://storage.googleapis.com/zenn-user-upload/h1wbr66ee69944y5dtxhuml2nxfo)
 
