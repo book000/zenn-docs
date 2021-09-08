@@ -42,7 +42,7 @@ http {
 ```typescript
 {
   router: {
-    base: '/cp/'
+    base: '/test/'
   },
 }
 ```
