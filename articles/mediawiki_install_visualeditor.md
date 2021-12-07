@@ -63,7 +63,7 @@ domain: "localhost" # optional
 
 ### 2. nginx の設定を編集しリバースプロキシを設定する
 
-この記事では、Kusanagi を用いて運用しているため、`/etc/nginx/conf.d/example.com_ssl.conf` を設定します。生の nginx を設定している場合は/etc/nginx/nginx.conf`など別のファイルを必要に応じて編集して下さい。 リバースプロキシの詳しい解説等は省きます。基本的には、該当ドメインの`server`ブロックの中に
+この記事では、Kusanagi を用いて運用しているため、`/etc/nginx/conf.d/example.com_ssl.conf` を設定します。生の nginx を設定している場合は `/etc/nginx/nginx.conf`など別のファイルを必要に応じて編集して下さい。 リバースプロキシの詳しい解説等は省きます。基本的には、該当ドメインの `server` ブロックの中に
 
 ```nginx
 location ^~ /parsoid/ {
