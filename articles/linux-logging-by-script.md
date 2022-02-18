@@ -65,7 +65,7 @@ Gist に置いたので、`curl https://gist.githubusercontent.com/book000/2bf13
 
 ## script コマンドの活用方法
 
-[nwtgck さんの piping-server](https://github.com/nwtgck/piping-server)（[Gistの解説記事](https://qiita.com/nwtgck/items/78309fc529da7776cba0#%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%E3%81%AE%E7%94%BB%E9%9D%A2%E3%82%92%E5%85%B1%E6%9C%89%E3%81%99%E3%82%8B)）を使えば、操作中のターミナルを他者と共有できる。この用途で使ったことはないが、非常におもしろい発想だと思っている。
+[nwtgck さんの piping-server](https://github.com/nwtgck/piping-server)（[Qiitaの解説記事](https://qiita.com/nwtgck/items/78309fc529da7776cba0#%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%E3%81%AE%E7%94%BB%E9%9D%A2%E3%82%92%E5%85%B1%E6%9C%89%E3%81%99%E3%82%8B)）を使えば、操作中のターミナルを他者と共有できる。この用途で使ったことはないが、非常におもしろい発想だと思っている。
 
 ## 参考文献
 
