@@ -83,7 +83,7 @@ JetBrains がやっと GitHub Actions で動くコード品質チェックツー
 
 デフォルトでは `config:base` を読み込むだけとなっているのですが、これだと「ほぼ自動化」はできないので以下のように変えます。
 
-```yaml
+```json
 {
   "extends": ["config:base"],
   "ignorePresets": [":prHourlyLimit2"],
