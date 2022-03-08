@@ -29,7 +29,7 @@ IFTTT の「Then」で TP-Link Kasa を選択できないので、イベント�
 
 ## まず見つかったのは tplink-smarthome-api
 
-まず、[plasticrake/tplink-smarthome-api](https://github.com/plasticrake/tplink-smarthome-api)というのが見つかった。
+まず、[plasticrake/tplink-smarthome-api](https://github.com/plasticrake/tplink-smarthome-api) というのが見つかった。
 Linux Mint の入っている自宅鯖機で CLI の機能つかって試したら、たしかに動作はした。
 
 ### つける

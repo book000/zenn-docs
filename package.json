@@ -11,7 +11,8 @@
     "url": "https://github.com/book000/zenn-docs/issues"
   },
   "scripts": {
-    "dev": "zenn preview"
+    "dev": "zenn preview",
+    "lint": "textlint articles/ books/"
   },
   "homepage": "https://github.com/book000/zenn-docs#readme",
   "devDependencies": {

@@ -11,7 +11,7 @@ published: true
 ## 概要
 
 Windows 10 の「April 2018 Update (RS4)」で追加された curl を使って Discord に **Bot を使って** メッセージを送信しようとしたときに `"` と `'` を活用してエスケープを避けて実行するとハマります。
-かなりの有名な話だそうで、[Qiita にも記事](https://qiita.com/tocoteron/items/291b463e45f422abd425)がありました
+かなりの有名な話だそうで、[Qiita にも記事](https://qiita.com/tocoteron/items/291b463e45f422abd425) がありました
 で、Webhook を用いたメッセージの投稿はあっても、Bot のトークンを用いたメッセージ投稿が見当たらないので記事を書いてます。
 
 ## 環境

@@ -26,7 +26,7 @@ published: true
 
 ![](https://storage.googleapis.com/zenn-user-upload/gra2umwiapnhj10i5d4z1pmerb2e)
 
-1. [お名前.com Navi](https://navi.onamae.com/login)から、お名前.com にログインする。
+1. [お名前.com Navi](https://navi.onamae.com/login) から、お名前.com にログインする。
 2. ログイン後、「`ドメイン契約更新`」の画面が表示されるが、無視して右上の「`オプション設定`」をクリックする。
 
 ### メール転送設定をする
@@ -46,7 +46,7 @@ published: true
 
 ![](https://storage.googleapis.com/zenn-user-upload/s7vqp2e5shimpoz56t6vbf4t42zy)
 
-1. [Login to Cloudflare](https://dash.cloudflare.com/login)で CloudFlare にログインする。
+1. [Login to Cloudflare](https://dash.cloudflare.com/login) で CloudFlare にログインする。
 2. ログイン後、上側のナビゲーションバーの「`DNS`」をクリック、「`DNS Records`」とある `DNS` の設定画面を開く。
 3. 画像のように、「`MX`」を選択、「`Name`」欄に先ほどメモをとった「`ホスト名`」を入力、「`Click to Configure`」をクリックして、「`Server`」欄に先ほどメモをとった「`VALUE`」、「`Priority`」に先ほどメモをとった「`優先`」を入力し、「`Save`」をクリック。
    私の場合は、「Name」に「`tomacheese.com`」、「Server」に「`mailforward.dnsv.jp`」、「Priority」に「`10`」を入力した。
@@ -77,6 +77,6 @@ published: true
 
 ![](https://storage.googleapis.com/zenn-user-upload/tuvnmsuzlwe95ttqaqw3o621ueu5)
 
-1. [Google のアプリ パスワード](https://myaccount.google.com/not-supported)で、アプリケーションパスワードを生成。
+1. [Google のアプリ パスワード](https://myaccount.google.com/not-supported) で、アプリケーションパスワードを生成。
 2. 「アプリケーションを選択」で「そのほか」を選択、そのあと出てくる入力欄に適当な名前（メールアドレスなど）を入力して「生成」をクリック。
    **発行されたパスワードは再度表示できないので、必ずメモをとっておくこと。**

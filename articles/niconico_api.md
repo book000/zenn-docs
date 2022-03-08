@@ -28,7 +28,7 @@ published: true
 
 ## ニコニ広告
 
-[ニコニ広告](https://nicoad.nicovideo.jp/)関連
+[ニコニ広告](https://nicoad.nicovideo.jp/) 関連
 
 ### ニコニ広告の無料福引情報を取得
 

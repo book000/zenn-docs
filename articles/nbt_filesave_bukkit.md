@@ -14,13 +14,13 @@ published: true
 
 ## 環境
 
-- Minecraft 1.12.2 （後述するリフレクションを使用する方法であれば 1.16.5 等でも使用可能）
+- Minecraft 1.12.2（後述するリフレクションを使用する方法であれば 1.16.5 等でも使用可能）
 - CraftBukkit version: Git-Spigot-642f6d2-ab13683
 - APIVersion: 1.12.2-R0.1-SNAPSHOT
 
 ## CraftBukkit が Maven に追加できる場合
 
-Maven への詳しい説明はしませんが、CraftBukkit を何かしらの手段で Maven に追加できる場合はこの方法が楽です。（Spigot ）
+Maven への詳しい説明はしませんが、CraftBukkit を何かしらの手段で Maven に追加できる場合はこの方法が楽です。（Spigot）
 
 ### セーブ
 

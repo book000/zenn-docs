@@ -27,7 +27,7 @@ Windows 以外の OS の場合は適量読み替えてください。
 
 ### ngrok へ登録
 
-ああ [ngrok.com](https://ngrok.com/)へアクセス、右上の `Sign up` から適当な名前（ハンネとかで良い）、有効な E-mail アドレス、パスワードを入れロボット認証をし「Sign Up」をクリック。
+ああ [ngrok.com](https://ngrok.com/) へアクセス、右上の `Sign up` から適当な名前（ハンネとかで良い）、有効な E-mail アドレス、パスワードを入れロボット認証をし「Sign Up」をクリック。
 
 ### ngrok のコマンドラインツールをダウンロード
 

@@ -6,7 +6,7 @@ topics: ["php", "php8", "windows"]
 published: true
 ---
 
-[一つ前の記事](install_php8-0-0_windows10)でプレリリース版（と思われる）バイナリをダウンロードし、配置（インストール）したがせっかくなら正式リリース版をビルドして導入してみたいので、Windows10 環境でビルドしてみる。
+[一つ前の記事](install_php8-0-0_windows10) でプレリリース版（と思われる）バイナリをダウンロードし、配置（インストール）したがせっかくなら正式リリース版をビルドして導入してみたいので、Windows10 環境でビルドしてみる。
 
 ## 注意事項
 
@@ -52,14 +52,14 @@ published: true
 
 ビルド（コンパイル）を行うために Visual Studio が必要です。インストールします。
 ![](https://storage.googleapis.com/zenn-user-upload/eq1wgumucu56mhhzeqs2m4fnza10)
-[Visual Studio のダウンロードページ](https://visualstudio.microsoft.com/ja/downloads/)にアクセスし、コミュニティ版インストーラをダウンロードします。
+[Visual Studio のダウンロードページ](https://visualstudio.microsoft.com/ja/downloads/) にアクセスし、コミュニティ版インストーラをダウンロードします。
 ![](https://storage.googleapis.com/zenn-user-upload/aspnw5o1qe1jy7yxod98vg3lu8nj)
 インストーラをダウンロードしたら、そのインストーラを起動して「`C++によるデスクトップ開発`」にチェックを入れ「インストール」をクリックしインストールします。
 
 また、`tar.gz` を解凍するために何かしらのツールが必要です。ここでは 7-Zip を使うため、それをインストールしておきます。
 ![](https://storage.googleapis.com/zenn-user-upload/uwnw4oqxkh2cyts8m089awpgrf1p)
 ![](https://storage.googleapis.com/zenn-user-upload/xr92m5h089g3idixr8ogyocclkon)
-[7-Zip の Web サイト](https://sevenzip.osdn.jp/)から、最新の x64 の exe ファイルをダウンロードします。インストーラを実行しインストールしてください。
+[7-Zip の Web サイト](https://sevenzip.osdn.jp/) から、最新の x64 の exe ファイルをダウンロードします。インストーラを実行しインストールしてください。
 
 ### 1. PHP SDK をダウンロードし、配置する
 
@@ -67,7 +67,7 @@ published: true
 
 PHP をビルドするツールである PHP SDK を GitHub からダウンロードし、配置します。
 
-[microsoft/php-sdk-binary-tools](https://github.com/microsoft/php-sdk-binary-tools)にアクセスし「Code」をクリック、「Download ZIP」をクリックし Zip ファイルをダウンロードします。
+[microsoft/php-sdk-binary-tools](https://github.com/microsoft/php-sdk-binary-tools) にアクセスし「Code」をクリック、「Download ZIP」をクリックし Zip ファイルをダウンロードします。
 
 ![](https://storage.googleapis.com/zenn-user-upload/jvweyml1ezhz6zpiurdgeq3hg1sk)
 
@@ -79,7 +79,7 @@ PHP をビルドするツールである PHP SDK を GitHub からダウンロ�
 次に、ビルド（コンパイル）するソースコードを用意します。
 ![](https://storage.googleapis.com/zenn-user-upload/sjislxsjn74mq1g088axsxdmf7hh)
 
-[PHP: Downloads](https://www.php.net/downloads)にアクセスし、`tar.gz` 形式のソースコードファイル（ここでは `php-8.0.0.tar.gz`）をダウンロードします。
+[PHP: Downloads](https://www.php.net/downloads) にアクセスし、`tar.gz` 形式のソースコードファイル（ここでは `php-8.0.0.tar.gz`）をダウンロードします。
 とりあえずこの項ではダウンロードだけ行い、展開は後でやります。
 
 ### 3.「`x64 Native Tools Command Prompt for VS 2019`」を使用して `phpsdk-starter.bat -c vs16 -a x64`、`phpsdk_buildtree.bat php-dev` を実行する

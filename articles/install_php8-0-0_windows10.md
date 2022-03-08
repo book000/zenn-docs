@@ -11,7 +11,7 @@ published: true
 ## 注意事項
 
 この記事に記載されている内容を実行し、発生したいかなる問題について執筆者は一切責任を負いません。自己責任でお願いします。
-ところで、[PHP 8.0 のバイナリを公式提供しないなんていう記事](https://forest.watch.impress.co.jp/docs/news/1264900.html)が 7 月くらいにあって当時驚いてたけど、普通に出ているのよね…これとは違うのかしら。
+ところで、[PHP 8.0 のバイナリを公式提供しないなんていう記事](https://forest.watch.impress.co.jp/docs/news/1264900.html) が 7 月くらいにあって当時驚いてたけど、普通に出ているのよね…これとは違うのかしら。
 
 ## 基礎情報
 
@@ -29,7 +29,7 @@ published: true
 
 ![](https://storage.googleapis.com/zenn-user-upload/hajg57i5k0k0zya1jhjqpfg7r40v)
 
-[PHP: Downloads](https://www.php.net/downloads)にアクセスし、`PHP 8.0.0` の `Windows downloads` をクリック。
+[PHP: Downloads](https://www.php.net/downloads) にアクセスし、`PHP 8.0.0` の `Windows downloads` をクリック。
 
 ![](https://storage.googleapis.com/zenn-user-upload/930ohai5zrbkjqlcey8ljt7l8spa)
 
