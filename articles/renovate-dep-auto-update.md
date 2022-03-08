@@ -90,7 +90,7 @@ JetBrains がやっと GitHub Actions で動くコード品質チェックツー
   "timezone": "Asia/Tokyo",
   "dependencyDashboard": false,
   "automerge": true,
-  "branchConcurrentLimit": 0,
+  "branchConcurrentLimit": 0
 }
 ```
 
