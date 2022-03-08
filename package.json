@@ -14,11 +14,6 @@
     "dev": "zenn preview"
   },
   "homepage": "https://github.com/book000/zenn-docs#readme",
-  "dependencies": {
-    "textlint-rule-ja-space-around-link": "^2.1.0",
-    "textlint-rule-no-dead-link": "^4.7.0",
-    "zenn-cli": "^0.1.22"
-  },
   "devDependencies": {
     "textlint": "^11.9.0",
     "textlint-filter-rule-allowlist": "^2.0.1",
@@ -26,6 +21,8 @@
     "textlint-rule-preset-ja-technical-writing": "^6.0.0",
     "textlint-rule-preset-jtf-style": "^2.3.8",
     "textlint-rule-preset-smarthr": "^1.2.0",
-    "textlint-rule-prh": "^5.3.0"
+    "textlint-rule-prh": "^5.3.0",
+    "textlint-rule-ja-space-around-link": "^2.1.0",
+    "zenn-cli": "^0.1.22"
   }
 }
