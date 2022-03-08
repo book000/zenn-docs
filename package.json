@@ -23,6 +23,6 @@
     "textlint-rule-preset-smarthr": "^1.2.0",
     "textlint-rule-prh": "^5.3.0",
     "textlint-rule-ja-space-around-link": "^2.1.0",
-    "zenn-cli": "^0.1.22"
+    "zenn-cli": "0.1.107"
   }
 }
