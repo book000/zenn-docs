@@ -102,7 +102,7 @@ JetBrains がやっと GitHub Actions で動くコード品質チェックツー
 - 1 時間あたりに 2 Pull Request までに抑える処理を無効化
 - タイムゾーンを `Asia/Tokyo` に指定
 - Dependency Dashboard ([こういうやつ](https://github.com/jaoafa/MyMaid4/issues/612)) を無効化
-- オートマージを無効化
+- オートマージを有効化
 - ブランチに対して作成する Pull Request 数の制限を無効化
 
 編集後、マージすれば Renovate が動き出します 👏
