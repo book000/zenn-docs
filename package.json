@@ -16,7 +16,7 @@
   "homepage": "https://github.com/book000/zenn-docs#readme",
   "devDependencies": {
     "textlint": "^11.9.0",
-    "textlint-filter-rule-allowlist": "^2.0.1",
+    "textlint-filter-rule-allowlist": "4.0.0",
     "textlint-rule-preset-ja-spacing": "^2.0.2",
     "textlint-rule-preset-ja-technical-writing": "^6.0.0",
     "textlint-rule-preset-jtf-style": "^2.3.8",
