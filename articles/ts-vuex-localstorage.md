@@ -40,7 +40,7 @@ https://github.com/book000/vuex-ts
 
 ### TypeScript 環境で Nuxt.js プロジェクトを作成する
 
-この記事では、超簡単なインクリメントしかしないカウンターを作ります。
+この記事では、超簡単なインクリメントしかしないカウンタを作ります。
 
 `yarn create nuxt-app` (Npm であれば `npx create-nuxt-app`)を用いて Nuxt.js のプロジェクトを作成します。
 
@@ -76,7 +76,7 @@ https://github.com/book000/vuex-ts/blob/master/store/index.ts
 
 ---
 
-カウンターの状態管理ストアを作るため、`store/counter.ts` を作成します。
+カウンタの状態管理ストアを作るため、`store/counter.ts` を作成します。
 
 https://github.com/book000/vuex-ts/blob/master/store/counter.ts
 
@@ -116,7 +116,7 @@ yarn add vuex-persistedstate
 
 ---
 
-次に、`plugins/counter.ts` を作成して先ほどの `counter` を localStorageに保存してもらうように設定します。
+次に、`plugins/counter.ts` を作成して先ほどの `counter` を localStorage に保存してもらうように設定します。
 
 https://github.com/book000/vuex-ts/blob/master/plugins/counter.ts
 
@@ -131,11 +131,11 @@ https://github.com/book000/vuex-ts/blob/master/plugins/counter.ts
 
 ---
 
-`count` を変更させてみたあと、リロードしてもきちんと数値が復元されることを確認出来たら成功です。
+`count` を変更させてみたあと、リロードしてもきちんと数値が復元されることを確認できたら成功です。
 
 ## 参考
 
-この記事は以下の二つを組み合わせて出来上がっています。ありがとうございます。
+この記事は以下の 2 つを組み合わせてできあがっています。ありがとうございます。
 
 - [NuxtJS + Vuex でいい感じの Typescript 環境をあまり頑張らないで構築する - Qiita](https://qiita.com/shindex/items/a90217b9e4c03c5b5215)
 - [Nuxt.js にて plugins/localStorage に VuexStoter を保存する方法 - Qiita](https://qiita.com/shindex/items/a90217b9e4c03c5b5215)
