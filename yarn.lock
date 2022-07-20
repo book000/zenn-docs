@@ -2029,10 +2029,10 @@ textlint-rule-ja-hiragana-hojodoushi@^1.0.4:
     kuromojin "^1.3.2"
     morpheme-match-all "^1.1.0"
 
-textlint-rule-ja-keishikimeishi@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/textlint-rule-ja-keishikimeishi/-/textlint-rule-ja-keishikimeishi-1.0.3.tgz#000d9ffcfd2925cbd8dd7f04ab93ab8a69a9b095"
-  integrity sha512-XQwgjxipn2+qqKcZhAuXPvThnsHP+6AhvNjXiIaP86oDIgmGrThBRhjr9D9Pl8K3WgjIoxzruFmLLOJjlLESIA==
+textlint-rule-ja-keishikimeishi@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/textlint-rule-ja-keishikimeishi/-/textlint-rule-ja-keishikimeishi-1.0.4.tgz#734abc0d98f277ddb305a1eed58e6dee13ecbfba"
+  integrity sha512-mAxb4fdvjst4j0iZgFQrnoK1nf9NRkFQJuxRJmbqKZhgvXilSq19cqOalIc+pMTHEF+VdUCdEC43+2Ave2QMFA==
   dependencies:
     kuromojin "^2.1.1"
     morpheme-match-all "^1.1.0"
@@ -2400,17 +2400,17 @@ textlint-rule-preset-jtf-style@^2.3.12:
     textlint-rule-helper "^2.2.0"
     textlint-rule-prh "^5.2.1"
 
-textlint-rule-preset-smarthr@1.13.4:
-  version "1.13.4"
-  resolved "https://registry.yarnpkg.com/textlint-rule-preset-smarthr/-/textlint-rule-preset-smarthr-1.13.4.tgz#03de874aa17645aeb7c75269cc351b02409118f1"
-  integrity sha512-i9HqwFzl5R6om0Z9AW0SzBoQYfvEOHoZBCo30g3m/bUz8/jgzkc9lmh6QnpXnojzRsB7FO2cavW9C9Eo9icbjA==
+textlint-rule-preset-smarthr@1.14.0:
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/textlint-rule-preset-smarthr/-/textlint-rule-preset-smarthr-1.14.0.tgz#398c472cc5f0ce8d80dd0cf08a50e427ceba1b03"
+  integrity sha512-T/LuQTWaGnuhjLTJU6KUdXXEO4UPhlwcK1vcF6x1KfrGztyoCe/BbBAtJvuokB0ijmOv2LmpdN7pfZJb0DLD5A==
   dependencies:
     "@textlint-rule/textlint-rule-no-unmatched-pair" "^1.0.8"
     "@textlint/module-interop" "^12.1.0"
     textlint-rule-ja-hiragana-daimeishi "^1.0.0"
     textlint-rule-ja-hiragana-fukushi "^1.3.0"
     textlint-rule-ja-hiragana-hojodoushi "^1.0.4"
-    textlint-rule-ja-keishikimeishi "^1.0.3"
+    textlint-rule-ja-keishikimeishi "^1.0.4"
     textlint-rule-ja-nakaguro-or-halfwidth-space-between-katakana "^2.2.0"
     textlint-rule-ja-no-abusage "^3.0.0"
     textlint-rule-ja-no-mixed-period "^2.1.1"
