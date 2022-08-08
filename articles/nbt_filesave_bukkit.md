@@ -8,6 +8,11 @@ published: true
 
 プラグインを作っている最中にクリックイベントなどがついた本を保存しなければならない機会があり、NBT データごと保存するのに手こずったので備忘録。
 
+:::message alert
+以下の方法ではできなくなりました。
+独自でリフレクションとか使って対応するのが面倒になったので、[NBT API](https://www.spigotmc.org/resources/nbt-api.7939/) ([GitHub](https://github.com/tr7zw/Item-NBT-API)) を使って NBT データを取得しています。[NMSManager の置き換えコード](https://github.com/jaoafa/MyMaid4/blob/a104a0fa6f0cc76b5081100f039cc42b2d8a8a2e/src/main/java/com/jaoafa/mymaid4/lib/NMSManager.java)
+:::
+
 ## 注意事項
 
 この記事に記載されている内容を実行し、発生したいかなる問題について執筆者は一切責任を負いません。自己責任でお願いします。
