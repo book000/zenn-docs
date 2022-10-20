@@ -83,6 +83,7 @@ export default Vue.extend({
 <style scoped>
 .long-press-wrapper {
   user-select: none;
+  pointer-events: none;
 
   /* stylelint-disable-next-line property-no-vendor-prefix */
   -webkit-user-select: none;
