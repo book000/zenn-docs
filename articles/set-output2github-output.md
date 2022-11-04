@@ -101,5 +101,7 @@ git checkout -q -b ci/set-output --no-track upstream/master ; git checkout -q -b
 
 あとはこれを各リポジトリで実行し、実行結果を Visual Studio Code で確認したうえでコミットを作成・Pull Request を作成すれば楽に作業できます。
 
+[GitHub Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) 拡張機能をいれれば、Visual Studio Code 上で Pull Request も作成できてさらに楽ちん。
+
 [^1]: [GitHub CLI の search マニュアル](https://cli.github.com/manual/gh_search) によれば、検索できるのは Issue と PR とリポジトリだけなようです。
 [^2]: GitHub CLI に実装されていない以上、どんな悪いことをしてコード検索なんてしているんだろうと思ったら、GitHub の [Search code REST API](https://docs.github.com/en/rest/search#search-code) を使っているだけでした。てっきりスクレイピングでもしているのかと…。
