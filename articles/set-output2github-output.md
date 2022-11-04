@@ -1,5 +1,5 @@
 ---
-title: 手間をかけずに set-output から $GITHUB_OUTPUT を使うように置き換える
+title: めんどくさがりなりに set-output から $GITHUB_OUTPUT を使うように置き換える
 emoji: 🥱
 type: tech
 topics: ["github", "githubactions"]
