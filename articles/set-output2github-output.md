@@ -103,5 +103,13 @@ git checkout -q -b ci/set-output upstream/master ; git checkout -q -b ci/set-out
 
 [GitHub Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) 拡張機能をいれれば、Visual Studio Code 上で Pull Request も作成できてさらに楽ちん。
 
+---
+
+ここまで記事を書いて、azu さんがマイグレーションツールを作っていることを Twitter で知りました。`npx set-env-to-github_env` で楽に修正できるのでこっちの方が良さそうです。
+
+https://twitter.com/azu_re/status/1585562486052630528
+
+https://github.com/azu/set-env-to-github_env
+
 [^1]: [GitHub CLI の search マニュアル](https://cli.github.com/manual/gh_search) によれば、検索できるのは Issue と PR とリポジトリだけなようです。
 [^2]: GitHub CLI に実装されていない以上、どんな悪いことをしてコード検索なんてしているんだろうと思ったら、GitHub の [Search code REST API](https://docs.github.com/en/rest/search#search-code) を使っているだけでした。てっきりスクレイピングでもしているのかと…。
