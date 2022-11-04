@@ -93,7 +93,7 @@ sed -i -E 's/echo "::save-state name=(.+?)::(.+?)"/echo "\1=\2" >> $GITHUB_STATE
 `ci/set-output` ブランチをチェックアウトして、WSL の Ubuntu で先ほど作成したシェルスクリプトを実行するコマンドをワンライナーで作ってしまいましょう。
 
 ```bash
-git checkout -q -b ci/set-output --no-track upstream/master ; git checkout -q -b ci/set-output --no-track upstream/main ; git checkout -q -b ci/set-output --no-track origin/master ; git checkout -q -b ci/set-output --no-track origin/main ; bash -c "/mnt/c/replace-set-output.sh"
+git checkout -q -b ci/set-output upstream/master ; git checkout -q -b ci/set-output upstream/main ; git checkout -q -b ci/set-output origin/master ; git checkout -q -b ci/set-output origin/main ; bash -c "/mnt/c/replace-set-output.sh"
 ```
 
 `ci/set-output` ブランチは `upstream` か `origin` の `master` か `main` から作成させます。  
