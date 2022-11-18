@@ -6,7 +6,7 @@ topics: ["onamae", "domain", "mail"]
 published: true
 ---
 
-本来、独自ドメインを用いたメールの送受信はメールサーバを契約するか、自力で VPS などを借りて立てるのが普通だが、今回 Gmail とお名前.com(と CloudFlare)のみでメールを送受信できることが分かったので備忘録として記事にしておく。
+本来、独自ドメインを用いたメールの送受信はメールサーバを契約するか、自力で VPS などを借りて立てるのが普通だが、今回 Gmail とお名前.com(と Cloudflare)のみでメールを送受信できることが分かったので備忘録として記事にしておく。
 
 ## 注意事項
 
@@ -16,7 +16,7 @@ published: true
 
 - お名前.com で取得した独自ドメイン
 - Google アカウント (Gmail)
-- CloudFlare（DNS を CloudFlare で管理しているならば。今回は CloudFlare を使用しているものとして解説する）
+- Cloudflare（DNS を Cloudflare で管理しているならば。今回は Cloudflare を使用しているものとして解説する）
 
 ※のちのち分かったことですが、お名前.com でメール転送設定をすると「`DNS 追加オプション(有料)`」として登録され、月 100 円（税抜き）が徴収されるようです。（なので私は自分でメールサーバを立て運用しています）
 
@@ -36,7 +36,7 @@ published: true
 1. 左側のナビゲーションバーか、中央のリストから「`転送 Plus`」にある「`メール転送設定`」をクリックする。
 2. メールアドレスにしたいドメインを選び、そのドメインの隣にある「`設定する`」をクリックする。
 3. 「`転送元メールアドレス`」に「`@より前のアドレス(admin, info, mail, owner など)`」、「`転送先メールアドレス`」に「`Gmail のアドレス`」、「`状態`」を「`有効`」にする。
-4. 「`ドメインのネームサーバーを変更`」はチェックを入れなくてよい。（CloudFlare で DNS 管理しているなら）
+4. 「`ドメインのネームサーバーを変更`」はチェックを入れなくてよい。（Cloudflare で DNS 管理しているなら）
 5. 「`転送ネームサーバー設定確認`」の欄はメモを取っておく。(`ホスト名`・`TYPE`・`VALUE`・`優先`)
 6. すべて入力したら、「`確認画面に進む`」をクリックして設定内容を確認して「`設定する`」を押して設定する。
 
@@ -46,7 +46,7 @@ published: true
 
 ![](https://storage.googleapis.com/zenn-user-upload/s7vqp2e5shimpoz56t6vbf4t42zy)
 
-1. [Login to Cloudflare](https://dash.cloudflare.com/login) で CloudFlare にログインする。
+1. [Login to Cloudflare](https://dash.cloudflare.com/login) で Cloudflare にログインする。
 2. ログイン後、上側のナビゲーションバーの「`DNS`」をクリック、「`DNS Records`」とある `DNS` の設定画面を開く。
 3. 画像のように、「`MX`」を選択、「`Name`」欄に先ほどメモをとった「`ホスト名`」を入力、「`Click to Configure`」をクリックして、「`Server`」欄に先ほどメモをとった「`VALUE`」、「`Priority`」に先ほどメモをとった「`優先`」を入力し、「`Save`」をクリック。
    私の場合は、「Name」に「`tomacheese.com`」、「Server」に「`mailforward.dnsv.jp`」、「Priority」に「`10`」を入力した。
