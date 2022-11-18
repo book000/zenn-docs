@@ -26,7 +26,7 @@ MediaWiki に VisualEditor と Parsoid を導入するにあたり、（さま�
 
 ### 制約
 
-- CloudFlare によるサーバ IP アドレスの秘匿をしているので、この為に生 IP アドレス経由による Parsoid へのアクセスは不能。
+- Cloudflare によるサーバ IP アドレスの秘匿をしているので、この為に生 IP アドレス経由による Parsoid へのアクセスは不能。
 
 ## やり方
 

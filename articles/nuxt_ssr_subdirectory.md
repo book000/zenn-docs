@@ -13,7 +13,7 @@ Nuxt.js の SSR、つまり Node.js サーバ環境下（リバースプロキ�
 - Nuxt.js v2.15.6
 - SSR (Server-side rendering / Node.js Server)
 - `https://example.com/test/` で公開させたい
-- Nginx を使って、`example.com/test/` から `localhost:3000` にリバースプロキシして動作させている
+- nginx を使って、`example.com/test/` から `localhost:3000` にリバースプロキシして動作させている
 
 ## 結論
 
@@ -94,7 +94,7 @@ http {
 
 になる…ということらしいのですが、うーん。よくわからない。
 
-というわけで、むしろ Nuxt.js の問題というより Nginx にやられた、という備忘録でした。Nginx わからない…。
+というわけで、むしろ Nuxt.js の問題というより nginx にやられた、という備忘録でした。nginx わからない…。
 
 ## 参考文献
 
