@@ -34,6 +34,14 @@
     sentence-splitter "^3.0.11"
     textlint-rule-helper "2.0.1"
 
+"@textlint-rule/textlint-rule-pattern@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@textlint-rule/textlint-rule-pattern/-/textlint-rule-pattern-1.0.2.tgz#281ed45c78bb2170094b8f85a50c201eea37b5b3"
+  integrity sha512-6+rv0h49BwolxH6FyNromz1U/RvzQSSJoFkwGsuGWTQL/w/Be+jVzOPRysyxiuEdZRq5oZRKQtwWxxT1SITsKQ==
+  dependencies:
+    "@textlint/regexp-string-matcher" "^2.0.1"
+    textlint-rule-helper "^2.2.1"
+
 "@textlint/ast-node-types@^12.0.0":
   version "12.1.1"
   resolved "https://registry.yarnpkg.com/@textlint/ast-node-types/-/ast-node-types-12.1.1.tgz#189cdc932a50b9dd14b6829848408c22bb72f976"
@@ -169,6 +177,16 @@
     lodash.uniq "^4.5.0"
     lodash.uniqwith "^4.5.0"
     to-regex "^3.0.2"
+
+"@textlint/regexp-string-matcher@^2.0.1":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@textlint/regexp-string-matcher/-/regexp-string-matcher-2.0.2.tgz#cef4d8353dac624086069e290d9631ca285df34d"
+  integrity sha512-OXLD9XRxMhd3S0LWuPHpiARQOI7z9tCOs0FsynccW2lmyZzHHFJ9/eR6kuK9xF459Qf+740qI5h+/0cx+NljzA==
+  dependencies:
+    escape-string-regexp "^4.0.0"
+    lodash.sortby "^4.7.0"
+    lodash.uniq "^4.5.0"
+    lodash.uniqwith "^4.5.0"
 
 "@textlint/source-code-fixer@^12.2.3":
   version "12.2.3"
