@@ -23,7 +23,7 @@ ConoHa の VPS を IPv6 対応させて、Cloudflare の DNS に設定してみ�
 
 この記事では、サンプルドメインとして `example.com` と `sub.example.com` を使います。
 
-- 作業日: 2022/11/18
+- 作業日: 2022/11/18, 2022/11/30
 - ConoHa VPS
   - Ubuntu 22.04.1 LTS
   - nginx 1.21.4
@@ -60,19 +60,74 @@ SSL/TLS のポートである 443 番ポートも IPv6 で Listen している�
 
 ### VPS に IPv6 のアドレスを割り当てる
 
-ConoHa VPS 上で立てた **Ubuntu** では[^1]、立てた VPS に IPv6 のアドレスが割り当てられていないようです。
+この項では、以下の 3 つに分割して解説しています。
 
-// ToDo: `ip addr show eth0` で...
+- VPS に IPv6 アドレスが割り当てられていないかを確認する
+- 利用可能な 17 個の IPv6 IP アドレスを確認する
+- IPv6 アドレスを割り当てる
 
-以下の手順で割り当てられます。
+#### VPS に IPv6 アドレスが割り当てられていないかを確認する
 
-まず、VPS に割り当てることのできる IPv6 アドレスとゲートウェイを調べる必要があります。
+ConoHa VPS 上で立てた **Ubuntu** では[^1]、立てた VPS に IPv6 のアドレスが割り当てられていないようです。  
+検証していた限り環境によってかなり状況が違いそうなので、まずは IPv6 のアドレスが VPS に割り当てられていないかどうかを確認しましょう。
 
-// ToDo: ConoHa ダッシュボードからこれらを調べる方法を書く
+コマンド `ip addr show eth0` を実行し、以下のように `inet6` から始まる行で `2400:8500:1302:776` から始まる IPv6 のアドレスがあれば割り当てられています。
+
+```shell
+$ ip addr show eth0
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 02:01:76:1b:72:94 brd ff:ff:ff:ff:ff:ff
+    altname enp0s3
+    altname ens3
+    inet 111.11.111.111/23 metric 100 brd 111.11.111.111 scope global dynamic eth0
+       valid_lft 64352sec preferred_lft 64352sec
+    inet6 2400:8500:1302:776:111:11:111:111/64 scope global
+       valid_lft forever preferred_lft forever
+    inet6 fe80::1:76ff:fe1b:xxxx/64 scope link
+       valid_lft forever preferred_lft forever
+```
+
+:::details 割り当てられていない場合
+
+`inet6` の行はあるものの、リンクローカルアドレスしか設定されていません。
+
+```shell
+$ ip addr show eth0
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 02:01:76:1b:72:94 brd ff:ff:ff:ff:ff:ff
+    altname enp0s3
+    altname ens3
+    inet 111.11.111.111/23 metric 100 brd 111.11.111.111 scope global dynamic eth0
+       valid_lft 64352sec preferred_lft 64352sec
+    inet6 fe80::1:76ff:fe1b:xxxx/64 scope link
+       valid_lft forever preferred_lft forever
+```
+
+:::
+
+割り当てられていない場合、VPS に IPv6 アドレスを割り当てる必要があります。
+
+#### VPS に IPv6 アドレスが割り当てられていないかを確認する
+
+まず、VPS に割り当てることのできる IPv6 アドレスとゲートウェイを調べる必要があります。  
+[ConoHa ダッシュボード](https://manage.conoha.jp/Dashboard) にアクセスし、対象サーバのページを開きます。
+
+![](https://storage.googleapis.com/zenn-user-upload/88efab885f97-20221130.png)
+
+その後、「ネットワーク情報」タブを開き、「タイプ」を「IPv6」に変更します。  
+[ConoHa では 1 つの VPS につき 17 個の IPv6 アドレスが割り+当てられている](https://www.conoha.jp/vps/function/additionalip/#:~:text=17%E5%80%8B%E3%81%AEIPv6%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%81%8C%E5%89%B2%E3%82%8A%E5%BD%93%E3%81%A6%E3%82%89%E3%82%8C%E3%81%BE%E3%81%99) ので、「IP アドレス」欄で 16 個の IPv6 アドレスを確認できます。
+
+どのアドレスを使ってもよいのですが、とりあえずここではわかりやすいように一番上の IP アドレスをメモしておきましょう。
+
+#### IPv6 アドレスを割り当てる
+
+:::message
+この記事では Ubuntu のみ解説しています。この項以降、CentOS などでは設定方法が異なりますので詳しくは [ConoHa 公式の記事](https://support.conoha.jp/v/setipv6/) などをご確認ください。
+:::
 
 `/etc/netplan/10-gmovps.yaml` を `vim` などで開きます。`<IPV6-ADDRESS>` を先ほど調べた IPv6 アドレスに、`<GATEWAY-ADDRESS>` を先ほど調べたゲートウェイに書き換えた上で書き込んでください。
 
-```yaml
+```yaml:/etc/netplan/10-gmovps.yaml
 network:
   ethernets:
     eth0:
@@ -89,15 +144,20 @@ network:
 ```
 
 書き込んだあと、`sudo netplan apply` で適用できます。  
-適用後、`ip addr show eth0` を再度実行し IPv6 アドレスをきちんと振れているかを確認してください。以下のようになっていたら大丈夫です。
-
-// ToDo: コマンドの実行結果
+適用後、`ip addr show eth0` を再度実行し IPv6 アドレスをきちんと割り当てられているかを確認してください。  
+`inet6` から始まる行で `2400:8500:1302:776` から始まる IPv6 のアドレスがあれば割り当てられています。
 
 ### AAAA レコードを設定する
 
+// TODO
+
 #### CNAME レコードを設定する（サブドメインの場合）
 
+// TODO
+
 ### 設定反映を確認する
+
+// TODO
 
 [^1]: 2021/05 に立てた CentOS 7 のサーバは IPv6 アドレスが割り当てられていたものの、この記事を書いているときに検証用に立てた Ubuntu のサーバ[^2]では割り当てられていなかったので、よくわかりません。IPv6 の DHCP をオンにしても振られませんでした。
 [^2]: ConoHa さん、RAM 512 MB で Ubuntu 22.04 を立てると Kernel Panic する問題をなんとか解決していただけると非常にうれしいです…。参考: [Twitter での検索結果](https://twitter.com/search?q=512MB%20ConoHa%20Ubuntu&src=typed_query&f=live) <!-- markdownlint-disable-line MD053 -->
