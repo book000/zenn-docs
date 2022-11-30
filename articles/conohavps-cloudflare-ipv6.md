@@ -122,7 +122,7 @@ $ ip addr show eth0
 #### IPv6 アドレスを割り当てる
 
 :::message
-この記事では Ubuntu のみ解説しています。この項以降、CentOS などでは設定方法が異なりますので詳しくは [ConoHa 公式の記事](https://support.conoha.jp/v/setipv6/) などをご確認ください。
+この記事では Ubuntu のみ解説しています。この項の作業は、CentOS などでは設定方法が異なりますので詳しくは [ConoHa 公式の記事](https://support.conoha.jp/v/setipv6/) などをご確認ください。
 :::
 
 `/etc/netplan/10-gmovps.yaml` を `vim` などで開きます。`<IPV6-ADDRESS>` を先ほど調べた IPv6 アドレスに、`<GATEWAY-ADDRESS>` を先ほど調べたゲートウェイに書き換えた上で書き込んでください。
