@@ -31,7 +31,7 @@ ConoHa の VPS を IPv6 対応させて、Cloudflare の DNS に設定してみ�
 - Cloudflare
   - ネームサーバを Cloudflare のネームサーバに設定し、Cloudflare で DNS 管理をしていること
 
-## 作業の流れ
+## 作業
 
 ざっくり以下の流れで作業します。
 
@@ -39,8 +39,6 @@ ConoHa の VPS を IPv6 対応させて、Cloudflare の DNS に設定してみ�
 2. ConoHa VPS に IPv6 のアドレスを割り当てます。
 3. Cloudflare の DNS 設定に、AAAA レコードを設定します。必要に応じて、CNAME レコードも設定します。
 4. プロキシ設定を解除したうえで、 `nslookup` を使って設定が反映されていることを確認します。
-
-## 作業
 
 ### nginx の設定を確認
 
@@ -116,7 +114,7 @@ $ ip addr show eth0
 ![](https://storage.googleapis.com/zenn-user-upload/88efab885f97-20221130.png)
 
 その後、「ネットワーク情報」タブを開き、「タイプ」を「IPv6」に変更します。  
-[ConoHa では 1 つの VPS につき 17 個の IPv6 アドレスが割り+当てられている](https://www.conoha.jp/vps/function/additionalip/#:~:text=17%E5%80%8B%E3%81%AEIPv6%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%81%8C%E5%89%B2%E3%82%8A%E5%BD%93%E3%81%A6%E3%82%89%E3%82%8C%E3%81%BE%E3%81%99) ので、「IP アドレス」欄で 16 個の IPv6 アドレスを確認できます。
+[ConoHa では 1 つの VPS につき 17 個の IPv6 アドレスが割り当てられている](https://www.conoha.jp/vps/function/additionalip/#:~:text=17%E5%80%8B%E3%81%AEIPv6%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%81%8C%E5%89%B2%E3%82%8A%E5%BD%93%E3%81%A6%E3%82%89%E3%82%8C%E3%81%BE%E3%81%99) ので、「IP アドレス」欄で 17 個の IPv6 アドレスを確認できます。
 
 どのアドレスを使ってもよいのですが、とりあえずここではわかりやすいように一番上の IP アドレスをメモしておきましょう。
 
