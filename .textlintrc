@@ -42,6 +42,10 @@
         "@textlint-rule/pattern": {
           "patterns": [
             {
+              "message": "No todo",
+              "pattern": "/TODO:/i"
+            },
+            {
               "message": "CloudFlare to Clouflare",
               "pattern": "/Cloudflare/i",
               "replace": "Cloudflare"
@@ -68,7 +72,8 @@
                 "長押ししている",
                 "修正について",
                 "めんどくさがり",
-                "Cloudflare"
+                "Cloudflare",
+                "見やすく"
             ]
         }
     }
