@@ -40,7 +40,7 @@ test("page screenshot", async ({ page }) => {
   const files = execSync(
     "git diff --diff-filter=ACMR --name-only " + BASE_SHA + " HEAD",
     {
-      cwd: process.env.GITHUB_WORKSPACE + "/content/",
+      cwd: process.env.GITHUB_WORKSPACE,
     }
   )
     .toString()
