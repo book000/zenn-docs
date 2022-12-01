@@ -122,7 +122,7 @@ $ ip addr show eth0
 #### IPv6 アドレスを割り当てる
 
 :::message
-この記事では Ubuntu のみ解説しています。この項の作業は、CentOS などでは設定方法が異なりますので詳しくは [ConoHa 公式の記事](https://support.conoha.jp/v/setipv6/) などをご確認ください。
+この記事では Ubuntu のみ解説しています。この項の作業は CentOS などでは設定方法が異なりますので、詳しくは [ConoHa 公式の記事](https://support.conoha.jp/v/setipv6/) などをご確認ください。
 :::
 
 `/etc/netplan/10-gmovps.yaml` を `vim` などで開きます。`<IPV6-ADDRESS>` を先ほど調べた IPv6 アドレスに、`<GATEWAY-ADDRESS>` を先ほど調べたゲートウェイに書き換えた上で書き込んでください。
@@ -149,15 +149,49 @@ network:
 
 ### AAAA レコードを設定する
 
-// TODO
+A レコードを追加するときと同じように、IPv6 版の A レコードである AAAA レコードを追加しましょう。  
+Cloudflare の DNS 設定から、以下のように AAAA レコードを追加してください。
+
+![](https://storage.googleapis.com/zenn-user-upload/72876e8a1e50-20221201.png)
 
 #### CNAME レコードを設定する（サブドメインの場合）
 
-// TODO
+`sub.example.com` などのサブドメインも IPv6 対応する場合、CNAME レコードをひとつ追加するだけでサブドメイン毎に A レコードと AAAA レコードの 2 つを用意しなくて済むようになります。以下のように設定しましょう。
+
+![](https://storage.googleapis.com/zenn-user-upload/1ddda6166b8e-20221201.png)
+
+以下は実際に運用しているサーバの DNS 設定画面なのですが、A レコードと AAAA レコードがそれぞれ 1 つずつしかなく、それに紐づく CNAME レコードが複数あるだけなので見やすくなっています。
+
+![](https://storage.googleapis.com/zenn-user-upload/2b63a62a2f7f-20221201.png)
 
 ### 設定反映を確認する
 
-// TODO
+Cloudflare では Enterprise プランでない限り IPv6 Compatibility の関係で **クライアントと Cloudflare 間** は元から AAAA レコードが存在し IPv6 での接続が可能なので、Proxied されているレコードに関しては安直に `nslookup` しても本当に設定できているかわかりません。  
+したがって、ここでは一時的に Cloudflare のプロキシ設定を解除し `nslookup` してみようと思います。
+
+:::message alert
+この作業は**公開されている Web サイトやドメインで行わないで**ください。設定を解除することでオリジンサーバの IP アドレスが漏れ、どこかに記録されてしまう可能性があります。
+:::
+
+対象レコードの `Proxy status` を `DNS only` にします。
+
+![](https://storage.googleapis.com/zenn-user-upload/d8ea060a4fb1-20221201.png)
+
+その後、手元のターミナルから `nslookup` してみます。
+
+```shell
+$ nslookup sub.example.com 1.1.1.1
+Server:         1.1.1.1
+Address:        1.1.1.1#53
+
+Non-authoritative answer:
+Name:   sub.example.com
+Address: xxx.xx.xxx.xxx
+Name:   sub.example.com
+Address: 2400:8500:1302:776:xxx:xx:xxx:xxx
+```
+
+IPv4 のアドレスだけでなく、IPv6 のアドレスが表示されれば成功です。
 
 [^1]: 2021/05 に立てた CentOS 7 のサーバは IPv6 アドレスが割り当てられていたものの、この記事を書いているときに検証用に立てた Ubuntu のサーバ[^2]では割り当てられていなかったので、よくわかりません。IPv6 の DHCP をオンにしても振られませんでした。
 [^2]: ConoHa さん、RAM 512 MB で Ubuntu 22.04 を立てると Kernel Panic する問題をなんとか解決していただけると非常にうれしいです…。参考: [Twitter での検索結果](https://twitter.com/search?q=512MB%20ConoHa%20Ubuntu&src=typed_query&f=live) <!-- markdownlint-disable-line MD053 -->
