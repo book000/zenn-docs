@@ -107,4 +107,14 @@ TeraTerm で SSH SCP してもよいし、WinSCP で SFTP してもよいし、�
 
 ### 4. サーバ再構築をする
 
+512 MB プランで Ubuntu 20.04 を契約し、再構築します。
+
+![](https://storage.googleapis.com/zenn-user-upload/ea1b1c19c94c-20230303.png)
+
+ConoHa のダッシュボードで元サーバの個別ページにアクセスし、「サーバ再構築」を押して再構築画面を開きます。
+
+![](https://storage.googleapis.com/zenn-user-upload/4a5b6d2b8fe1-20230303.png)
+
+// TODO
+
 ### 5. がんばる
