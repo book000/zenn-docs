@@ -2,7 +2,7 @@
 title: ConoHaVPS 512MB で Ubuntu 22.04 から逃げ出す
 emoji: 💨
 type: tech
-topics: ["conoha", "conohavps", "ubuntu"]
+topics: ["conoha", "conohavps", "ubuntu", "ubuntu2204"]
 published: true
 ---
 
