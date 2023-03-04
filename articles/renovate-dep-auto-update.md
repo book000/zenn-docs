@@ -1,7 +1,7 @@
 ---
-title: "Renovate を使ってほぼ完全自動で依存パッケージをアップデートする"
-emoji: "📦"
-type: "tech"
+title: Renovate を使ってほぼ完全自動で依存パッケージをアップデートする
+emoji: 📦
+type: tech
 topics: ["renovate", "githubactions"]
 published: true
 ---
@@ -16,9 +16,9 @@ published: true
 
 ## 環境
 
-- Renovate [v32.0.3](https://github.com/renovatebot/renovate/releases/tag/32.0.3)
-- GitHub Actions Runner [v2.288.1](https://github.com/actions/runner/releases/tag/v2.288.1)
-- Ubuntu 20.04.3 LTS (`ubuntu-latest`)
+- Renovate [v34.156.0](https://github.com/renovatebot/renovate/releases/tag/34.156.0)
+- GitHub Actions Runner [v2.302.1](https://github.com/actions/runner/releases/tag/v2.288.1)
+- Ubuntu 22.04.2 LTS (`ubuntu-latest`)
 
 ## Renovate とは
 
@@ -34,8 +34,9 @@ GitHub には Dependabot という同じようなものがあるのですが、D
 
 - この記事の表題である、自動マージをするのがたいへん。
   - ちょっとブランチプロテクトをかけていると、パーソナルアクセストークンから `@dependabot merge` してもマージしてくれなかったり、ガン無視されたりする…
-- `.github/dependabot.yml` を定義して設定した場合、Fork 先リポジトリでも Dependabot が動作する [dependabot/dependabot-core#2804](https://github.com/dependabot/dependabot-core/issues/2804)
+- ~~`.github/dependabot.yml` を定義して設定した場合、Fork 先リポジトリでも Dependabot が動作する [dependabot/dependabot-core#2804](https://github.com/dependabot/dependabot-core/issues/2804)~~
   - Issue を見ると、いつまで経っても修正されないからこの仕様で作成されたプルリクからメンション爆撃しますみたいなこともやっていてもうひどいことに
+  - 2022/11/07 に [Dependabot pull requests off by default for forks](https://github.blog/changelog/2022-11-07-dependabot-pull-requests-off-by-default-for-forks/) の対応がなされ、この問題は解決しました。
 - ベースブランチが更新された際の自動リベースタイミングがめちゃくちゃ遅い
   - 複数の Dependabot によるプルリクが作成されたとき、1 つをマージすると `yarn.lock` などがコンフリクトするが、この時にすぐベースブランチをもとに再作成してくれない…
 
@@ -69,7 +70,8 @@ JetBrains がやっと GitHub Actions で動くコード品質チェックツー
   - 既存のリポジトリが少ないのであればこれでもかまいません。
 - `Only select repositories` を選択すると、指定したリポジトリだけに Renovate をインストールできます。
   - 個人的にはこちらをお勧めします。
-  - リポジトリ作成時にインストールする GitHub App を選べますし、Renovate を動作させたくないリポジトリがある場合に上記の `All repositories` では除外設定ができません（たぶん…）。
+  - リポジトリ作成時にインストールする GitHub App を選べますし、Renovate を動作させたくないリポジトリがある場合に上記の `All repositories` では除外設定ができません。
+    - ただし、Renovate が作成する `Configure Renovate` Pull Request をクローズすることで機能しなくはなります。
 
 インストールしたい種別を選べたら、Renovate が要求する権限[^1]が正しいことを確認し `Install` をクリックします。
 
@@ -94,7 +96,7 @@ JetBrains がやっと GitHub Actions で動くコード品質チェックツー
 }
 ```
 
-変える手順についてですが、GitHub Desktop で Pull Request をクローンして編集してコミットしてもよいですし、Web GUI 上で `Files changed` タブ → `renovate.json` ファイルの「・・・」→ `Edit file` から編集してもかまいません。
+変える手順についてですが、GitHub Desktop で Pull Request をクローンして編集してコミットしてもよいですし、Web GUI 上で `Files changed` タブ → `renovate.json` ファイルの「・・・」→ `Edit file` から編集してもかまいません。当然、Pull Request を無視して renovate.json を作成しコミットしてもかまいません。  
 マージした後に編集すると Dependency Dashboard が作成されてしまうのでマージ前に編集することをお勧めします。
 
 上記の設定は
@@ -107,13 +109,19 @@ JetBrains がやっと GitHub Actions で動くコード品質チェックツー
 
 編集後、マージすれば Renovate が動き出します 👏
 
+:::message
+[Configuration Options](https://docs.renovatebot.com/configuration-options/) によれば、`renovate.json` 以外にも `.renovaterc` や `.github/renovate.json` にも配置できます。
+
+複数のリポジトリで同じ Renovate の設定を適用したい場合は [Shareable Config Presets](https://docs.renovatebot.com/config-presets/) 機能を利用するとよさそうです。使ったことありませんが…。
+:::
+
 ## ブランチプロテクトの設定
 
 リポジトリ `Settings` タブ → 左側 `Branches` → `Add rule` でブランチに対する制限（プロテクト）の設定ができます。
 
-最低限、`Require status checks to pass before merging` およびその中の `Require branches to be up to date before merging` にチェックが入っていれば大丈夫だと思われます。
+最低限、`Require status checks to pass before merging` およびその中の `Require branches to be up to date before merging` にチェックが入っていれば大丈夫だと思われます。もちろん、必須とするワークフローは指定してください。
 
-`Require a pull request before merging` の `Require approvals` を設定する場合は、[renovate-approval](https://github.com/apps/renovate-approve) という GitHub App を入れると Renovate が作成した Pull Request に対してのみ自動で Approve するようになり、手動でのレビューが不要になります。
+`Require a pull request before merging` の `Require approvals` を設定する場合は、[renovate-approval](https://github.com/apps/renovate-approve) という GitHub App を入れると Renovate が作成した Pull Request に対してのみ自動で Approve するようになり、手動でのレビューが不要になります。  
 しかし、`Require review from Code Owners` をオンにしてしまうと [`CODEOWNERS` には GitHub App を設定できない](https://github.com/renovatebot/renovate-approve-bot/issues/29) ので自動でのマージができなくなります。
 
 ## Dependabot を無効化する
