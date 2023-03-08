@@ -1,8 +1,18 @@
-# Raspberry Pi で WireGuard + VPS
+---
+title: Raspberry Pi で WireGuard + VPS
+emoji: 🔐
+type: tech
+topics: ["wireguard", conohavps", "raspberrypi", "frp"]
+published: true
+---
 
 Raspberry Pi 4 model B で VPN アプリケーションである [WireGuard](https://www.wireguard.com/) を立て、[ConoHa VPS](https://www.conoha.jp/vps/) を経由して VPN 環境を構築します。
 
 **自宅ルーターのポートを開けずに** 自宅外から自宅内のサーバや PC にアクセスしたい、フリー Wi-Fi でもある程度安全に通信できる環境を作りたいと思い構築しています。
+
+:::message
+元々 [自分のメモサイト](https://memo.tomacheese.com) に上げようと思っていた内容を途中で持ってきたので、わかりにくい部分があったらすみません。
+:::
 
 ## 期待する結果
 
@@ -69,8 +79,11 @@ sequenceDiagram
 Raspberry Pi と VPS 間のポートフォワーディングに [fatedier/frp](https://github.com/fatedier/frp) を利用します。  
 その上で、DockerHub にあるもののうち **ユーザ数がある程度いて**、**GitHub Actions などで fatedier/frp のアップデートに追従しているもの** として [snowdreamtech/frp](https://github.com/snowdreamtech/frp) を選定しています。
 
-Pi-hole と frp の利用には Docker を利用していますが、WireGuard は Docker 内で動作させません。また、PiVPN を利用しません。
-（[linuxserver/wireguard](https://hub.docker.com/r/linuxserver/wireguard) を試したのですが、接続後 1 分程経過したタイミングでコンテナ内から LAN への通信がタイムアウトするようになりやめました。PiVPN を利用しない理由は途中のネットワークデバイス選択画面で Docker ネットワークが大量に表示され進めなくなったからです）
+:::message alert
+Pi-hole と frp の利用には Docker を利用していますが、WireGuard は Docker 内で動作させません。また、PiVPN を利用しません。  
+[linuxserver/wireguard](https://hub.docker.com/r/linuxserver/wireguard) を試したのですが、接続後 1 分程経過したタイミングでコンテナ内から LAN への通信がタイムアウトするようになりやめました。  
+PiVPN を利用しない理由は途中のネットワークデバイス選択画面で Docker ネットワークが大量に表示され進めなくなったからです。
+:::
 
 もちろん、frp や Pi-hole を Docker で構築せずホスト OS にインストールしても構いません。
 
@@ -124,8 +137,9 @@ token = "任意の文字列"
 設定を終えたら、`docker compose up --build -d` で立ち上げます。  
 `7000` ポートの開放も忘れずに。
 
-!!! note "備考"
-    最小のコード量で動作するように記事を書いているので、`7000` 番ポート以外への変更作業や frps のダッシュボードの設定などは記述していません。必要に応じて実施してください。
+:::message
+最小のコード量で動作するように書いているので、`7000` 番ポート以外への変更作業や frps のダッシュボードの設定などは記述していません。必要に応じて実施してください。
+:::
 
 ### 2. WireGuard のインストール
 
