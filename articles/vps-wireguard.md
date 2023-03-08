@@ -85,7 +85,8 @@ Pi-hole と frp の利用には Docker を利用していますが、WireGuard �
 PiVPN を利用しない理由は途中のネットワークデバイス選択画面で Docker ネットワークが大量に表示され進めなくなったからです。
 :::
 
-もちろん、frp や Pi-hole を Docker で構築せずホスト OS にインストールしても構いません。
+もちろん、frp や Pi-hole を Docker で構築せずホスト OS にインストールしても構いません。  
+WireGuard では Peer to Peer で双方がサーバにもクライアントにもなりうるので、ピア（Peer）と書くのが正しいのですがこの記事でははっきりとサーバ・クライアントが存在するので、「クライアント」と表記します。
 
 - Raspberry Pi 4 model B
   - Raspberry Pi OS 64bit (Bullseye)
@@ -109,7 +110,7 @@ PiVPN を利用しない理由は途中のネットワークデバイス選択�
 
 まずはじめに、VPS 側の frp サーバソフトウェアである frps のインストール作業をします。
 
-VPS 上の任意の場所に以下の `docker-compose.yml` を作成します。
+VPS 上の任意の場所に以下の `compose.yaml` を作成します。
 
 ```yaml
 services:
@@ -124,7 +125,7 @@ services:
     restart: always
 ```
 
-その後、`docker-compose.yml` を置いた同じディレクトリに `frps.ini` を作成し以下を設定します。
+その後、`compose.yaml` を置いた同じディレクトリに `frps.ini` を作成し以下を設定します。
 
 ```ini
 [common]
@@ -143,8 +144,7 @@ token = "任意の文字列"
 
 ### 2. WireGuard のインストール
 
-VPN サーバとなる WireGuard を Raspberry Pi 4 model B にインストールします。  
-WireGuard はサーバにもクライアントにもなりうるので「サーバ」という表記が正しいのかは難しいところですが…。
+VPN サーバとなる WireGuard を Raspberry Pi 4 model B にインストールします。
 
 WireGuard のインストールでは、以下の手順を踏んでいきます。
 
@@ -153,14 +153,45 @@ WireGuard のインストールでは、以下の手順を踏んでいきます�
 3. サーバサイド鍵ペアの作成
 4. WireGuard の設定ファイル作成
 5. クライアントに配布する接続設定ファイルの作成
-6. WireGuard の起動
+6. WireGuard のクライアント設定を更新
+7. WireGuard の起動
 
-このうち、4, 5, 6 はクライアントを追加するごとに実施するのでシェルスクリプトで再利用可能にします。
+このうち、5, 6, 7 はクライアントを追加するごとに実施するのでシェルスクリプトで再利用可能にします。（`クライアント追加用のシェルスクリプト作成` にセクションをまとめます）
 
 #### sysctl の設定
 
 追加設定をしない限り、異なる NIC 間でパケットのやり取りをすることはできません。WireGuard はデフォルトで `wg0` という NIC を追加するので、これと `eth0` 間でパケット転送ができない場合 VPN を繋いでも LAN ネットワークやインターネットと通信できません。  
 （という理解なのですが、間違ってたらすみません）
+
+というわけで、IP 転送（フォワーディング）を有効にするため sysctl を編集します。  
+お好みのエディタで `/etc/sysctl.conf` を開き、末尾に以下を追記し保存します。
+
+```ini
+net.ipv4.ip_forward=1
+```
+
+すでに `net.ipv4.ip_forward` に関する記述がある場合は当該行をコメントアウトするなどしてください。
+
+その後、編集した内容を反映するため以下のコマンドを実行します。
+
+```shell
+sudo sysctl -p
+```
+
+#### APT で WireGuard をインストール
+
+以下のコマンドを実行し、WireGuard をインストールします。
+
+```shell
+sudo apt update
+sudo apt install wireguard
+```
+
+#### サーバサイド鍵ペアの作成
+
+#### WireGuard の設定ファイル作成
+
+#### クライアント追加用のシェルスクリプト作成
 
 ### 3. frpc の構築
 
