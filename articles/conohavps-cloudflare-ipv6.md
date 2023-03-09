@@ -86,7 +86,7 @@ $ ip addr show eth0
        valid_lft forever preferred_lft forever
 ```
 
-:::details 割り当てられていない場合
+:::details 割り当てられていない場合...
 
 `inet6` の行はあるものの、リンクローカルアドレスしか設定されていません。
 
@@ -155,7 +155,7 @@ Cloudflare の DNS 設定から、以下のように AAAA レコードを追加�
 
 #### CNAME レコードを設定する（サブドメインの場合）
 
-`sub.example.com` などのサブドメインも IPv6 対応する場合、CNAME レコードをひとつ追加するだけでサブドメイン毎に A レコードと AAAA レコードの 2 つを用意しなくて済むようになります。以下のように設定しましょう。
+`sub.example.com` などのサブドメインも IPv6 対応する場合、CNAME レコードを 1 つ追加するだけでサブドメインごとに A レコードと AAAA レコードの 2 つを用意しなくて済むようになります。以下のように設定しましょう。
 
 ![](https://storage.googleapis.com/zenn-user-upload/1ddda6166b8e-20221201.png)
 
@@ -192,5 +192,5 @@ Address: 2400:8500:1302:776:xxx:xx:xxx:xxx
 
 IPv4 のアドレスだけでなく、IPv6 のアドレスが表示されれば成功です。
 
-[^1]: 2021/05 に立てた CentOS 7 のサーバは IPv6 アドレスが割り当てられていたものの、この記事を書いているときに検証用に立てた Ubuntu のサーバ[^2]では割り当てられていなかったので、よくわかりません。IPv6 の DHCP をオンにしても振られませんでした。
+[^1]: 2021/05 に立てた CentOS 7 のサーバは IPv6 アドレスが割り当てられていたものの、この記事を書いているときに検証で立てた Ubuntu のサーバ[^2]では割り当てられていなかったので、よくわかりません。IPv6 の DHCP をオンにしても振られませんでした。
 [^2]: ConoHa さん、RAM 512 MB で Ubuntu 22.04 を立てると Kernel Panic する問題をなんとか解決していただけると非常にうれしいです…。参考: [Twitter での検索結果](https://twitter.com/search?q=512MB%20ConoHa%20Ubuntu&src=typed_query&f=live) <!-- markdownlint-disable-line MD053 -->

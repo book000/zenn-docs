@@ -131,7 +131,7 @@ https://github.com/book000/vuex-ts/blob/master/plugins/counter.ts
 
 ---
 
-`count` を変更させてみたあと、リロードしてもきちんと数値が復元されることを確認できたら成功です。
+`count` を変更させてみたあと、再読み込みしてもきちんと数値が復元されることを確認できたら成功です。
 
 ## 参考
 

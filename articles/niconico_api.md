@@ -6,7 +6,7 @@ topics: ["api", "niconico"]
 published: true
 ---
 
-ニコニコ動画・ニコニコ生放送などの内部 API の備忘録。エンドポイントのプロトコルはすべて HTTPS
+ニコニコ動画・ニコニコ生放送などの内部 API の備忘録。エンドポイントのプロトコルはすべて HTTPS。
 
 ## 注意
 
@@ -38,33 +38,33 @@ published: true
 | Required | Type  | Key        | Description            | Notes                                                                                                                                         |
 | :------: | ----- | ---------- | ---------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------- |
 |          | Query | `site`     | ログイン対象サイト     | ニコニコ動画であれば `niconico`, ニコニコ静画であれば `seiga`, ニコニコ生放送であれば `nicolive` だが、返ってくるユーザーセッション自体は共通 |
-|          | Form  | `next_url` | ログイン後の遷移先パス | スラッシュ以降のパス。ドメインは `site` クエリに基づく                                                                                        |
-|    ✅    | Form  | `mail`     | メールアドレス         |                                                                                                                                               |
-|    ✅    | Form  | `password` | パスワード             |                                                                                                                                               |
+|          | Form  | `next_url` | ログイン後の移動先パス | スラッシュ以降のパス。ドメインは `site` クエリに基づく                                                                                        |
+|    ✅     | Form  | `mail`     | メールアドレス         |                                                                                                                                               |
+|    ✅     | Form  | `password` | パスワード             |                                                                                                                                               |
 
 `site` を指定しない場合、リダイレクト先のドメインは `secure.nicovideo.jp` になる。
 
 #### Response
 
 ログインに成功しても失敗しても `302 Found` が返る。  
-ログインに失敗したかどうかの判定はリダイレクト先を示す `Location` レスポンスヘッダに `message=cant_login` が入っているかどうかで判断。
+ログインに失敗したかどうかの判定はリダイレクト先を示す `Location` レスポンスヘッダーに `message=cant_login` が入っているかどうかで判断。
 
-ログイン状態を継続するためには、`Set-Cookie` レスポンスヘッダの `user_session` キーの値を保持してリクエストの Cookie として付与すること。`user_session` は `Set-Cookie` レスポンスヘッダで 2 回現れる（1 回目は `user_session=deleted`）ので、2 度目の値を保持すること。
+ログイン状態を継続するためには、`Set-Cookie` レスポンスヘッダーの `user_session` キーの値を保持してリクエストの Cookie として付与すること。`user_session` は `Set-Cookie` レスポンスヘッダーで 2 回現れる（1 回目は `user_session=deleted`）ので、2 度目の値を保持すること。
 
 ## ニコニコ動画
 
-[ニコニコ動画](https://www.nicovideo.jp) 関連
+[ニコニコ動画](https://www.nicovideo.jp) 関連。
 
 ### ニコレポ
 
-ニコニコ動画やニコニコ生放送のレポート
+ニコニコ動画やニコニコ生放送のレポート。
 
 #### EndPoint
 
 - **GET** `public.api.nicovideo.jp/v1/timelines/nicorepo/last-1-month/my/pc/entries.json`
 
 ログイン必須。(旧: `www.nicovideo.jp/api/nicorepo/timeline/my/all`)  
-よくわかっていないが、`last-1-month` を `last-6-months` に変えることで過去 6 ヵ月とかスパンを変えられるらしい…？
+よくわかっていないが、`last-1-month` を `last-6-months` に変えることで過去 6 か月とかスパンを変えられるらしい…？
 
 #### Parameters
 
@@ -75,7 +75,7 @@ published: true
 |          | Query | `list`         | 表示対象              |                                                                            |
 |          | Query | `untilId`      | ページネーション用 ID | 前回のレスポンスの `.meta.minId` を指定                                    |
 
-`object[type]` と `type` に入る値は以下のとおり
+`object[type]` と `type` に入る値は以下のとおり。
 
 | Name             | `object[type]` | `type`      |
 | ---------------- | -------------- | ----------- |
@@ -87,7 +87,7 @@ published: true
 | **記事投稿**     | `article`      | `add`       |
 | **ゲーム投稿**   | `game`         | `add`       |
 
-`list` に入る値は以下のとおり
+`list` に入る値は以下のとおり。
 
 | Name         | `list`               |
 | ------------ | -------------------- |
@@ -106,7 +106,7 @@ published: true
 
 #### Parameters
 
-パラメータなし
+パラメータなし。
 
 #### Response
 
@@ -125,7 +125,7 @@ HTML で返却されるが、`script#embedded-data` の `data-props` の値を J
 
 | Required | Type | Key         | Description              | Notes |
 | :------: | ---- | ----------- | ------------------------ | :---- |
-|    ✅    | Path | `programId` | `lv` から始まる生放送 ID |       |
+|    ✅     | Path | `programId` | `lv` から始まる生放送 ID |       |
 
 #### Response
 
@@ -176,7 +176,7 @@ HTML で返却されるが、`script#embedded-data` の `data-props` の値を J
 
 | Required | Type  | Key          | Description                                          | Notes |
 | :------: | ----- | ------------ | ---------------------------------------------------- | :---- |
-|    ✅    | Query | `programIds` | `lv` から始まる生放送 ID。カンマ区切りで複数指定可能 |       |
+|    ✅     | Query | `programIds` | `lv` から始まる生放送 ID。カンマ区切りで複数指定可能 |       |
 
 ### Response
 
@@ -184,7 +184,7 @@ HTML で返却されるが、`script#embedded-data` の `data-props` の値を J
 
 ## ニコニ広告
 
-[ニコニ広告](https://nicoad.nicovideo.jp/) 関連
+[ニコニ広告](https://nicoad.nicovideo.jp/) 関連。
 
 ### ニコニ広告の無料福引情報を取得
 
@@ -245,7 +245,7 @@ VID には `sm32684885` などの `sm` などが入った VideoID を入力。�
 
 | Required | Type  | Key     | Description        | Notes                                                                                                                                                                                                          |
 | :------: | ----- | ------- | ------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|    ✅    | Path  | `vid`   | 動画 ID            |                                                                                                                                                                                                                |
+|    ✅     | Path  | `vid`   | 動画 ID            |                                                                                                                                                                                                                |
 |          | Query | `limit` | 返却するユーザー数 | `1` 〜 `2147483647` を指定可能。デフォルト値は `10`。この数値外だと `400` が返り、`1` 未満の場合は `errorCode: INVALID_PARAMETER` が、`2147483648` 以上の場合は `400` 以外に何も返らない（エラーコードもなし） |
 
 #### Response
@@ -271,7 +271,7 @@ VID には `sm32684885` などの `sm` などが入った VideoID を入力。�
 }
 ```
 
-広告期間内の広告がない場合は `404 Not Found` が返る
+広告期間内の広告がない場合は `404 Not Found` が返る。
 
 ### 動画へのニコニ広告の履歴
 
@@ -281,7 +281,7 @@ GET `api.nicoad.nicovideo.jp/v1/contents/video/#{vid}/histories`
 
 | Required | Type  | Key     | Description        | Notes                                                                                                                                                                                                          |
 | :------: | ----- | ------- | ------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|    ✅    | Path  | `vid`   | 動画 ID            |                                                                                                                                                                                                                |
+|    ✅     | Path  | `vid`   | 動画 ID            |                                                                                                                                                                                                                |
 |          | Query | `limit` | 返却するユーザー数 | `1` 〜 `2147483647` を指定可能。デフォルト値は `10`。この数値外だと `400` が返り、`1` 未満の場合は `errorCode: INVALID_PARAMETER` が、`2147483648` 以上の場合は `400` 以外に何も返らない（エラーコードもなし） |
 
 #### Response

@@ -99,7 +99,7 @@ JetBrains がやっと GitHub Actions で動くコード品質チェックツー
 変える手順についてですが、GitHub Desktop で Pull Request をクローンして編集してコミットしてもよいですし、Web GUI 上で `Files changed` タブ → `renovate.json` ファイルの「・・・」→ `Edit file` から編集してもかまいません。当然、Pull Request を無視して renovate.json を作成しコミットしてもかまいません。  
 マージした後に編集すると Dependency Dashboard が作成されてしまうのでマージ前に編集することをお勧めします。
 
-上記の設定は
+上記の設定は以下のようになっています。
 
 - 1 時間あたりに 2 Pull Request までに抑える処理を無効化
 - タイムゾーンを `Asia/Tokyo` に指定
@@ -134,7 +134,7 @@ Renovate を設定し運用し始めたら、基本的には Dependabot は不�
 
 ![](https://storage.googleapis.com/zenn-user-upload/f20e30897b3a-20220308.png)
 
-オーガニゼーション全体で無効化する場合は、オーガニゼーション `Settings` タブ → 左側 `Code security and analysis` → `Dependabot security updates` を `Disable all` で無効化できます
+オーガニゼーション全体で無効化する場合は、オーガニゼーション `Settings` タブ → 左側 `Code security and analysis` → `Dependabot security updates` を `Disable all` で無効化できます。
 
 一部のパッケージ管理ツール[^2]は Renovate が管理しないようで Dependabot は通知するけど Renovate は通知しない…というケースがあることはあるので、両方有効にするのも 1 つの手だと思います。
 

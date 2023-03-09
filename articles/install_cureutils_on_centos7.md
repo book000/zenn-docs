@@ -47,13 +47,14 @@ CentOS 7 では Python2.7 が入っており、なにもしてないとインス
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 ```
 
-ちなみに `sstephenson/rbenv` で解説している記事がありますが、執筆時現在アクセスすると `rbenv/rbenv` にリダイレクト（転送）されますので、どっちでもかまいませんがまあ `rbenv/rbenv` で良いと思います。
+ちなみに `sstephenson/rbenv` で解説している記事がありますが、執筆時現在アクセスすると `rbenv/rbenv` にリダイレクト（転送）されます。  
+どっちでもかまいませんが `rbenv/rbenv` で良いと思います。
 
-#### .bash_profile に環境変数（PATH)に rbenv のパスを追記させる
+#### .bash_profile に環境変数（PATH）に rbenv のパスを追記させる
 
 SSH などでの接続時など（bash 起動時）にロードされる `.bash_profile` というのがあります。
 ここに、環境変数（PATH）に rbenv なパスを追記させるコードを書き、SSH などでの接続後に rbenv が使えるようにします。
-なお、`.bash_profile` はユーザー毎ですので、ここで説明しているように rbenv をインストールしてもほかのユーザー(ホームディレクトリが異なるユーザー)は利用できないことに注意してください。
+なお、`.bash_profile` はユーザーごとなので、ここで説明しているように rbenv をインストールしてもほかのユーザー(ホームディレクトリが異なるユーザー)は利用できないことに注意してください。
 
 以下の 2 つのコマンドを実行し、`.bash_profile` に書き込みます。
 1 つめのコマンドは環境変数への追記コマンド、2 つめのコマンドは rbenv の初期処理（init）をさせるコマンドを書き込むコマンドです。
@@ -96,7 +97,7 @@ Requirements
 ruby >= 2.2.2
 ```
 
-ですので、rbenv で Ruby の最新版をインストールします。  
+なので、rbenv で Ruby の最新版をインストールします。  
 `rbenv install -l` を実行してインストール可能な Ruby の一覧を表示できますが、TruffleRuby やら Rubinius(rbx)やらも表示されて見にくいので、`rbenv install -l | grep -G "^ 2\."` とか使って 2.x.x 系だけ表示させるとかするのが楽かと。
 執筆時には以下のように表示されました。
 
@@ -141,7 +142,7 @@ rbenv local 2.6.3
 #### バージョンに応じたコマンドの振り分けをさせる
 
 `rbenv rehash` を実行すると、Ruby コマンドや gem コマンドなどをバージョンごとに振り分けさせるそうです。たぶん。
-ですので、とりあえず実行しておきましょう。  
+なので、とりあえず実行しておきましょう。  
 とりあえず、ここまで作業をすれば Cureutils をインストールする環境ができあがります。
 
 ### Cureutils をインストールする
@@ -172,4 +173,4 @@ ERROR:  Error installing cureutils:
         i18n requires Ruby version >= 2.3.0.
 ```
 
-と出る。なんか Cureutils の Requirements 表記とズレているけど、まあ最新版をインストールするので問題なし。
+と出る。Cureutils の Requirements 表記とズレているけど、まあ最新版をインストールするので問題なし。
