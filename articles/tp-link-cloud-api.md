@@ -47,7 +47,7 @@ Linux Mint の入っている自宅鯖機で CLI の機能つかって試した�
 
 ## （多分）非公開の TP-Link cloud API
 
-次にみ付け足のは [How to control your TP-Link HS100 smartplug from Internet | IT Nerd Space](https://itnerd.space/2017/01/22/how-to-control-your-tp-link-hs100-smartplug-from-internet/) なる記事。
+次にみつけたのは [How to control your TP-Link HS100 smartplug from Internet | IT Nerd Space](https://itnerd.space/2017/01/22/how-to-control-your-tp-link-hs100-smartplug-from-internet/) なる記事。
 適当に流し読みしているとネットワーク経由で操作できるようであると書いてあった。
 まあずらずら書いてもしかたないので結論を書く。
 
