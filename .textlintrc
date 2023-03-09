@@ -40,17 +40,26 @@
         },
         "ja-no-abusage": true,
         "@textlint-rule/pattern": {
-          "patterns": [
-            {
-              "message": "No todo",
-              "pattern": "/TODO:/i"
-            },
-            {
-              "message": "CloudFlare to Clouflare",
-              "pattern": "/Cloudflare/i",
-              "replace": "Cloudflare"
-            }
-          ]
+            "patterns": [
+                {
+                    "message": "No todo",
+                    "pattern": "/TODO:/i"
+                },
+                {
+                    "message": "CloudFlare to Cloudflare",
+                    "pattern": "/Cloudflare/i",
+                    "replace": "Cloudflare"
+                }
+            ]
+        },
+        "ja-no-mixed-period": {
+            "forceAppendPeriod": true,
+            "allowEmojiAtEnd": true,
+            "allowPeriodMarks": [
+                "\"",
+                ":",
+                "...
+            ]
         }
     },
     "filters": {

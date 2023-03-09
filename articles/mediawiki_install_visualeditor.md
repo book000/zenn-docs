@@ -36,7 +36,7 @@ MediaWiki に VisualEditor と Parsoid を導入するにあたり、（さま�
 2. nginx の設定を編集し、`/parsoid/` でリバースプロキシするように設定。(当然ほかの文字列でも ok)
 3. VisualEditor をダウンロード・インストール、設定する。
 
-実際には、**VisualEditor → nginx リバースプロキシ → Parsoid** というように通信される
+実際には、**VisualEditor → nginx リバースプロキシ → Parsoid** というように通信される。
 
 ### 1. Parsoid のインストール
 
@@ -63,7 +63,7 @@ domain: "localhost" # optional
 
 ### 2. nginx の設定を編集しリバースプロキシを設定する
 
-この記事では、Kusanagi を用いて運用しているため、`/etc/nginx/conf.d/example.com_ssl.conf` を設定します。生の nginx を設定している場合は `/etc/nginx/nginx.conf` など別のファイルを必要に応じて編集してください。 リバースプロキシの詳しい解説等は省きます。基本的には、該当ドメインの `server` ブロックの中に
+この記事では、Kusanagi を用いて運用しているため、`/etc/nginx/conf.d/example.com_ssl.conf` を設定します。生の nginx を設定している場合は `/etc/nginx/nginx.conf` など別のファイルを必要に応じて編集してください。 リバースプロキシの詳しい解説等は省きます。基本的には、該当ドメインの `server` ブロックの中に以下を設定します。
 
 ```nginx
 location ^~ /parsoid/ {
@@ -71,7 +71,7 @@ location ^~ /parsoid/ {
 }
 ```
 
-を設定します。これにより、location に `/parsoid/` が前方一致しているかをチェックし、マッチする場合は 8000 ポートにリバースプロキシ（通信を転送）します。
+これにより、location に `/parsoid/` が前方一致しているかをチェックし、マッチする場合は 8000 ポートにリバースプロキシ（通信を転送）します。
 設定したら `nginx -t` でコンフィグにミスがないかを確認し `systemctl restart nginx` で nginx を再起動します。
 これで、`https://example.com/parsoid/` で Parsoid にアクセスできるようになったはずです。ブラウザからアクセスすると `Welcome to the Parsoid web service.` と表示されます。
 

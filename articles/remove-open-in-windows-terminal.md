@@ -36,7 +36,7 @@ Windows Terminal をインストール後、エクスプローラーの右クリ
 
 ![](https://storage.googleapis.com/zenn-user-upload/5kw2f89zkbo3bafphl1u4qm3yxdp)
 
-左側ナビゲーションバーの「`Shell Extensions`」を右クリックし、「新規」→「キー」をクリック。出てきた入力欄に「`Blocked`」と打ち込む
+左側ナビゲーションバーの「`Shell Extensions`」を右クリックし、「新規」→「キー」をクリック。出てきた入力欄に「`Blocked`」と打ち込む。
 
 #### 3.「Blocked」キーの中に文字列の値を追加する
 

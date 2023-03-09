@@ -86,7 +86,7 @@ $ ip addr show eth0
        valid_lft forever preferred_lft forever
 ```
 
-:::details 割り当てられていない場合
+:::details 割り当てられていない場合...
 
 `inet6` の行はあるものの、リンクローカルアドレスしか設定されていません。
 

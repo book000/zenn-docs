@@ -11,7 +11,7 @@ published: true
 
 ## 何が優れているか
 
-とりあえず、本題に入る前にこれをわざわざ追加で買ったほどの理由を書いておく
+とりあえず、本題に入る前にこれをわざわざ追加で買ったほどの理由を書いておく。
 
 - Google Home, Amazon Echo 対応
 - **IFTTT 対応**
@@ -49,7 +49,7 @@ Linux Mint の入っている自宅鯖機で CLI の機能つかって試した�
 
 次にみつけたのは [How to control your TP-Link HS100 smartplug from Internet | IT Nerd Space](https://itnerd.space/2017/01/22/how-to-control-your-tp-link-hs100-smartplug-from-internet/) なる記事。
 適当に流し読みしているとネットワーク経由で操作できるようであると書いてあった。
-まあずらずら書いてもしかたないので結論を書く
+まあずらずら書いてもしかたないので結論を書く。
 
 ### 注意事項
 
@@ -233,7 +233,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"method":"passthrough", "p
 curl -X POST -H "Content-Type: application/json" -d '{"method":"passthrough", "params": {"deviceId": "<デバイスID>", "requestData": "{\"system\":{\"set_relay_state\":{\"state\":0}}}"}}' https://wap.tplinkcloud.com/?token=<トークン>
 ```
 
-上がオン、下がオフ
+上がオン、下がオフ。
 
 ```php
 function changeState($token, $deviceID, $state){ // state = 1 or 0

@@ -15,7 +15,7 @@ published: true
 
 ## 方法
 
-やることは 3 つ
+やることは 3 つ。
 
 1. `pom.xml` に設定を追記する
 2. `deploy_settings.xml` を作る
@@ -31,7 +31,7 @@ published: true
 <version>${revision}</version>
 ```
 
-これをすると `mvn deploy` のときに `-Drevision=xxx` でバージョンを指定できるようになる。一応次の設定をしてデフォルト値を設定しておく
+これをすると `mvn deploy` のときに `-Drevision=xxx` でバージョンを指定できるようになる。一応次の設定をしてデフォルト値を設定しておく。
 
 ```xml
 <properties>
@@ -41,7 +41,7 @@ published: true
 
 #### `maven-source-plugin` と `maven-javadoc-plugin` をビルドプラグイン設定に入れる
 
-これをすることで、ソースと Javadoc もアップされるようになる
+これをすることで、ソースと Javadoc もアップされるようになる。
 
 ```xml
 <build>
@@ -108,7 +108,7 @@ published: true
 
 ### GitHub Actions 用の YAML ファイルを書く
 
-ここでは、 `.github/workflows/maven-publish.yml` に書いている
+ここでは、 `.github/workflows/maven-publish.yml` に書いている。
 
 ```yaml
 name: Maven Package

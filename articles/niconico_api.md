@@ -6,7 +6,7 @@ topics: ["api", "niconico"]
 published: true
 ---
 
-ニコニコ動画・ニコニコ生放送などの内部 API の備忘録。エンドポイントのプロトコルはすべて HTTPS
+ニコニコ動画・ニコニコ生放送などの内部 API の備忘録。エンドポイントのプロトコルはすべて HTTPS。
 
 ## 注意
 
@@ -53,11 +53,11 @@ published: true
 
 ## ニコニコ動画
 
-[ニコニコ動画](https://www.nicovideo.jp) 関連
+[ニコニコ動画](https://www.nicovideo.jp) 関連。
 
 ### ニコレポ
 
-ニコニコ動画やニコニコ生放送のレポート
+ニコニコ動画やニコニコ生放送のレポート。
 
 #### EndPoint
 
@@ -75,7 +75,7 @@ published: true
 |          | Query | `list`         | 表示対象              |                                                                            |
 |          | Query | `untilId`      | ページネーション用 ID | 前回のレスポンスの `.meta.minId` を指定                                    |
 
-`object[type]` と `type` に入る値は以下のとおり
+`object[type]` と `type` に入る値は以下のとおり。
 
 | Name             | `object[type]` | `type`      |
 | ---------------- | -------------- | ----------- |
@@ -87,7 +87,7 @@ published: true
 | **記事投稿**     | `article`      | `add`       |
 | **ゲーム投稿**   | `game`         | `add`       |
 
-`list` に入る値は以下のとおり
+`list` に入る値は以下のとおり。
 
 | Name         | `list`               |
 | ------------ | -------------------- |
@@ -106,7 +106,7 @@ published: true
 
 #### Parameters
 
-パラメータなし
+パラメータなし。
 
 #### Response
 
@@ -184,7 +184,7 @@ HTML で返却されるが、`script#embedded-data` の `data-props` の値を J
 
 ## ニコニ広告
 
-[ニコニ広告](https://nicoad.nicovideo.jp/) 関連
+[ニコニ広告](https://nicoad.nicovideo.jp/) 関連。
 
 ### ニコニ広告の無料福引情報を取得
 
@@ -271,7 +271,7 @@ VID には `sm32684885` などの `sm` などが入った VideoID を入力。�
 }
 ```
 
-広告期間内の広告がない場合は `404 Not Found` が返る
+広告期間内の広告がない場合は `404 Not Found` が返る。
 
 ### 動画へのニコニ広告の履歴
 
