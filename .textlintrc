@@ -58,8 +58,11 @@
             "allowPeriodMarks": [
                 "\"",
                 ":",
-                "...
+                "..."
             ]
+        },
+        "no-mix-dearu-desumasu": {
+            "strict": true
         }
     },
     "filters": {
