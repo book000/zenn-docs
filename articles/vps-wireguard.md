@@ -11,7 +11,8 @@ Raspberry Pi 4 model B で VPN アプリケーションである [WireGuard](htt
 **自宅ルータのポートを開けずに** 自宅外から自宅内のサーバや PC にアクセスしたい、フリー Wi-Fi でもある程度安全に通信できる環境を作りたいと思い構築しています。
 
 :::message
-もともと [自分のメモサイト](https://memo.tomacheese.com) に上げようと思っていた内容を途中で持ってきたので、わかりにくい部分があったらすみません。
+もともと [自分のメモサイト](https://memo.tomacheese.com) に上げようと思っていた内容を途中で持ってきたので、わかりにくい部分があったらすみません。  
+また筆者には独学で学んだある程度のネットワーク知識しかなく、執筆した内容が正しいとは限りませんので他の記事や書籍もご覧下さい。
 :::
 
 ## 期待する結果
@@ -83,6 +84,8 @@ Raspberry Pi と VPS 間のポートフォワーディングに [fatedier/frp](h
 Pi-hole と frp の利用には Docker を利用していますが、WireGuard は Docker 内で動作させません。また、PiVPN を利用しません。  
 [linuxserver/wireguard](https://hub.docker.com/r/linuxserver/wireguard) を試したのですが、接続後 1 分程経過したタイミングでコンテナ内から LAN への通信がタイムアウトするようになりやめました。  
 PiVPN を利用しない理由は途中のネットワークデバイス選択画面で Docker ネットワークが大量に表示され進めなくなったからです。
+
+Raspberry Pi のブートストレージとして SD カードを利用している場合、SD カード故障による設定および鍵の紛失を防ぐため `/etc/wireguard` を HDD など別のストレージへのシンボリックリンクにするなど対策を取ってください。この記事では解説しません。
 :::
 
 もちろん、frp や Pi-hole を Docker で構築せずホスト OS にインストールしてもかまいません。  
@@ -94,6 +97,8 @@ WireGuard では Peer to Peer で双方がサーバにもクライアントに�
   - [snowdreamtech/frps](https://hub.docker.com/r/snowdreamtech/frps) 0.47.0
   - [pi-hole/pi-hole](https://hub.docker.com/r/pi-hole/pi-hole) 2023.02.2
   - Ethernet の NIC として `eth0` を利用
+  - 各クライアントに割り振る IP として `172.16.0.x` を使用
+  - WireGuard のサーバ IP として `172.16.0.254` を使用
 - ConoHa VPS
   - 512 MB プラン
   - Ubuntu 20.04.5 LTS
@@ -160,7 +165,7 @@ WireGuard のインストールでは、以下の手順を踏んでいきます�
 
 #### sysctl の設定
 
-追加設定をしない限り、異なる NIC 間でのパケットのやりとりができません。WireGuard はデフォルトで `wg0` という NIC を追加するので、これと `eth0` 間でパケット転送ができない場合 VPN をつないでも LAN ネットワークやインターネットと通信できません。  
+追加設定をしない限り、異なる NIC 間でのパケットのやりとりができません。WireGuard は `wg0` などの NIC を追加するので、これと `eth0` 間でパケット転送ができない場合 VPN をつないでも LAN ネットワークやインターネットと通信できません。  
 （という理解なのですが、間違ってたらすみません）
 
 というわけで、IP 転送（フォワーディング）を有効にするため sysctl を編集します。  
@@ -187,11 +192,54 @@ sudo apt update
 sudo apt install wireguard
 ```
 
+クライアントに接続設定を追加する際、QR コードで読み込めるようにする場合は `qrencode` もインストールしておきましょう。
+
+```shell
+sudo apt install qrencode
+```
+
 #### サーバサイド鍵ペアの作成
+
+サーバに保管する鍵ペア（秘密鍵と公開鍵）を作成します。
+
+:::message
+この記事では意図的に「サーバ」や「クライアント」など親子関係を意味する言葉を利用しているので余計にわかりにくいのですが、WireGuard は Peer to Peer なので双方を認証するために双方それぞれで公開鍵・秘密鍵を生成し双方の相手に公開鍵を渡す必要があります。  
+:::
+
+以下のコマンドで作成します。作成した鍵は `/etc/wireguard/server-*.key` に保存し、所有者のみ読み書き可にします。
+
+```shell
+sudo wg genkey | sudo tee /etc/wireguard/server-private.key
+sudo cat /etc/wireguard/server-private.key | wg pubkey | sudo tee /etc/wireguard/server-public.key
+sudo chmod -v 600 /etc/wireguard/server-*.key
+```
 
 #### WireGuard の設定ファイル作成
 
+WireGuard の設定ファイルを `/etc/wireguard/wg0.conf` に作成します。
+
+```shell
+cat << EOF | sudo tee /etc/wireguard/wg0.conf
+[Interface]
+Address = 172.16.0.254
+ListenPort = 51820
+PrivateKey = $(sudo cat /etc/wireguard/server-private.key)
+PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT; iptables -t nat -A POSTROUTING -o eth+ -j MASQUERADE
+PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACCEPT; iptables -t nat -D POSTROUTING -o eth+ -j MASQUERADE
+EOF
+```
+
+`%i` には WireGuard の NIC 名が自動で置き換わります。この場合は `wg0` です。
+
 #### クライアント追加用のシェルスクリプト作成
+
+// TODO 以下サーバのところに間違えて書いた書き換え必要なメモ
+
+サーバに保管する鍵ペア（秘密鍵と公開鍵）を作成します。また、セキュリティ向上を目的に事前共有鍵（PSK, Pre-Shared Key）も作成します。
+
+:::message
+事前共有鍵については、オプションではありますがこれがあることにより将来的に量子コンピュータが実用化された場合に、公開鍵暗号が解かれても事前共有鍵によって暗号化されているので問題ない…という点で「セキュリティ向上」が見込めるようです。
+:::
 
 ### 3. frpc の構築
 
