@@ -10,7 +10,7 @@ published_at: 2022-12-04 00:00
 :::message
 この記事は [ConoHa Advent Calender 2022](https://qiita.com/advent-calendar/2022/conoha) 4 日目（12 月 04 日）の記事です。
 
-ConoHa 歴は 2017 年からなので、かれこれ 5 年くらい利用しています。このはちゃんカワイイ！
+ConoHa 歴は 2017 年からですので、かれこれ 5 年くらい利用しています。このはちゃんカワイイ！
 :::
 
 ConoHa の VPS を IPv6 対応させて、Cloudflare の DNS に設定してみます。
@@ -68,7 +68,7 @@ SSL/TLS のポートである 443 番ポートも IPv6 で Listen している�
 #### VPS に IPv6 アドレスが割り当てられていないかを確認する
 
 ConoHa VPS 上で立てた **Ubuntu** では[^1]、立てた VPS に IPv6 のアドレスが割り当てられていないようです。  
-検証していた限り環境によってかなり状況が違いそうなので、まずは IPv6 のアドレスが VPS に割り当てられていないかどうかを確認しましょう。
+検証していた限り環境によってかなり状況が違いそうですので、まずは IPv6 のアドレスが VPS に割り当てられていないかどうかを確認しましょう。
 
 コマンド `ip addr show eth0` を実行し、以下のように `inet6` から始まる行で `2400:8500:1302:776` から始まる IPv6 のアドレスがあれば割り当てられています。
 
@@ -155,7 +155,7 @@ Cloudflare の DNS 設定から、以下のように AAAA レコードを追加�
 
 #### CNAME レコードを設定する（サブドメインの場合）
 
-`sub.example.com` などのサブドメインも IPv6 対応する場合、CNAME レコードをひとつ追加するだけでサブドメイン毎に A レコードと AAAA レコードの 2 つを用意しなくて済むようになります。以下のように設定しましょう。
+`sub.example.com` などのサブドメインも IPv6 対応する場合、CNAME レコードを 1 つ追加するだけでサブドメインごとに A レコードと AAAA レコードの 2 つを用意しなくて済むようになります。以下のように設定しましょう。
 
 ![](https://storage.googleapis.com/zenn-user-upload/1ddda6166b8e-20221201.png)
 
@@ -165,7 +165,7 @@ Cloudflare の DNS 設定から、以下のように AAAA レコードを追加�
 
 ### 設定反映を確認する
 
-Cloudflare では Enterprise プランでない限り IPv6 Compatibility の関係で **クライアントと Cloudflare 間** は元から AAAA レコードが存在し IPv6 での接続が可能なので、Proxied されているレコードに関しては安直に `nslookup` しても本当に設定できているかわかりません。  
+Cloudflare では Enterprise プランでない限り IPv6 Compatibility の関係で **クライアントと Cloudflare 間** は元から AAAA レコードが存在し IPv6 での接続が可能ですので、Proxied されているレコードに関しては安直に `nslookup` しても本当に設定できているかわかりません。  
 したがって、ここでは一時的に Cloudflare のプロキシ設定を解除し `nslookup` してみようと思います。
 
 :::message alert
@@ -192,5 +192,5 @@ Address: 2400:8500:1302:776:xxx:xx:xxx:xxx
 
 IPv4 のアドレスだけでなく、IPv6 のアドレスが表示されれば成功です。
 
-[^1]: 2021/05 に立てた CentOS 7 のサーバは IPv6 アドレスが割り当てられていたものの、この記事を書いているときに検証用に立てた Ubuntu のサーバ[^2]では割り当てられていなかったので、よくわかりません。IPv6 の DHCP をオンにしても振られませんでした。
+[^1]: 2021/05 に立てた CentOS 7 のサーバは IPv6 アドレスが割り当てられていたものの、この記事を書いているときに検証で立てた Ubuntu のサーバ[^2]では割り当てられていなかったので、よくわかりません。IPv6 の DHCP をオンにしても振られませんでした。
 [^2]: ConoHa さん、RAM 512 MB で Ubuntu 22.04 を立てると Kernel Panic する問題をなんとか解決していただけると非常にうれしいです…。参考: [Twitter での検索結果](https://twitter.com/search?q=512MB%20ConoHa%20Ubuntu&src=typed_query&f=live) <!-- markdownlint-disable-line MD053 -->

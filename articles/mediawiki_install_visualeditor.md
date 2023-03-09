@@ -26,7 +26,7 @@ MediaWiki に VisualEditor と Parsoid を導入するにあたり、（さま�
 
 ### 制約
 
-- Cloudflare によるサーバ IP アドレスの秘匿をしているので、この為に生 IP アドレス経由による Parsoid へのアクセスは不能。
+- Cloudflare によるサーバ IP アドレスの秘匿をしているので、このために生 IP アドレス経由による Parsoid へのアクセスは不能。
 
 ## やり方
 
@@ -58,7 +58,7 @@ domain: "localhost" # optional
 ```
 
 それぞれ、`uri` は `https://example.com/api.php`、`domain` に MediaWiki のインストール先ドメイン（`example.com`）を設定します。`uri` は `/parsoid/` 以外であるならそれを設定してください。`serverPort` は 8000 ポート以外にする場合はコメントを外し変更してください。ここでは 8000 ポートのまま設定します。
-設定が完了したら、`node bin/server.js` で起動しておいてください。systemd への登録・常時動作化はこの時にやってもよいですし後ですべて終わってからやっても良いと思います。
+設定が完了したら、`node bin/server.js` で起動しておいてください。systemd への登録・常時動作化はこの時にやってもよいですしあとですべて終わってからやっても良いと思います。  
 起動後、動作しているかどうかの確認をしたい場合は別ターミナルから `curl http://localhost:8000` にアクセスし正常にアクセスできるかの確認ができます。
 
 ### 2. nginx の設定を編集しリバースプロキシを設定する
@@ -71,9 +71,10 @@ location ^~ /parsoid/ {
 }
 ```
 
-これにより、location に `/parsoid/` が前方一致しているかをチェックし、マッチする場合は 8000 ポートにリバースプロキシ（通信を転送）します。
+これにより、location に `/parsoid/` が前方一致しているかをチェックし、マッチする場合は 8000 ポートにリバースプロキシ（通信を転送）します。  
 設定したら `nginx -t` でコンフィグにミスがないかを確認し `systemctl restart nginx` で nginx を再起動します。
-これで、`https://example.com/parsoid/` で Parsoid にアクセスできるようになったはずです。ブラウザからアクセスすると `Welcome to the Parsoid web service.` と表示されます。
+
+これで `https://example.com/parsoid/` で Parsoid にアクセスできるようになったはずです。ブラウザからアクセスすると `Welcome to the Parsoid web service.` と表示されます。
 
 ### 3. VisualEditor をダウンロード・インストール、設定する
 
@@ -97,4 +98,4 @@ $wgVirtualRestConfig["modules"]["parsoid"] = [
 
 ### 4. VisualEditor を試す
 
-適当なページの編集画面に行き、右上の鉛筆マークから「ビジュアル編集」から編集すると VisualEditor で編集できます。
+適当なページの編集画面に行き、右上の鉛筆アイコンから「ビジュアル編集」から編集すると VisualEditor で編集できます。

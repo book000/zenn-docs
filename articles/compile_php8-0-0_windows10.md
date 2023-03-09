@@ -23,7 +23,7 @@ published: true
 
 必須環境でない可能性があります（たとえば、Visual Studio は 2017 でもよいかもしれない）。
 
-- OS: Windows 10 2004 (Build 19041.630)
+- OS: Windows 10 2004（Build 19041.630）
 - `winver`
 - Visual Studio Community 2019 16.8.2
 - `.tar.gz` を展開できる環境・アプリケーション（7-Zip など）
@@ -80,7 +80,7 @@ PHP をビルドするツールである PHP SDK を GitHub からダウンロ�
 ![](https://storage.googleapis.com/zenn-user-upload/sjislxsjn74mq1g088axsxdmf7hh)
 
 [PHP: Downloads](https://www.php.net/downloads) にアクセスし、`tar.gz` 形式のソースコードファイル（ここでは `php-8.0.0.tar.gz`）をダウンロードします。
-とりあえずこの項ではダウンロードだけ行い、展開は後でやります。
+とりあえずこの項ではダウンロードだけ行い、展開はあとでやります。
 
 ### 3.「`x64 Native Tools Command Prompt for VS 2019`」を使用して `phpsdk-starter.bat -c vs16 -a x64`、`phpsdk_buildtree.bat php-dev` を実行する
 
@@ -97,7 +97,12 @@ phpsdk-starter.bat -c vs16 -a x64
 phpsdk_buildtree.bat php-dev
 ```
 
-それぞれ、`phpsdk-starter.bat` では `vs16` = `Visual Studio 2019` を使用すること、アーキテクチャは x64 を使用することを明示して PHP SDK を開始していること、phpsdk_buildtree では PHP SDK が使うディレクトリを生成してカレントディレクトリを変更しています。
+`phpsdk-starter.bat` では以下のオプションを指定しています。
+
+- `vs16` = `Visual Studio 2019` を使用すること
+- アーキテクチャは x64 を使用することを明示して PHP SDK を開始していること
+
+`phpsdk_buildtree.bat` では PHP SDK が使うディレクトリを生成してカレントディレクトリを変更する指定をしています。
 
 ### 4. ダウンロードした PHP のソースコードを展開して配置する
 
@@ -110,8 +115,8 @@ phpsdk_buildtree.bat php-dev
 
 ![](https://storage.googleapis.com/zenn-user-upload/d0ek2ttk07457dldikaq14immgne)
 
-コマンドプロンプト（`x64 Native Tools Command Prompt for VS 2019`）に戻り、`cd php-8.0.0` でカレントディレクトリを変更したあと `..\..\..\..\bin\phpsdk_deps.bat -u` を実行します。
-`..\..\..\..\bin\phpsdk_deps.bat -u` は `C:\php8-build\bin\phpsdk_deps.bat -u` でもかまいません。
+コマンドプロンプト（`x64 Native Tools Command Prompt for VS 2019`）に戻り、`cd php-8.0.0` でカレントディレクトリを変更したあと `C:\php8-build\bin\phpsdk_deps.bat -u` を実行します。  
+`..\..\..\..\bin\phpsdk_deps.bat -u` は `C:\php8-build\bin\phpsdk_deps.bat -u` でもかまいません。  
 これにより、依存関係として必要なパッケージがダウンロードされます。
 
 ### 6. `phpsdk-vs16-x64.bat` を実行して、初期処理を実施する

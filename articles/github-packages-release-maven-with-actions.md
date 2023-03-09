@@ -153,4 +153,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-`actions/cache@v2` でローカルリポジトリのキャッシュがされることを初めて知った。`Set SHORT_SHA` で 7 文字ハッシュ値の作成をしている。
+`actions/cache@v2` でローカルリポジトリのキャッシュがされることをはじめて知った。  
+`Set SHORT_SHA` にて 7 文字ハッシュ値の作成をしている。

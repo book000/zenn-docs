@@ -17,15 +17,15 @@ published: true
 - **IFTTT 対応**
 - 価格の割に割と安定していて、使いやすい
 
-まあ、この中で言えば IFTTT 対応という点が無茶苦茶良い。
-IFTTT の Webhook と組み合わせて PC 起動時にこたつの電源を入れる…という風に使える。
+まあ、このなかで言えば IFTTT 対応という点が無茶苦茶良い。
+IFTTT の Webhook と組み合わせてパソコン起動時にこたつの電源を入れる…という風に使える。
 
 ### でも「今動作しているか分からない」
 
-Google Home とか Amazon Echo での口頭なら「OK Google, ライトはついている？」と聞けば「ライトはついています」って返事が来るのだが、IFTTT は仕様上（しかたないのだろうけど）特定動作からのオン／オフ、またはトグルしか使えない。
+Google Home とか Amazon Echo での口頭なら「OK Google, ライトはついている？」と聞けば「ライトはついています」って返事が来るのだが、IFTTT は仕様上（し方ないのだろうけど）特定動作からのオン／オフ、またはトグルしか使えない。
 
 IFTTT の「Then」で TP-Link Kasa を選択できないので、イベント駆動というわけにもいかない。
-そんなわけで、何か別の手段を使って「スイッチがオンになっているか」を取得する方法はないかとネットの海を探した。
+そんなわけで、何か別の手段を使って「スイッチがオンになっているか」を取得する方法はないかとインターネットの海を探した。
 
 ## まず見つかったのは tplink-smarthome-api
 
@@ -45,11 +45,11 @@ Linux Mint の入っている自宅鯖機で CLI の機能つかって試した�
 `tplink-smarthome-api getInfo 192.168.0.xxx:9999`
 しかし、これはローカルでのみしか使えない。私の自宅鯖は常時つけているわけではないのでこれは NG。
 
-## (多分）非公開の TP-Link cloud API
+## （多分）非公開の TP-Link cloud API
 
-次にみつけたのは [How to control your TP-Link HS100 smartplug from Internet | IT Nerd Space](https://itnerd.space/2017/01/22/how-to-control-your-tp-link-hs100-smartplug-from-internet/) なる記事。
+次にみ付け足のは [How to control your TP-Link HS100 smartplug from Internet | IT Nerd Space](https://itnerd.space/2017/01/22/how-to-control-your-tp-link-hs100-smartplug-from-internet/) なる記事。
 適当に流し読みしているとネットワーク経由で操作できるようであると書いてあった。
-まあずらずら書いてもしかたないので結論を書く。
+まあずらずら書いてもし方ないので結論を書く。
 
 ### 注意事項
 
@@ -143,7 +143,9 @@ function getDeviceList($token){
 print_r(getDeviceList("<トークン>"));
 ```
 
-`deviceList` の中の配列がそれぞれのデバイスで、その中の `deviceId` がデバイス固有の ID。デバイスを操作（オン／オフ）するときはこの `deviceId` が必要になるので、メモなり変数に入れるなりする。
+`deviceList` の中の配列がそれぞれのデバイスで、その中の `deviceId` がデバイス固有の ID。
+
+デバイスを操作（オン／オフ）するときはこの `deviceId` が必要になるので、メモなり変数に入れるなりする。  
 この後、`<デバイスID>` と記す場合上記 `deviceId` を指す。
 
 #### 詳しいデバイス情報
@@ -342,6 +344,6 @@ if($relay_state === 1 && $on_time >= 60 * 60 * 4){ // 4 hours
 - [How to control your TP-Link HS100 smartplug from Internet | IT Nerd Space](https://itnerd.space/2017/01/22/how-to-control-your-tp-link-hs100-smartplug-from-internet/)
 - [TP-Link スマートコンセント HS-105 を API から操作（１）– LM Labo](https://lmjs7.net/blog/gadget10252018/)
 
-よく調べてみたら npm に API のライブラリまで落ちてますね。
+よく調べてみたら npm に API のライブラリまで落ちていますね。
 
 - [tplink-cloud-api - npm](https://www.npmjs.com/package/tplink-cloud-api)

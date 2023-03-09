@@ -105,7 +105,7 @@ git checkout -q -b ci/set-output upstream/master ; git checkout -q -b ci/set-out
 
 ---
 
-ここまで記事を書いて、azu さんがマイグレーションツールを作っていることを Twitter で知りました。`npx set-env-to-github_env` で楽に修正できるのでこっちの方が良さそうです。
+ここまで記事を書いて、azu さんがマイグレーションツールを作っていることを Twitter で知りました。`npx set-env-to-github_env` コマンドを使うことで楽に修正できるのでこっちの方が良さそうです。
 
 https://twitter.com/azu_re/status/1585562486052630528
 

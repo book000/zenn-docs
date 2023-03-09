@@ -47,13 +47,14 @@ CentOS 7 では Python2.7 が入っており、なにもしてないとインス
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 ```
 
-ちなみに `sstephenson/rbenv` で解説している記事がありますが、執筆時現在アクセスすると `rbenv/rbenv` にリダイレクト（転送）されますので、どっちでもかまいませんがまあ `rbenv/rbenv` で良いと思います。
+ちなみに `sstephenson/rbenv` で解説している記事がありますが、執筆時現在アクセスすると `rbenv/rbenv` にリダイレクト（転送）されます。  
+どっちでもかまいませんが `rbenv/rbenv` で良いと思います。
 
-#### .bash_profile に環境変数（PATH)に rbenv のパスを追記させる
+#### .bash_profile に環境変数（PATH）に rbenv のパスを追記させる
 
 SSH などでの接続時など（bash 起動時）にロードされる `.bash_profile` というのがあります。
 ここに、環境変数（PATH）に rbenv なパスを追記させるコードを書き、SSH などでの接続後に rbenv が使えるようにします。
-なお、`.bash_profile` はユーザー毎ですので、ここで説明しているように rbenv をインストールしてもほかのユーザー(ホームディレクトリが異なるユーザー)は利用できないことに注意してください。
+なお、`.bash_profile` はユーザーごとですので、ここで説明しているように rbenv をインストールしてもほかのユーザー(ホームディレクトリが異なるユーザー)は利用できないことに注意してください。
 
 以下の 2 つのコマンドを実行し、`.bash_profile` に書き込みます。
 1 つめのコマンドは環境変数への追記コマンド、2 つめのコマンドは rbenv の初期処理（init）をさせるコマンドを書き込むコマンドです。
@@ -172,4 +173,4 @@ ERROR:  Error installing cureutils:
         i18n requires Ruby version >= 2.3.0.
 ```
 
-と出る。なんか Cureutils の Requirements 表記とズレているけど、まあ最新版をインストールするので問題なし。
+と出る。Cureutils の Requirements 表記とズレているけど、まあ最新版をインストールするので問題なし。
