@@ -8,10 +8,10 @@ published: true
 
 Raspberry Pi 4 model B で VPN アプリケーションである [WireGuard](https://www.wireguard.com/) を立て、[ConoHa VPS](https://www.conoha.jp/vps/) を経由して VPN 環境を構築します。
 
-**自宅ルーターのポートを開けずに** 自宅外から自宅内のサーバや PC にアクセスしたい、フリー Wi-Fi でもある程度安全に通信できる環境を作りたいと思い構築しています。
+**自宅ルータのポートを開けずに** 自宅外から自宅内のサーバや PC にアクセスしたい、フリー Wi-Fi でもある程度安全に通信できる環境を作りたいと思い構築しています。
 
 :::message
-元々 [自分のメモサイト](https://memo.tomacheese.com) に上げようと思っていた内容を途中で持ってきたので、わかりにくい部分があったらすみません。
+もともと [自分のメモサイト](https://memo.tomacheese.com) に上げようと思っていた内容を途中で持ってきたので、わかりにくい部分があったらすみません。
 :::
 
 ## 期待する結果
@@ -28,13 +28,13 @@ sequenceDiagram
   participant pihole as 【ラズパイ】<br>Pi-hole
   participant lan as LAN
   participant internet as Internet
-  
+
   Note over frps: frpsコンテナ起動
   frps-->>frps: 接続待ち
 
   Note over frpc,wireguard: WireGuardコンテナ起動
   frpc->>frps: 接続確立
-  
+
   Note over User,internet: VPN接続確立
   User->>+frps: WireGuardクライアントを<br>用いて接続
   frps->>+frpc: 転送
@@ -42,7 +42,7 @@ sequenceDiagram
   wireguard->>-frpc: OK
   frpc->>-frps: 転送
   frps->>-User: レスポンス
-  
+
   Note over User,internet: LAN内HTTPリクエスト
   User->>+frps: 192.168.0.1に<br>HTTPリクエスト
   frps->>+frpc: 転送
@@ -52,7 +52,7 @@ sequenceDiagram
   wireguard->>-frpc: 転送
   frpc->>-frps: 転送
   frps->>-User: 192.168.0.1からの<br>レスポンス
-  
+
   Note over User,internet: google.comに接続: DNSリクエスト
   User->>+frps: google.comを正引き
   frps->>+frpc: 転送
@@ -62,7 +62,7 @@ sequenceDiagram
   wireguard->>-frpc: 転送
   frpc->>-frps: 転送
   frps->>-User: レスポンス
-  
+
   Note over User,internet: google.comに接続: 172.217.26.228にHTTPリクエスト
   User->>+frps: 172.217.26.228に<br>HTTPリクエスト
   frps->>+frpc: 転送
@@ -77,7 +77,7 @@ sequenceDiagram
 ## 環境
 
 Raspberry Pi と VPS 間のポートフォワーディングに [fatedier/frp](https://github.com/fatedier/frp) を利用します。  
-その上で、DockerHub にあるもののうち **ユーザ数がある程度いて**、**GitHub Actions などで fatedier/frp のアップデートに追従しているもの** として [snowdreamtech/frp](https://github.com/snowdreamtech/frp) を選定しています。
+そのうえで、Docker Hub にあるもののうち **ユーザー数がある程度いて**、**GitHub Actions などで fatedier/frp のアップデートに追従しているもの** として [snowdreamtech/frp](https://github.com/snowdreamtech/frp) を選定しています。
 
 :::message alert
 Pi-hole と frp の利用には Docker を利用していますが、WireGuard は Docker 内で動作させません。また、PiVPN を利用しません。  
@@ -85,15 +85,15 @@ Pi-hole と frp の利用には Docker を利用していますが、WireGuard �
 PiVPN を利用しない理由は途中のネットワークデバイス選択画面で Docker ネットワークが大量に表示され進めなくなったからです。
 :::
 
-もちろん、frp や Pi-hole を Docker で構築せずホスト OS にインストールしても構いません。  
-WireGuard では Peer to Peer で双方がサーバにもクライアントにもなりうるので、ピア（Peer）と書くのが正しいのですがこの記事でははっきりとサーバ・クライアントが存在するので、「クライアント」と表記します。
+もちろん、frp や Pi-hole を Docker で構築せずホスト OS にインストールしてもかまいません。  
+WireGuard では Peer to Peer で双方がサーバにもクライアントにもなりうるので、ピア（Peer）と書くのが正しいのですがこの記事ではっきりとサーバ・クライアントが存在するので、「クライアント」と表記します。
 
 - Raspberry Pi 4 model B
   - Raspberry Pi OS 64bit (Bullseye)
   - WireGuard 1.0.20210223-1
   - [snowdreamtech/frps](https://hub.docker.com/r/snowdreamtech/frps) 0.47.0
   - [pi-hole/pi-hole](https://hub.docker.com/r/pi-hole/pi-hole) 2023.02.2
-  - イーサネットの NIC として `eth0` を利用
+  - Ethernet の NIC として `eth0` を利用
 - ConoHa VPS
   - 512 MB プラン
   - Ubuntu 20.04.5 LTS
@@ -108,7 +108,7 @@ WireGuard では Peer to Peer で双方がサーバにもクライアントに�
 
 ### 1. frps の構築
 
-まずはじめに、VPS 側の frp サーバソフトウェアである frps のインストール作業をします。
+まず始めに、VPS 側の frp サーバソフトウェアである frps のインストール作業をします。
 
 VPS 上の任意の場所に以下の `compose.yaml` を作成します。
 
@@ -160,7 +160,7 @@ WireGuard のインストールでは、以下の手順を踏んでいきます�
 
 #### sysctl の設定
 
-追加設定をしない限り、異なる NIC 間でパケットのやり取りをすることはできません。WireGuard はデフォルトで `wg0` という NIC を追加するので、これと `eth0` 間でパケット転送ができない場合 VPN を繋いでも LAN ネットワークやインターネットと通信できません。  
+追加設定をしない限り、異なる NIC 間でのパケットのやりとりができません。WireGuard はデフォルトで `wg0` という NIC を追加するので、これと `eth0` 間でパケット転送ができない場合 VPN をつないでも LAN ネットワークやインターネットと通信できません。  
 （という理解なのですが、間違ってたらすみません）
 
 というわけで、IP 転送（フォワーディング）を有効にするため sysctl を編集します。  

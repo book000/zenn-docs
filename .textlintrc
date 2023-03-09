@@ -55,7 +55,8 @@
         "ja-no-mixed-period": {
             "forceAppendPeriod": true,
             "allowPeriodMarks": [
-                "\""
+                "\"",
+                ":"
             ]
         }
     },
