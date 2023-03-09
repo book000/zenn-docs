@@ -198,7 +198,7 @@ function getSysInfo($token, $deviceID){
 print_r(getSysInfo("<トークン>", "<デバイスID>"));
 ```
 
-`result` -&gt; `responseData` にデバイスからの返却データが入る。この中のデータも JSON ですので、さらにデコードする。
+`result` -&gt; `responseData` にデバイスからの返却データが入る。この中のデータも JSON なので、さらにデコードする。
 
 ##### responseData の中身
 

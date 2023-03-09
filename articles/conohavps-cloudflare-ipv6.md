@@ -10,7 +10,7 @@ published_at: 2022-12-04 00:00
 :::message
 この記事は [ConoHa Advent Calender 2022](https://qiita.com/advent-calendar/2022/conoha) 4 日目（12 月 04 日）の記事です。
 
-ConoHa 歴は 2017 年からですので、かれこれ 5 年くらい利用しています。このはちゃんカワイイ！
+ConoHa 歴は 2017 年からなので、かれこれ 5 年くらい利用しています。このはちゃんカワイイ！
 :::
 
 ConoHa の VPS を IPv6 対応させて、Cloudflare の DNS に設定してみます。
@@ -68,7 +68,7 @@ SSL/TLS のポートである 443 番ポートも IPv6 で Listen している�
 #### VPS に IPv6 アドレスが割り当てられていないかを確認する
 
 ConoHa VPS 上で立てた **Ubuntu** では[^1]、立てた VPS に IPv6 のアドレスが割り当てられていないようです。  
-検証していた限り環境によってかなり状況が違いそうですので、まずは IPv6 のアドレスが VPS に割り当てられていないかどうかを確認しましょう。
+検証していた限り環境によってかなり状況が違いそうなので、まずは IPv6 のアドレスが VPS に割り当てられていないかどうかを確認しましょう。
 
 コマンド `ip addr show eth0` を実行し、以下のように `inet6` から始まる行で `2400:8500:1302:776` から始まる IPv6 のアドレスがあれば割り当てられています。
 
@@ -165,7 +165,7 @@ Cloudflare の DNS 設定から、以下のように AAAA レコードを追加�
 
 ### 設定反映を確認する
 
-Cloudflare では Enterprise プランでない限り IPv6 Compatibility の関係で **クライアントと Cloudflare 間** は元から AAAA レコードが存在し IPv6 での接続が可能ですので、Proxied されているレコードに関しては安直に `nslookup` しても本当に設定できているかわかりません。  
+Cloudflare では Enterprise プランでない限り IPv6 Compatibility の関係で **クライアントと Cloudflare 間** は元から AAAA レコードが存在し IPv6 での接続が可能なので、Proxied されているレコードに関しては安直に `nslookup` しても本当に設定できているかわかりません。  
 したがって、ここでは一時的に Cloudflare のプロキシ設定を解除し `nslookup` してみようと思います。
 
 :::message alert
