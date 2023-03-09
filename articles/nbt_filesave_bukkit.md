@@ -37,7 +37,7 @@ Maven への詳しい説明はしませんが、CraftBukkit を何かしらの�
 4. `toString()` で取得できた String が NBT タグ情報。適当に保存する。
 
 保存は `YamlConfiguration(FileConfiguration)` で保存するなり、`FileWriter` を使って保存してもよし。
-なお、ここで取得した NBT タグ情報は `/give` のデータタグと同じですので、1.12.2 なら `/give @p <item> 1 0 <NBTタグ>` で give できる。
+なお、ここで取得した NBT タグ情報は `/give` のデータタグと同じなので、1.12.2 なら `/give @p <item> 1 0 <NBTタグ>` で give できる。
 
 ```java
 ItemStack item = player.getInventory().getItemInMainHand(); // ここでは例としてプレイヤーのメインハンドのアイテムを取得。
