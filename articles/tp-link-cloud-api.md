@@ -22,7 +22,7 @@ IFTTT の Webhook と組み合わせてパソコン起動時にこたつの電�
 
 ### でも「今動作しているか分からない」
 
-Google Home とか Amazon Echo での口頭なら「OK Google, ライトはついている？」と聞けば「ライトはついています」って返事が来るのだが、IFTTT は仕様上（し方ないのだろうけど）特定動作からのオン／オフ、またはトグルしか使えない。
+Google Home とか Amazon Echo での口頭なら「OK Google, ライトはついている？」と聞けば「ライトはついています」って返事が来るのだが、IFTTT は仕様上（しかたないのだろうけど）特定動作からのオン／オフ、またはトグルしか使えない。
 
 IFTTT の「Then」で TP-Link Kasa を選択できないので、イベント駆動というわけにもいかない。
 そんなわけで、何か別の手段を使って「スイッチがオンになっているか」を取得する方法はないかとインターネットの海を探した。
@@ -49,7 +49,7 @@ Linux Mint の入っている自宅鯖機で CLI の機能つかって試した�
 
 次にみ付け足のは [How to control your TP-Link HS100 smartplug from Internet | IT Nerd Space](https://itnerd.space/2017/01/22/how-to-control-your-tp-link-hs100-smartplug-from-internet/) なる記事。
 適当に流し読みしているとネットワーク経由で操作できるようであると書いてあった。
-まあずらずら書いてもし方ないので結論を書く。
+まあずらずら書いてもしかたないので結論を書く。
 
 ### 注意事項
 
