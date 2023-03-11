@@ -239,7 +239,114 @@ EOF
 事前共有鍵については、オプションではありますがこれがあることにより将来的に量子コンピュータが実用化された場合に、公開鍵暗号が解かれても事前共有鍵によって暗号化されているので問題ない…という点で「セキュリティ向上」が見込めるようです。
 :::
 
-// ここから書く
+作成にあたり、この作業はクライアントを追加するごとに実施するのでシェルスクリプトとして繰り返し実行可能にします。
+
+```bash
+#!/bin/bash
+set -e
+
+ENDPOINT="xxx.xx.xx.xxx:xxx"
+
+# Colored echo
+cecho() {
+  color_name=$1
+  shift
+  case $color_name in
+    BLACK) color=30 ;;
+    RED) color=31 ;;
+    GREEN) color=32 ;;
+    YELLOW) color=33 ;;
+    BLUE) color=34 ;;
+    MAGENTA) color=35 ;;
+    CYAN) color=36 ;;
+    WHITE) color=37 ;;
+    *) color=39 ;;
+  esac
+
+  echo -e "\e[${color}m$*\e[m"
+}
+
+cecho GREEN "This script will create a new WireGuard client configuration"
+
+cecho CYAN "Checking if WireGuard are installed..."
+if ! command -v wg &> /dev/null; then
+  cecho RED "WireGuard is not installed."
+  exit 1
+fi
+
+# /etc/wireguard の存在確認
+if [ ! -e /etc/wireguard ]; then
+  cecho RED "WireGuard is not initialized."
+  exit 1
+fi
+
+# wg0.conf の存在確認
+if [ ! -f /etc/wireguard/wg0.conf ]; then
+   cecho RED "WireGuard is not configured."
+fi
+
+echo
+echo -n "Please input client name: "
+read -r CLIENT_NAME
+
+cecho GREEN "Creating client configuration for ${CLIENT_NAME}"
+sudo mkdir -p "/etc/wireguard/clients/${CLIENT_NAME}/"
+
+cecho CYAN Generate private key
+wg genkey | sudo tee "/etc/wireguard/clients/${CLIENT_NAME}/private.key"
+
+cecho CYAN Generate public key
+sudo cat "/etc/wireguard/clients/${CLIENT_NAME}/private.key" | wg pubkey | sudo tee "/etc/wireguard/clients/${CLIENT_NAME}/public.key"
+
+cecho CYAN Generate pre-shared key
+wg genkey | sudo tee "/etc/wireguard/clients/${CLIENT_NAME}/preshared.key"
+
+cecho CYAN Create peer configuration
+
+NEXT_IP=$(sudo cat /etc/wireguard/wg0.conf | grep -oP "AllowedIPs = 172.16.0.[0-9]+" | sort -n | tail -1 | awk -F. '{print $4}')
+NEXT_IP=$((NEXT_IP+1))
+NEXT_IP="172.16.0.${NEXT_IP}"
+
+cecho CYAN "Next available IP: ${NEXT_IP}"
+cat << EOF | sudo tee -a /etc/wireguard/wg0.conf > /dev/null
+[Peer]
+### ${CLIENT_NAME}
+PublicKey = $(sudo cat "/etc/wireguard/clients/${CLIENT_NAME}/public.key")
+PresharedKey = $(sudo cat "/etc/wireguard/clients/${CLIENT_NAME}/preshared.key")
+AllowedIPs = ${NEXT_IP}/32
+
+EOF
+
+cecho CYAN Create client configuration
+cat << EOF | sudo tee "/etc/wireguard/clients/${CLIENT_NAME}/${CLIENT_NAME}.conf" > /dev/null
+[Interface]
+Address = ${NEXT_IP}/32
+PrivateKey = $(sudo cat "/etc/wireguard/clients/${CLIENT_NAME}/private.key")
+ListenPort = 51820
+DNS = 192.168.0.100
+
+[Peer]
+PublicKey = $(sudo cat /etc/wireguard/server-public.key)
+PresharedKey = $(sudo cat "/etc/wireguard/clients/${CLIENT_NAME}/preshared.key")
+Endpoint = ${ENDPOINT}
+AllowedIPs = 0.0.0.0/0, ::/0
+PersistentKeepalive = 25
+EOF
+
+if command -v qrencode &> /dev/null; then
+  cecho CYAN Create QR code
+  sudo qrencode -o "/etc/wireguard/clients/${CLIENT_NAME}/${CLIENT_NAME}.png" -d 350 -r "/etc/wireguard/clients/${CLIENT_NAME}/${CLIENT_NAME}.conf"
+fi
+
+echo
+
+echo Restarting WireGuard
+sudo wg-quick down wg0
+sudo wg-quick up wg0
+
+echo
+cecho GREEN "Done!"
+```
 
 ### 3. frpc の構築
 
