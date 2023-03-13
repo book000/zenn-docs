@@ -113,11 +113,11 @@ WireGuard では Peer to Peer で双方がサーバにもクライアントに�
 
 ### 1. frps の構築
 
-まず始めに、VPS 側の frp サーバソフトウェアである frps のインストール作業をします。
+まず始めに、VPS 側の frp サーバソフトウェアである frps の構築作業をします。
 
 VPS 上の任意の場所に以下の `compose.yaml` を作成します。
 
-```yaml
+```yaml:compose.yaml
 services:
   frps:
     image: snowdreamtech/frps
@@ -126,13 +126,13 @@ services:
       - ./frps.ini:/etc/frp/frps.ini
     ports:
       - 7000:7000
-      - 12345:12345/udp
+      - 51820:51820/udp
     restart: always
 ```
 
 その後、`compose.yaml` を置いた同じディレクトリに `frps.ini` を作成し以下を設定します。
 
-```ini
+```ini:frps.ini
 [common]
 bind_port = 7000
 token = "任意の文字列"
@@ -171,7 +171,7 @@ WireGuard のインストールでは、以下の手順を踏んでいきます�
 というわけで、IP 転送（フォワーディング）を有効にするため sysctl を編集します。  
 お好みのエディタで `/etc/sysctl.conf` を開き、末尾に以下を追記し保存します。
 
-```ini
+```ini:/etc/sysctl.conf
 net.ipv4.ip_forward=1
 ```
 
@@ -251,6 +251,38 @@ DNS の IP アドレスはとりあえずルータの IP アドレスを指定�
 ![](https://storage.googleapis.com/zenn-user-upload/e9feeb8babf2-20230312.png)
 
 ### 3. frpc の構築
+
+frp クライアントソフトウェアである frpc の構築作業をします。
+
+任意の場所に以下の `compose.yaml` を作成します。
+
+```yaml:compose.yaml
+services:
+  frps:
+    image: snowdreamtech/frpc
+    container_name: frpc
+    volumes:
+      - ./frpc.ini:/etc/frp/frpc.ini
+    restart: always
+    network_mode: host
+```
+
+その後、`compose.yaml` を置いた同じディレクトリに `frpc.ini` を作成し以下を設定します。
+
+```ini:frpc.ini
+[common]
+token = "frpsで設定したトークン"
+server_addr = サーバIPアドレス
+server_port = 7000
+
+[wireguard]
+type = udp
+local_ip = 127.0.0.1
+local_port = 51820
+remote_port = 51820
+```
+
+`token` には 1 で作成した `frps.ini` にて設定したトークンを、`server_addr` には VPS の IP アドレスを設定します。
 
 ### 4. Pi-hole の構築
 
