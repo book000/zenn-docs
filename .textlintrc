@@ -21,6 +21,18 @@
           "message": "CloudFlare to Cloudflare",
           "pattern": "/CloudFlare/",
           "replace": "Cloudflare"
+        },
+        {
+          "message": "docker-compose.yml to compose.yaml",
+          "pattern": "/docker-compose.yml/",
+          "replace": "compose.yaml",
+          "forceCode": true
+        },
+        {
+          "message": "docker-compose command is deprecated",
+          "pattern": "/docker-compose/",
+          "replace": "docker compose",
+          "forceCode": true
         }
       ]
     },

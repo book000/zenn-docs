@@ -2,7 +2,7 @@
 title: Raspberry Pi で WireGuard + VPS
 emoji: 🔐
 type: tech
-topics: ["wireguard", "conohavps", "raspberrypi", "frp"]
+topics: ["wireguard", "conohavps", "raspberrypi", "frp", "pihole"]
 published: true
 ---
 
@@ -105,6 +105,8 @@ WireGuard では Peer to Peer で双方がサーバにもクライアントに�
   - [snowdreamtech/frpc](https://hub.docker.com/r/snowdreamtech/frpc) 0.47.0
 
 ## 作業
+
+記事の趣旨から外れるので Pi-hole の構築を一番最後にしていますが、WireGuard に DNS を設定する関係上 1 と 2 の間に作業したほうが良いかと思われます。
 
 1. frps の構築
 2. WireGuard のインストール
@@ -258,7 +260,7 @@ frp クライアントソフトウェアである frpc の構築作業をしま�
 
 ```yaml:compose.yaml
 services:
-  frps:
+  frpc:
     image: snowdreamtech/frpc
     container_name: frpc
     volumes:
@@ -284,13 +286,77 @@ remote_port = 51820
 
 `token` には 1 で作成した `frps.ini` にて設定したトークンを、`server_addr` には VPS の IP アドレスを設定します。
 
+設定を終えたら、`docker compose up --build -d` で立ち上げます。
+
+---
+
+ここまで終えると、WireGuard が VPS 経由で使えるようになります。
+
 ### 4. Pi-hole の構築
+
+広告ドメインやトラッカードメインを正引きできなくすることで拒否する DNS サーバ Pi-hole を構築します。
+
+任意の場所に以下の `compose.yaml` を作成します。
+
+```yaml:compose.yaml
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:latest
+    ports:
+      - 53:53
+      - 53:53/udp
+      - 8080:80/tcp
+    environment:
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - './etc-pihole:/etc/pihole'
+      - './etc-dnsmasq.d:/etc/dnsmasq.d'
+    cap_add:
+      - NET_ADMIN
+    restart: always
+```
+
+作成したら、`docker compose up --build -d` で立ち上げます。
+
+`http://hostname:8080/admin/` で閲覧できる Web interface のパスワードは `docker compose logs pihole | grep random` で確認できます。
+
+:::message
+Pi-hole を構築できたら、WireGuard の DNS IP アドレスを変えておきましょう。  
+ここでどの IP アドレスを指定するべきか悩ましいのですが、とりあえず Raspberry Pi 自体の IP アドレスにしています。Docker 内でバーチャルネットワーク作ってそこを通してもいいのですが…。
+:::
 
 ## クライアントの設定
 
+どのクライアントで利用するにしても、WireGuard サーバ側にクライアントを追加して接続設定ファイルを生成する必要があります。  
+「クライアント追加用のシェルスクリプト作成」で作成したシェルスクリプトを実行し、クライアント名を入力の上作成しておきます。
+
+作成された接続設定は `/etc/wireguard/clients/${CLIENT_NAME}/${CLIENT_NAME}.conf` にあります。  
+`qrencode` をインストールしている場合は `/etc/wireguard/clients/${CLIENT_NAME}/${CLIENT_NAME}.png` に設定追加用の QR コードが生成されています。
+
 ### iOS
 
+iOS の場合、App Store から以下のアプリケーションをインストールします。
+
+https://apps.apple.com/jp/app/id1441195209
+
+| ![](https://storage.googleapis.com/zenn-user-upload/00aaf6cb4f15-20230314.png) | ![](https://storage.googleapis.com/zenn-user-upload/985a676bd56c-20230314.png) |
+| :----------------------------------------------------------------------------: | :----------------------------------------------------------------------------: |
+|                          1. `トンネルの追加` をタップ                          |    2. `ファイル、アーカイブから作成`<br>または `QR コードから作成` をタップ    |
+
+特定の Wi-Fi やモバイル回線に切り替わった時に自動的に VPN を有効化する場合は、設定の編集画面に入ったあと以下の手順で有効化できます。
+
+| ![](https://storage.googleapis.com/zenn-user-upload/6795ca4bc220-20230314.png) | ![](https://storage.googleapis.com/zenn-user-upload/fe11723e3ab0-20230314.png) |
+| :----------------------------------------------------------------------------: | :----------------------------------------------------------------------------: |
+|          3. 下にスクロールし<br>`オンデマンド有効化` で適宜オンにする          |          4. `状態` で<br>`tunnelStatusAddendumOnDemand` をオンにする           |
+
+VPN に接続されると、上部に `VPN` アイコンが表示されます。
+
 ### Android
+
+Android の場合、Google Play から以下のアプリケーションをインストールします。
+
+https://play.google.com/store/apps/details?id=com.wireguard.android
 
 ### Windows
 
