@@ -10,9 +10,11 @@ Raspberry Pi 4 model B で VPN アプリケーションである [WireGuard](htt
 
 **自宅ルータのポートを開けずに** 自宅外から自宅内のサーバやパソコンにアクセスしたい、フリー Wi-Fi でもある程度安全に通信できる環境を作りたいと思い構築しています。
 
-:::message
+:::message alert
 もともと [自分のメモサイト](https://memo.tomacheese.com) に上げようと思っていた内容を途中で持ってきたので、わかりにくい部分があったらすみません。  
 また筆者には独学で学んだある程度のネットワーク知識しかなく、執筆した内容が正しいとは限りませんので他の記事や書籍もご覧ください。
+
+WireGuard の利点や特徴はこの記事では解説しておりませんので、他の記事をご覧ください。
 :::
 
 ## 期待する結果
@@ -32,6 +34,9 @@ sequenceDiagram
 
   Note over frps: frpsコンテナ起動
   frps-->>frps: 接続待ち
+
+  Note over pihole: piholeコンテナ起動
+  pihole-->>pihole: 正引きリクエスト待ち
 
   Note over frpc,wireguard: WireGuardコンテナ起動
   frpc->>frps: 接続確立
@@ -103,6 +108,17 @@ WireGuard では Peer to Peer で双方がサーバにもクライアントに�
   - 512 MB プラン
   - Ubuntu 20.04.5 LTS
   - [snowdreamtech/frpc](https://hub.docker.com/r/snowdreamtech/frpc) 0.47.0
+- iOS Client Device
+  - iPhone SE 第 3 世代: iOS 16.3.1
+  - iPad Pro 第 3 世代: iPad OS 16.3.1
+  - WireGuard 1.0.16
+- Android Client Device
+  - Google Pixel 6a: Android 13
+  - WireGuard 1.0.20220516
+  - Tasker 6.0.10
+- Windows Client Device
+  - Windows 10 22H2 Build 19045.2604
+  - WireGuard 0.5.3
 
 ## 作業
 
@@ -323,7 +339,9 @@ services:
 
 :::message
 Pi-hole を構築できたら、WireGuard の DNS IP アドレスを変えておきましょう。  
-ここでどの IP アドレスを指定するべきか悩ましいのですが、とりあえず Raspberry Pi 自体の IP アドレスにしています。Docker 内でバーチャルネットワーク作ってそこを通してもいいのですが…。
+ここでどの IP アドレスを指定するべきか悩ましいのですが、とりあえず Raspberry Pi 自体の IP アドレスにしています。
+
+Docker のバーチャルネットワーク経由で Pi-hole と通信する場合、Web interface で `Settings` -> `DNS` タブ -> `Interface settings` -> `Potentially dangerous options` を `Permit all origins` にする必要があるかもしれません。
 :::
 
 ## クライアントの設定
@@ -331,8 +349,16 @@ Pi-hole を構築できたら、WireGuard の DNS IP アドレスを変えてお
 どのクライアントで利用するにしても、WireGuard サーバ側にクライアントを追加して接続設定ファイルを生成する必要があります。  
 「クライアント追加用のシェルスクリプト作成」で作成したシェルスクリプトを実行し、クライアント名を入力の上作成しておきます。
 
-作成された接続設定は `/etc/wireguard/clients/${CLIENT_NAME}/${CLIENT_NAME}.conf` にあります。  
+作成された接続設定ファイルは `/etc/wireguard/clients/${CLIENT_NAME}/${CLIENT_NAME}.conf` にあります。  
 `qrencode` をインストールしている場合は `/etc/wireguard/clients/${CLIENT_NAME}/${CLIENT_NAME}.png` に設定追加用の QR コードが生成されています。
+
+接続設定の追加時に「トンネル名」を決める必要があります。わかりやすければなんでも構わないかと思います。ここでは `Test` で登録しています。
+
+:::message
+VPN を有効にする際、VPN サーバを設置した LAN ネットワークと同じネットワーク内で有効にするとネットワークに接続できない可能性があります。  
+この場合、自動 VPN 有効化などを行う場合は自宅 Wi-Fi を除外するなどの対応が必要です。  
+（NAT とかその辺が問題なのだろうと思うのですが、よくわかっていません）
+:::
 
 ### iOS
 
@@ -358,6 +384,150 @@ Android の場合、Google Play から以下のアプリケーションをイン
 
 https://play.google.com/store/apps/details?id=com.wireguard.android
 
+| ![](https://storage.googleapis.com/zenn-user-upload/304353a3dec0-20230314.png) | ![](https://storage.googleapis.com/zenn-user-upload/c08e22c0d159-20230314.png)  |
+| :----------------------------------------------------------------------------: | :-----------------------------------------------------------------------------: |
+|                              1. 青い `+` をタップ                              | 2. `ファイル、アーカイブからインポート`<br>または `QRコードをスキャン` をタップ |
+
+#### Tasker でオンデマンド有効化
+
+:::message
+Tasker のタスクやプロファイルの設定方法について説明するのはなかなか難しいので、英語が読めるのであれば参考元の [Tutorial: Wireguard and the Tasker integration](https://hndrk.blog/tutorial-wireguard-and-tasker/) をご覧になったほうがよいかもしれません。（以下で説明するものと全く同じではありませんが…）
+:::
+
+Android の WireGuard アプリケーションの場合、特定の Wi-Fi やモバイル回線に切り替わった時に自動的に VPN を有効化する機能がないので Tasker などで対応する必要があります。
+
+https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm
+
+まず、WireGuard アプリケーション側で Tasker からの操作を有効化する必要があります。
+
+WireGuard アプリケーションを開き、縦の三点リーダー（︙）をタップします。設定画面が開くので、`詳細設定` の中にある `外部アプリからの制御` をオンにしておきましょう。
+
+![](https://storage.googleapis.com/zenn-user-upload/414d3f1ff8df-20230314.png)
+
+その上で、Tasker にて以下 2 つのタスクを作成します。
+
+|                               Activate VPN Task                                |                              Deactivate VPN Task                               |
+| :----------------------------------------------------------------------------: | :----------------------------------------------------------------------------: |
+| ![](https://storage.googleapis.com/zenn-user-upload/24d517882f6b-20230314.png) | ![](https://storage.googleapis.com/zenn-user-upload/96a538092a63-20230314.png) |
+
+`Tasker Function` は `Tasker` カテゴリの中にあり、`Flash` は `Alert` カテゴリの中にあります。
+
+`Tasker Function` には `WireGuardSetTunnel` という関数があるので、これの第一引数に「有効にするか無効にするか」、第二引数に「トンネル名」を指定します。  
+`Flash` は有効にしたか無効にしたかを確認できるようにするためのフラッシュ表示です。自身がわかるような表示であればなんでも良いかと思います。
+
+このタスクを使って、以下のようにプロファイルを作成します。
+
+|                  特定の Wi-Fi 以外<br>に接続したら VPN 有効化                  |          特定の Wi-Fi 以外 or モバイル回線<br>に接続したら VPN 有効化          |
+| :----------------------------------------------------------------------------: | :----------------------------------------------------------------------------: |
+| ![](https://storage.googleapis.com/zenn-user-upload/5a056dc4dc1c-20230314.png) | ![](https://storage.googleapis.com/zenn-user-upload/4c777f4826d4-20230314.png) |
+
+`Wifi Connected` は `State` の `Net` カテゴリにあります。`Not Wifi Connected` は `Wifi Connected` を `Invert` させたものです。
+
+- **特定の Wi-Fi 以外に接続したら VPN 有効化**
+  - 「特定の Wi-Fi に接続した（`Wifi Connected`）」をトリガーとしています。「特定の Wi-Fi」として自宅 Wi-Fi の SSID を指定しています。
+  - トリガーが有効になった場合のタスクとして、先ほど作成した `Activate VPN` を指定しています。
+  - トリガーが無効になった場合のタスクとして、先ほど作成した `Deactivate VPN` を指定しています。
+  - これにより、自宅以外の Wi-Fi を掴んだら VPN を有効化し、掴まなくなったら無効化するようになります。
+- **特定の Wi-Fi 以外 or モバイル回線に接続したら VPN 有効化**
+  - 「特定の Wi-Fi に接続した（`Wifi Connected`）」を反転（`Invert`）させた `Not Wifi Connected` をトリガーとしています。「特定の Wi-Fi」として自宅 Wi-Fi の SSID を指定しています。
+  - トリガーが有効になった場合のタスクとして、先ほど作成した `Activate VPN` を指定しています。
+  - トリガーが無効になった場合のタスクとして、先ほど作成した `Deactivate VPN` を指定しています。
+  - これにより自宅 Wi-Fi を掴まなくなったら VPN を有効化するので、**モバイル回線でも自宅以外の Wi-Fi でも VPN を通じてインターネット通信ができる** ようになります。
+
 ### Windows
 
+Windows の場合、WireGuard 公式の Installation から Windows Installer をインストールします。
+
+https://www.wireguard.com/install/
+
+インストールし起動すると、以下のような画面が表示されます。`ファイルからトンネルをインポート` をクリックし、接続設定ファイルをインポートすることで追加できます。
+
+![](https://storage.googleapis.com/zenn-user-upload/3a125767e6b6-20230314.png)
+
+Windows の場合 WireGuard アプリケーション自体に特定の Wi-Fi やモバイル回線に切り替わった時に自動的に VPN を有効化する機能がないので他の方法で対応するしかないのですが、ノートパソコンを自宅外で使う機会が今のところないので真面目に探していません。  
+[GitHub でタスクスケジューラと Python を利用した自動化スクリプト](https://github.com/BoostedDampi/Wireguard-SSID-Checker) を見つけましたが、使えるかどうか試していません。
+
+以前、大学の Wi-Fi に自動ログインするために特定 SSID の Wi-Fi に接続したらログイン処理をする C# アプリケーションを作ったことがあるので、できそうではあるのですが…。
+
+### macOS
+
+macOS の場合、App Store から以下のアプリケーションをインストールし利用できるようですが、今回は試していません。
+
+https://apps.apple.com/us/app/wireguard/id1451685025
+
 ## トラブルシューティング
+
+:::message
+WireGuard はカーネルでモジュールとして動作していることもあり一般的なアプリケーションのような標準出力にログを出す機能がありません。  
+なのでカーネルのダイナミックデバッグを通じてデバッグログを参照しなければならないのですが、Raspberry Pi ではダイナミックデバッグができないのかデバッグログを見ることができませんでした。（少なくとも、`/sys/kernel/debug/dynamic_debug/` がありませんでした。）
+:::
+
+### UDP 通信が到達しているかを確認
+
+WireGuard は UDP で通信します。UDP は TCP のように通信が到達しているかを確認しにくいのでなかなか厄介なのですが、1 つの手法としてネットワークデバイスを流れる通信を `tcpdump` で見る方法があります。
+
+`apt install tcpdump` などで tcpdump をインストールしたうえで、VPS -> frps コンテナ -> frpc コンテナ -> Raspberry Pi の順でクライアントから WireGuard への通信が来ているかを確認すると良いでしょう。
+
+```shell
+sudo tcpdump -tttni any "udp port 51820"
+```
+
+`51820` はポート番号なので、VPS で公開するポート番号などを変えている場合は適宜変更してください。
+
+きちんと疎通できていると、以下のように UDP 通信が行われていることが確認できます。ファイヤーウォールなどの影響で通信が到達していない場合はなにも表示されません。
+
+```text
+00:00:00.000000 lo    In  IP 127.0.0.1.51820 > 127.0.0.1.37070: UDP, length 128
+00:00:00.152274 lo    In  IP 127.0.0.1.37070 > 127.0.0.1.51820: UDP, length 148
+00:00:00.000982 lo    In  IP 127.0.0.1.51820 > 127.0.0.1.37070: UDP, length 92
+00:00:00.089711 lo    In  IP 127.0.0.1.37070 > 127.0.0.1.51820: UDP, length 32
+00:00:00.009923 lo    In  IP 127.0.0.1.37070 > 127.0.0.1.51820: UDP, length 112
+00:00:00.000079 lo    In  IP 127.0.0.1.37070 > 127.0.0.1.51820: UDP, length 96
+00:00:00.000031 lo    In  IP 127.0.0.1.37070 > 127.0.0.1.51820: UDP, length 96
+00:00:00.000330 lo    In  IP 127.0.0.1.51820 > 127.0.0.1.37070: UDP, length 80
+```
+
+### lsof は使えない
+
+ポートを Listen しているかを確認する際によく使う `lsof` コマンドですが、WireGuard の場合には利用できません。  
+WireGuard はカーネルモジュールとして動作するので、**プロセスが開いたファイルのみを表示する lsof コマンドでは確認できない** のです。
+
+https://serverfault.com/questions/1015322/the-wireguard-not-listening-on-port-after-started
+
+### `wg show` コマンドを活用する
+
+`sudo wg show all` と実行することで、ピアの情報を確認できます。
+
+```text
+interface: wg0
+  public key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  private key: (hidden)
+  listening port: 51820
+
+peer: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  preshared key: (hidden)
+  endpoint: 127.0.0.1:57165
+  allowed ips: 172.16.0.2/32
+  latest handshake: 32 seconds ago
+  transfer: 1.08 MiB received, 3.86 MiB sent
+
+peer: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  preshared key: (hidden)
+  allowed ips: 172.16.0.1/32
+```
+
+### リモートデスクトップ（RDP）すると真っ黒になる
+
+MTU サイズの設定がデフォルトのままだと発生するようです。
+
+https://qiita.com/tabimoba/items/a99fb34d504b02437b9e
+
+## 参考サイト
+
+- [WireGuard: fast, modern, secure VPN tunnel](https://www.wireguard.com/)
+- [WireGuard - ArchWiki](https://wiki.archlinux.jp/index.php/WireGuard)
+- [WireGuard概要まとめ](https://zenn.dev/hiroe_orz17/articles/f8f35075dea4cf)
+- [【Ubuntu】WireGuardで簡単VPN環境を構築 | VPS Life](https://vpslife.server-memo.net/ubuntu_wireguard_install/)
+- [第614回 WireGuardでVPNサーバーを構築する | gihyo.jp](https://gihyo.jp/admin/serial/01/ubuntu-recipe/0614)
+- [Tutorial: Wireguard and the Tasker integration](https://hndrk.blog/tutorial-wireguard-and-tasker/)
+- [Windows版Wireguardで接続/切断をコマンドでやる - Qiita](https://qiita.com/mono1729/items/b29e1933f9b0052d17ff)
