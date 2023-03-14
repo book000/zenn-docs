@@ -73,8 +73,10 @@
   "blanks-around-fences": true,
   // MD032: リストの前後に空行を入れること
   "blanks-around-lists": true,
-  // MD033: HTML の記述を許容しない
-  "no-inline-html": true,
+  // MD033: HTML の記述を許容しない（brだけ許容）
+  "no-inline-html": {
+    "allowed_elements": ["br"]
+  },
   // MD034: URL のベタ書きを禁止しない (リンク記法もしくはインラインコードとして表現する)
   "no-bare-urls": false,
   // MD035: 水平区切り線のスタイル

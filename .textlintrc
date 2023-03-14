@@ -21,6 +21,18 @@
           "message": "CloudFlare to Cloudflare",
           "pattern": "/CloudFlare/",
           "replace": "Cloudflare"
+        },
+        {
+          "message": "docker-compose.yml to compose.yaml",
+          "pattern": "/docker-compose.yml/",
+          "replace": "compose.yaml",
+          "forceCode": true
+        },
+        {
+          "message": "docker-compose command is deprecated",
+          "pattern": "/docker-compose/",
+          "replace": "docker compose",
+          "forceCode": true
         }
       ]
     },
@@ -111,7 +123,8 @@
         "後", // ja-no-orthographic-variants: 「あと」と「後」の表記ゆれ検知を抑制
         "あと", // ja-no-orthographic-variants: 「あと」と「後」の表記ゆれ検知を抑制
         "行為", // SmartHR: 「為に」が該当してしまう
-        "・・・" // ja-no-successive-word
+        "・・・", // ja-no-successive-word
+        "でで" // typo prh
       ]
     }
   }
