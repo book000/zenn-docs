@@ -2698,10 +2698,10 @@ textlint-rule-preset-jtf-style@^2.3.12:
     textlint-rule-helper "^2.2.0"
     textlint-rule-prh "^5.2.1"
 
-textlint-rule-preset-smarthr@1.21.1:
-  version "1.21.1"
-  resolved "https://registry.yarnpkg.com/textlint-rule-preset-smarthr/-/textlint-rule-preset-smarthr-1.21.1.tgz#e139cd011adff41e13ee0c4cee2d0588bb927f11"
-  integrity sha512-cyBGasBBDnsSBI6TbL6Rg8GpdcfZUk8AG0s5sXNPo3qauLTD5D92ZsZbgY4XmhHSahfcMsXttQw2K8JV8f5hvQ==
+textlint-rule-preset-smarthr@1.22.0:
+  version "1.22.0"
+  resolved "https://registry.yarnpkg.com/textlint-rule-preset-smarthr/-/textlint-rule-preset-smarthr-1.22.0.tgz#7e2c66bfe5bf4787c0d9637d5e08b74d6cec08d8"
+  integrity sha512-KOUPeK1PxzwEovrFWz36jQtoHWj03HcOYKKWumGkdblZ6igbg0agWifBeTMnZt1AGnNlpqt3s4xvD740gd4KVw==
   dependencies:
     "@textlint-rule/textlint-rule-no-unmatched-pair" "^1.0.9"
     "@textlint/module-interop" "^12.2.1"
