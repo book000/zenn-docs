@@ -1,0 +1,23 @@
+{
+  "name": "book000/zenn-docs",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:0-18",
+  "postCreateCommand": "yarn install",
+  "waitFor": "postCreateCommand",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.wordWrap": "on"
+      },
+      "extensions": [
+        "yzhang.markdown-all-in-one",
+        "taichi.vscode-textlint",
+        "bierner.markdown-mermaid",
+        "DavidAnson.vscode-markdownlint",
+        "esbenp.prettier-vscode",
+        "negokaz.zenn-editor",
+        "GitHub.vscode-pull-request-github",
+        "donjayamanne.githistory"
+      ]
+    }
+  }
+}

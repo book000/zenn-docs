@@ -67,7 +67,7 @@ PowerShell に戻り、`.\ngrok.exe authtoken <TOKEN>` と実行します。当�
 先ほどの PowerShell で `.\ngrok.exe tcp --region ap 25565` と実行しましょう。
 `Session Status` が `online` と表示され、`Forwarding` 欄にアドレスが表示されていれば成功です。
 サーバにログインする人にアドレスを教える場合は `tcp://0.tcp.ap.ngrok.io:<PORT>` の `0.tcp.ap.ngrok.io:<PORT>` の部分、上記画像で言えば `0.tcp.ap.ngrok.io:13915` を教えましょう。
-ちなみに、ほかの記事では `--region ap` を付けていないケースが多いですがデフォルトだとアメリカの鯖が選ばれてしまうので無茶苦茶遅いです。`--region ap` をつけて asia を選ぶことをお勧めします。
+ちなみに、ほかの記事では `--region ap` をつけていないケースが多いですがデフォルトだとアメリカの鯖が選ばれてしまうので無茶苦茶遅いです。`--region ap` をつけて asia を選ぶことをお勧めします。
 
 ### 完了
 
