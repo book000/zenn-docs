@@ -13,7 +13,8 @@
         "bierner.markdown-mermaid",
         "DavidAnson.vscode-markdownlint",
         "esbenp.prettier-vscode",
-        "negokaz.zenn-editor"
+        "negokaz.zenn-editor",
+        "GitHub.vscode-pull-request-github"
       ]
     }
   }
