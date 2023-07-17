@@ -7,7 +7,7 @@ published: true
 ---
 
 Docker コンテナのログはコンテナが終了すると閲覧できなくなります。  
-障害が発生したときに後からログを確認したいときに、そのコンテナが異常終了していると見れないケースがあるので、外部にログを投げてそれを閲覧できる仕組みが必要でした。  
+障害が発生したときに後からログを確認したいときに、そのコンテナが異常終了していると見られないケースがあるので、外部にログを投げてそれを閲覧できる仕組みが必要でした。  
 [Logspout](https://github.com/gliderlabs/logspout) + [Logstash](https://www.elastic.co/jp/logstash/) + [Elasticsearch](https://www.elastic.co/jp/elasticsearch/) + [Kibana](https://www.elastic.co/jp/kibana/) で実施します。
 
 最初は Docker Compose のロギングドライバ + [Fluentd](https://www.fluentd.org/) + Elasticsearch + Kibana で作ることを考えていました。  
@@ -15,13 +15,13 @@ Docker コンテナのログはコンテナが終了すると閲覧できなく�
 
 ## 仕様
 
-1台のログ蓄積サーバと、2台のコンテナ実行サーバで構成します。  
+1 台のログ蓄積サーバと、2 台のコンテナ実行サーバで構成します。  
 コンテナ実行サーバには複数の Docker コンテナがあります。
 
 Logspout を使用して、Docker コンテナ群からログを取得します。  
-取得したログは各コンテナ実行サーバで動作する Logstash へ一旦転送します。  
+取得したログは各コンテナ実行サーバで動作する Logstash へいったん転送します。  
 その後、Logstash からログ蓄積サーバで動作する Elasticsearch に転送します。  
-閲覧時、ユーザは Kibana Web GUI にアクセスする。この際、Kibana は Elasticsearch のデータを参照します。
+閲覧時、ユーザーは Kibana Web GUI にアクセスする。この際、Kibana は Elasticsearch のデータを参照します。
 
 ```mermaid
 flowchart TD
@@ -112,7 +112,7 @@ docker compose up --build -d
 
 ### 2. コンテナ実行サーバで Logspout と Logstash を立ち上げる
 
-以下の Gist をログ蓄積サーバでそれぞれのファイルを保存します。
+以下の Gist をコンテナ実行サーバでそれぞれのファイルを保存します。
 
 @[gist](https://gist.github.com/book000/9471df754b741c712eb9be8f6af5c18f)
 
@@ -127,6 +127,7 @@ wget https://gist.github.com/book000/9471df754b741c712eb9be8f6af5c18f/raw/logsta
 保存後、以下の項目を書き換えてください。
 
 - `compose.yaml` の 19 行目: `<HOSTNAME>` を任意のホスト名に変更
+- `logstash.conf` の 47 行目: `<IP-ADDRESS>` をログ蓄積サーバの IP アドレスに変更
 
 その後、Docker Compose で立ち上げます。
 
@@ -136,13 +137,36 @@ docker compose up --build -d
 
 :::message
 `compose.yaml` では、`gliderlabs/logspout` と `netcat` をインストールした Logstash を使用して立ち上げています。
-
-
 :::
 
 ### 3. ログが蓄積されていることを確認
 
+ログ蓄積サーバの 5601 番ポートへブラウザでアクセスし、以下の設定をします。
+
+1. `Select your space` と出てきたら `Default` を選択
+2. `Start by adding your data` と出てきたら、`Add data` をクリック
+3. Logstash によってデータが送受信されているはずなので、左上三本線でサイドバーを開き、`Analytics` の `Discover` にアクセス
+4. `You have data in Elasticsearch. Now, create an index pattern.` と表示されたら、`Create index pattern` をクリック  
+   ここで `Ready to try Kibana? First, you need data.` という画面が出てきたら、ログデータが受信できていない。
+5. `Step 1 of 2: Define an index pattern` にて、`Index pattern name` に `logs-*` と入力、`Next step` をクリック
+6. `Step 2 of 2: Configure settings` にて、`Time field` に `@timestamp` が選択されていることを確認。`Create index pattern` をクリック
+7. 再度、左上三本線でサイドバーを開き、`Analytics` の `Discover` にアクセス
+8. コンテナ実行サーバのログが確認できれば OK
+
+| 3 | 4 |
+| :-: | :-: |
+| ![](https://storage.googleapis.com/zenn-user-upload/49838b857bb5-20230717.png) | ![](https://storage.googleapis.com/zenn-user-upload/d362607408b7-20230717.png) |
+
 ### 4. より良いログの閲覧・ダッシュボードの活用
+
+左上三本線でサイドバーを開き、`Analytics` の `Dashboard` から、ダッシュボードを作成できます。  
+複数のサーバからログを受信するならサーバごとのレコードグラフや、コンテナごとのレコードグラフを作っておくと有用かと思います。
+
+![](https://storage.googleapis.com/zenn-user-upload/810a7b0f3ed3-20230717.png)
+
+また、リアルタイムでログを確認したい場合は、左上三本線でサイドバーを開き、`Observability` の `Logs` を開き `Stream live` を有効にすると確認できます。
+
+![](https://storage.googleapis.com/zenn-user-upload/79a161bf391e-20230717.png)
 
 [^1]: 必ずしも良い対応ではないので、適切な設定をどのようにするべきか教えてください…。
 [^2]: 参照: [公式ドキュメント](https://www.elastic.co/guide/en/kibana/current/docker.html#docker-defaults)
