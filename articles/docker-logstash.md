@@ -102,7 +102,7 @@ docker compose up --build -d
 ```
 
 :::message
-`compose.yml` では、Elasticsearch と Kibana を `docker.elastic.co` でホストされているイメージを使用して立ち上げています。  
+`compose.yaml` では、Elasticsearch と Kibana を `docker.elastic.co` でホストされているイメージを使用して立ち上げています。  
 特記すべき事項を以下にまとめておきます。
 
 - `elasticsearch` の環境変数 `xpack.security.enabled`: セキュアな通信を有効にする設定を無効にしています。自宅内 LAN で動作することを想定していることと、設定簡略化のために無効にしていますが本来は適切なセキュリティ設定が必要です。具体的な設定方法は [公式ドキュメント](https://www.elastic.co/jp/blog/getting-started-with-security) を参照ください。
@@ -123,6 +123,22 @@ wget https://gist.github.com/book000/9471df754b741c712eb9be8f6af5c18f/raw/compos
 wget https://gist.github.com/book000/9471df754b741c712eb9be8f6af5c18f/raw/logstash.conf
 wget https://gist.github.com/book000/9471df754b741c712eb9be8f6af5c18f/raw/logstash.Dockerfile
 ```
+
+保存後、以下の項目を書き換えてください。
+
+- `compose.yaml` の 19 行目: `<HOSTNAME>` を任意のホスト名に変更
+
+その後、Docker Compose で立ち上げます。
+
+```bash
+docker compose up --build -d
+```
+
+:::message
+`compose.yaml` では、`gliderlabs/logspout` と `netcat` をインストールした Logstash を使用して立ち上げています。
+
+
+:::
 
 ### 3. ログが蓄積されていることを確認
 
