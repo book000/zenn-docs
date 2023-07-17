@@ -1,12 +1,13 @@
 {
   "name": "book000/zenn-docs",
-  "build": {
-    "context": "..",
-    "dockerfile": "Dockerfile"
-  },
-  "postAttachCommand": "sh ./.devcontainer/postAttachCommand.sh",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:0-18",
+  "postCreateCommand": "yarn install",
+  "waitFor": "postCreateCommand",
   "customizations": {
     "vscode": {
+      "settings": {
+        "editor.wordWrap": "on"
+      },
       "extensions": [
         "yzhang.markdown-all-in-one",
         "taichi.vscode-textlint",
