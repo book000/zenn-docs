@@ -60,7 +60,7 @@ Logspout, Logstash と Elasticsearch, Kibana は Docker Compose で構成しま�
   - `tomapi`
     - Raspberry Pi 4 model B
     - Raspberry Pi OS 64 bit (Bullseye)
-  - `nuts`  
+  - `nuts`
     - Ubuntu 22.04.2
   - Docker 23.0.5 (Build bc4487a)
   - Docker Compose v2.17.3
@@ -78,7 +78,7 @@ Logspout, Logstash と Elasticsearch, Kibana は Docker Compose で構成しま�
 
 以下の Gist をログ蓄積サーバで `compose.yaml` として保存します。
 
-https://gist.github.com/book000/2358c7db69e34442051c268a34245830
+@[gist](https://gist.github.com/book000/2358c7db69e34442051c268a34245830)
 
 以下のコマンドを実行してダウンロードしても構いません。
 
@@ -112,8 +112,17 @@ docker compose up --build -d
 
 ### 2. コンテナ実行サーバで Logspout と Logstash を立ち上げる
 
-以下の Gist をログ蓄積サーバで `compose.yaml` として保存します。
+以下の Gist をログ蓄積サーバでそれぞれのファイルを保存します。
 
+@[gist](https://gist.github.com/book000/9471df754b741c712eb9be8f6af5c18f)
+
+以下のコマンドを実行してダウンロードしても構いません。
+
+```bash
+wget https://gist.github.com/book000/9471df754b741c712eb9be8f6af5c18f/raw/compose.yaml
+wget https://gist.github.com/book000/9471df754b741c712eb9be8f6af5c18f/raw/logstash.conf
+wget https://gist.github.com/book000/9471df754b741c712eb9be8f6af5c18f/raw/logstash.Dockerfile
+```
 
 ### 3. ログが蓄積されていることを確認
 
