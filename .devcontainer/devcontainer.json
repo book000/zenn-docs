@@ -14,7 +14,8 @@
         "DavidAnson.vscode-markdownlint",
         "esbenp.prettier-vscode",
         "negokaz.zenn-editor",
-        "GitHub.vscode-pull-request-github"
+        "GitHub.vscode-pull-request-github",
+        "donjayamanne.githistory"
       ]
     }
   }
