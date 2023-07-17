@@ -327,11 +327,6 @@
     traverse "^0.6.7"
     unified "^9.2.2"
 
-"@textlint/module-interop@^12.2.1":
-  version "12.6.1"
-  resolved "https://registry.npmjs.org/@textlint/module-interop/-/module-interop-12.6.1.tgz"
-  integrity sha512-COyRctLVh2ktAObmht3aNtqUvP0quoellKu1c2RrXny1po+Mf7PkvEKIxphtArE4JXMAmu01cDxfH6X88+eYIg==
-
 "@textlint/module-interop@^13.3.3":
   version "13.3.3"
   resolved "https://registry.yarnpkg.com/@textlint/module-interop/-/module-interop-13.3.3.tgz#645b47b9e951030b2d656e2c9266b5587de2a17b"
@@ -2216,9 +2211,9 @@ textlint-rule-ja-hiragana-hojodoushi@1.1.0, textlint-rule-ja-hiragana-hojodoushi
     morpheme-match-all "^1.1.0"
     untildify "^4.0.0"
 
-textlint-rule-ja-keishikimeishi@^1.0.4:
+textlint-rule-ja-keishikimeishi@^1.0.5:
   version "1.0.5"
-  resolved "https://registry.npmjs.org/textlint-rule-ja-keishikimeishi/-/textlint-rule-ja-keishikimeishi-1.0.5.tgz"
+  resolved "https://registry.yarnpkg.com/textlint-rule-ja-keishikimeishi/-/textlint-rule-ja-keishikimeishi-1.0.5.tgz#3a2193bf207ca9ca07ed01d184efbc0035d87edd"
   integrity sha512-FJrVbz6LLeQiUTFkVhpGgmVAHSGbyFYixzwb7Kb2xj3E4TZ8gOtm8X2mwHWtOP+wQs6JRpRyV9ZZc3rTyvk20w==
   dependencies:
     kuromojin "^3.0.0"
@@ -2438,14 +2433,6 @@ textlint-rule-no-exclamation-question-mark@^1.1.0:
     match-index "^1.0.3"
     textlint-rule-helper "^2.1.1"
 
-textlint-rule-no-hankaku-kana@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/textlint-rule-no-hankaku-kana/-/textlint-rule-no-hankaku-kana-2.0.0.tgz"
-  integrity sha512-zqrP2iSEjCMU8mqSvK+ybIisLel/hwUltE36g0hqDiET4uQmtgLj9OVtX77pLOkMOJAiAfme2Ub8irQifYq2Sg==
-  dependencies:
-    textlint-rule-helper "^2.3.0"
-    textlint-tester "^13.3.1"
-
 textlint-rule-no-hankaku-kana@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/textlint-rule-no-hankaku-kana/-/textlint-rule-no-hankaku-kana-2.0.1.tgz#aac00049bba008e45b79ce230fd406030fbe8dfd"
@@ -2471,15 +2458,6 @@ textlint-rule-no-mixed-zenkaku-and-hankaku-alphabet@1.0.1, textlint-rule-no-mixe
     match-index "^1.0.1"
     moji "^0.5.1"
     textlint-rule-helper "^2.0.0"
-
-textlint-rule-no-nfd@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.npmjs.org/textlint-rule-no-nfd/-/textlint-rule-no-nfd-2.0.1.tgz"
-  integrity sha512-d0SSK64qliPzan+xuRo7F2N4cfgDxBSwzZSwOMclwtPN+ag4Ir0M5SVfBEX1uOAgfPFnjssziDm6kp6WSwzJxg==
-  dependencies:
-    match-index "^1.0.3"
-    textlint-rule-helper "^2.3.0"
-    unorm "^1.4.1"
 
 textlint-rule-no-nfd@^2.0.2:
   version "2.0.2"
@@ -2552,16 +2530,16 @@ textlint-rule-preset-jtf-style@^2.3.13:
     textlint-rule-helper "^2.2.1"
     textlint-rule-prh "^5.2.1"
 
-textlint-rule-preset-smarthr@1.22.0:
-  version "1.22.0"
-  resolved "https://registry.npmjs.org/textlint-rule-preset-smarthr/-/textlint-rule-preset-smarthr-1.22.0.tgz"
-  integrity sha512-KOUPeK1PxzwEovrFWz36jQtoHWj03HcOYKKWumGkdblZ6igbg0agWifBeTMnZt1AGnNlpqt3s4xvD740gd4KVw==
+textlint-rule-preset-smarthr@1.25.0:
+  version "1.25.0"
+  resolved "https://registry.yarnpkg.com/textlint-rule-preset-smarthr/-/textlint-rule-preset-smarthr-1.25.0.tgz#9c694f5b5c4e91baa4868368940af1fe334feebb"
+  integrity sha512-hgxPnvoAwoXWiJhLDPFwIL1WGrUjxpIvWg8HjlED4BuE7GmnuxaRcmSuuFzRKLZo3nMzNmf2SMWshvxjbU2QeQ==
   dependencies:
     "@textlint-rule/textlint-rule-no-unmatched-pair" "^1.0.9"
-    "@textlint/module-interop" "^12.2.1"
+    "@textlint/module-interop" "^13.3.3"
     textlint-rule-ja-hiragana-daimeishi "^1.0.0"
     textlint-rule-ja-hiragana-hojodoushi "^1.1.0"
-    textlint-rule-ja-keishikimeishi "^1.0.4"
+    textlint-rule-ja-keishikimeishi "^1.0.5"
     textlint-rule-ja-nakaguro-or-halfwidth-space-between-katakana "^2.2.0"
     textlint-rule-ja-no-abusage "^3.0.0"
     textlint-rule-ja-no-mixed-period "^3.0.1"
@@ -2578,10 +2556,10 @@ textlint-rule-preset-smarthr@1.22.0:
     textlint-rule-no-doubled-conjunctive-particle-ga "^2.0.5"
     textlint-rule-no-doubled-joshi "^4.0.3"
     textlint-rule-no-dropping-the-ra "^3.0.0"
-    textlint-rule-no-hankaku-kana "^2.0.0"
+    textlint-rule-no-hankaku-kana "^2.0.1"
     textlint-rule-no-mix-dearu-desumasu "^5.0.0"
     textlint-rule-no-mixed-zenkaku-and-hankaku-alphabet "^1.0.1"
-    textlint-rule-no-nfd "^2.0.1"
+    textlint-rule-no-nfd "^2.0.2"
     textlint-rule-prh "^5.3.0"
     textlint-rule-sentence-length "^4.0.2"
 
@@ -2818,11 +2796,6 @@ unist-util-visit@^3.0.0:
     "@types/unist" "^2.0.0"
     unist-util-is "^5.0.0"
     unist-util-visit-parents "^4.0.0"
-
-unorm@^1.4.1:
-  version "1.6.0"
-  resolved "https://registry.npmjs.org/unorm/-/unorm-1.6.0.tgz"
-  integrity sha512-b2/KCUlYZUeA7JFUuRJZPUtr4gZvBh7tavtv4fvk4+KV9pfGiR6CQAQAWl49ZpR3ts2dk4FYkP7EIgDJoiOLDA==
 
 untildify@^3.0.3:
   version "3.0.3"
