@@ -21,7 +21,7 @@ Docker コンテナのログはコンテナが終了すると閲覧できなく�
 Logspout を使用して、Docker コンテナ群からログを取得します。  
 取得したログは各コンテナ実行サーバで動作する Logstash へいったん転送します。  
 その後、Logstash からログ蓄積サーバで動作する Elasticsearch に転送します。  
-閲覧時、ユーザーは Kibana Web GUI にアクセスする。この際、Kibana は Elasticsearch のデータを参照します。
+閲覧時、ユーザーは Kibana Web GUI にアクセスします。この際、Kibana は Elasticsearch のデータを参照します。
 
 ```mermaid
 flowchart TD
