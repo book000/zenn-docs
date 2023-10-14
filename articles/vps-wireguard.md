@@ -99,25 +99,25 @@ WireGuard では Peer to Peer で双方がサーバにもクライアントに�
 - Raspberry Pi 4 model B
   - Raspberry Pi OS 64bit (Bullseye)
   - WireGuard 1.0.20210223-1
-  - [snowdreamtech/frps](https://hub.docker.com/r/snowdreamtech/frps) 0.47.0
-  - [pi-hole/pi-hole](https://hub.docker.com/r/pi-hole/pi-hole) 2023.02.2
+  - [snowdreamtech/frps](https://hub.docker.com/r/snowdreamtech/frps) 0.52.1
+  - [pi-hole/pi-hole](https://hub.docker.com/r/pihole/pihole) 2023.05.2
   - Ethernet の NIC として `eth0` を利用
   - 各クライアントに割り振る IP として `172.16.0.x` を使用
   - WireGuard のサーバ IP として `172.16.0.254` を使用
 - ConoHa VPS
   - 512 MB プラン
-  - Ubuntu 20.04.5 LTS
-  - [snowdreamtech/frpc](https://hub.docker.com/r/snowdreamtech/frpc) 0.47.0
+  - Ubuntu 20.04.6 LTS
+  - [snowdreamtech/frpc](https://hub.docker.com/r/snowdreamtech/frpc) 0.52.1
 - iOS Client Device
-  - iPhone SE 第 3 世代: iOS 16.3.1
-  - iPad Pro 第 3 世代: iPad OS 16.3.1
-  - WireGuard 1.0.16
+  - iPhone SE 第 3 世代: iOS 16.7.1
+  - iPad Pro 第 3 世代: iPad OS 16.7.1
+  - WireGuard 1.0.16 (27) Backend 1e2c3e5a
 - Android Client Device
-  - Google Pixel 6a: Android 13
-  - WireGuard 1.0.20220516
-  - Tasker 6.0.10
+  - Google Pixel 6a: Android 14
+  - WireGuard 1.0.20230707
+  - Tasker 6.1.32
 - Windows Client Device
-  - Windows 10 22H2 Build 19045.2604
+  - Windows 10 22H2 Build 22621.2428
   - WireGuard 0.5.3
 
 ## 作業
@@ -141,18 +141,19 @@ services:
     image: snowdreamtech/frps
     container_name: frps
     volumes:
-      - ./frps.ini:/etc/frp/frps.ini
+      - ./frps.toml:/etc/frp/frps.toml
     ports:
       - 7000:7000
       - 51820:51820/udp
     restart: always
 ```
 
-その後、`compose.yaml` を置いた同じディレクトリに `frps.ini` を作成し以下を設定します。
+その後、`compose.yaml` を置いた同じディレクトリに `frps.toml` を作成し以下を設定します。
 
-```ini:frps.ini
+```ini:frps.toml
 [common]
-bind_port = 7000
+bindAddr = "0.0.0.0"
+bindPort = 7000
 token = "任意の文字列"
 ```
 
@@ -280,27 +281,29 @@ services:
     image: snowdreamtech/frpc
     container_name: frpc
     volumes:
-      - ./frpc.ini:/etc/frp/frpc.ini
+      - ./frpc.toml:/etc/frp/frpc.toml
     restart: always
     network_mode: host
 ```
 
-その後、`compose.yaml` を置いた同じディレクトリに `frpc.ini` を作成し以下を設定します。
+その後、`compose.yaml` を置いた同じディレクトリに `frpc.toml` を作成し以下を設定します。
 
-```ini:frpc.ini
-[common]
-token = "frpsで設定したトークン"
-server_addr = サーバIPアドレス
-server_port = 7000
+```ini:frpc.toml
+serverAddr = "サーバIPアドレス"
+serverPort = 7000
 
-[wireguard]
-type = udp
-local_ip = 127.0.0.1
-local_port = 51820
-remote_port = 51820
+auth.method = "token"
+auth.token = "frpsで設定したトークン"
+
+[[proxies]]
+name = "wireguard"
+type = "udp"
+localIP = "127.0.0.1"
+localPort = 51820
+remotePort = 51820
 ```
 
-`token` には 1 で作成した `frps.ini` にて設定したトークンを、`server_addr` には VPS の IP アドレスを設定します。
+`token` には 1 で作成した `frps.toml` にて設定したトークンを、`server_addr` には VPS の IP アドレスを設定します。
 
 設定を終えたら、`docker compose up --build -d` で立ち上げます。
 
