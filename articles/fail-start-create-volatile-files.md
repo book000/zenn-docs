@@ -15,7 +15,7 @@ A start job is running for Create Volatile Files and Directories
 これの改善策記録です。
 
 :::message
-この記事では Raspberry Pi での作業について記載していますが、Ubuntu のサーバであればこの作業内容で解消できるかと思われます（シングルユーザーモードで入るところが違うかと思いますが…）
+この記事では Raspberry Pi での作業について記載していますが、Ubuntu のサーバであればこの作業内容で解消できるかと思われます。（シングルユーザーモードで入るところは違うかと思いますが…）
 
 いつものことですが、自己責任でお願いします。
 :::
