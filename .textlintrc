@@ -95,7 +95,14 @@
       // ！の利用を禁止しない: https://github.com/textlint-rule/textlint-rule-no-exclamation-question-mark
       "no-exclamation-question-mark": false,
       // 文中に同じ助詞が複数出てくるのをチェックしない: https://github.com/textlint-ja/textlint-rule-no-doubled-joshi
-      "no-doubled-joshi": false
+      "no-doubled-joshi": false,
+      // ですますとである調の混在のみをチェックする: https://github.com/textlint-ja/textlint-rule-no-mix-dearu-desumasu
+      "no-mix-dearu-desumasu": {
+        "preferInHeader": "",
+        "preferInBody": "",
+        "preferInList": "",
+        "strict": false
+      }
     },
     // prhルール: https://github.com/textlint-rule/textlint-rule-prh
     "prh": {
