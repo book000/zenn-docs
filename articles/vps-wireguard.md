@@ -397,6 +397,12 @@ https://play.google.com/store/apps/details?id=com.wireguard.android
 Tasker のタスクやプロファイルの設定方法について説明するのはなかなか難しいので、英語が読めるのであれば参考元の [Tutorial: Wireguard and the Tasker integration](https://hndrk.blog/tutorial-wireguard-and-tasker/) をご覧になったほうがよいかもしれません。（以下で説明するものと全く同じではありませんが…）
 :::
 
+:::message alert
+2024/03/20 追記: Android 14 で動作させている端末にて、下記の Tasker タスクでは動作しなくなりました。  
+どうやら、WireGuard アプリケーションがバックグラウンドで起動していないと（タスクキルしてしまうと）Tasker から操作できないようです。  
+後述する「Tasker で VPN がつながるまでトライする」セクションにて追記しています。
+:::
+
 Android の WireGuard アプリケーションの場合、特定の Wi-Fi やモバイル回線に切り替わった時に自動的に VPN を有効化する機能がないので Tasker などで対応する必要があります。
 
 https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm
@@ -524,6 +530,44 @@ peer: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 MTU サイズの設定がデフォルトのままだと発生するようです。
 
 https://qiita.com/tabimoba/items/a99fb34d504b02437b9e
+
+### Tasker で VPN がつながるまでトライする
+
+具体的にどのバージョンから問題になっているのかわかりませんが、Pixel 7a, Android 14, Tasker 6.2.22 環境で一部条件のもとでは VPN 接続が確立されない現象を確認しています。  
+いろいろ検証したところ、WireGuard アプリケーションがバックグラウンドで起動していないと Tasker からうまくオンオフ操作ができないようです。
+
+回避策として、VPN 接続が確立するまで VPN 接続をオンにする処理に書き換えてとりあえずは動作しています。  
+また、バックグラウンドで動作できるよう、一度トライしてダメな場合は WireGuard を意図的に起動させるようにしています。
+
+3 つのタスクと 1 つのプロファイルを用意します。
+
+#### タスク1つめ: VPN 接続が確立したとき
+
+以下のように、`%isVPN` 変数に対して `true` を代入タスクを作ります。  
+（後述する切断時のタスクと名前の一貫性がないのは許してください…）
+
+Tasker では変数名に大文字を入れることでタスクを超えたグローバル変数となるので、必ず大文字を含めます。
+
+![](https://storage.googleapis.com/zenn-user-upload/5c667b6f15f1-20240320.png)
+
+#### タスク2つめ: VPN 接続が切断したとき
+
+以下のように、`%isVPN` 変数に対して `false` を代入するタスクを作ります。
+
+![](https://storage.googleapis.com/zenn-user-upload/aebc9cd6e8ba-20240320.png)
+
+#### タスク3つめ: VPN 接続タスクにリトライ処理を追加
+
+以下のように、`%loop_count` ローカル変数でループ回数を計算しつつ、VPN が接続確立されるまで（`%isVPN` 変数が `true` になるまで）接続を試行します。  
+2 回目以降のループでは、WireGuard がバックグラウンドにいないと Tasker からの操作を受け付けない関係で、起動して即座にもともと起動していたアプリケーションに戻す動作をさせています。
+
+![](https://storage.googleapis.com/zenn-user-upload/0bc98deed765-20240320.png)
+
+#### プロファイル: VPN 接続確立時・切断時
+
+以下のように、VPN の接続確立時に `%isVPN` 変数を `true`、切断時に `%isVPN` 変数を `false` にするように設定します。
+
+![](https://storage.googleapis.com/zenn-user-upload/5a6ac3c940c2-20240320.png)
 
 ## 参考サイト
 
