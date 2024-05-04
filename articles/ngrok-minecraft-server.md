@@ -7,10 +7,10 @@ published: true
 ---
 
 :::message
-2024/03/24 に記事を書き直しました。
+2024/05/04 に記事を書き直しました。
 :::
 
-主に Minecraft Java Edition のマルチプレイをしたいけどポート開放が面倒とか、ネットワーク上の問題でポート開放ができないなどで困っている人向けに ngrok というサービスを使って **一時的に** 公開する方法の解説です。
+主に Minecraft Java Edition のマルチプレイをしたいけどポート開放が面倒とか、ネットワーク上の問題でポート開放ができないなどで困っている人向けに ngrok（エングロック）というサービスを使って **一時的に** 公開する方法の解説です。
 
 Minecraft サーバの立て方などは説明しません。  
 Minecraft でなくても、TCP というプロトコルで通信する場合は ngrok が利用できます。統合版の場合は UDP なので、localtonet などがおすすめかもしれません。[このへんの記事](https://zenn.dev/hrtk92/articles/mc-server-localtonet) がよさそうです。
@@ -150,8 +150,72 @@ pause
 
 ## 公開ドメインについて
 
-## 有償版で利用できること
+なにも設定せずそのまま公開する場合、以下のドメインが使われます。
 
-## バージョン2とバージョン3の違い
+- http の場合: `xxxx-xxxx-xx-xxxx-xxx-xxxx-xxxx-xxxx-xxxx.ngrok-free.app` (x には小文字英数字が入る)
+- tcp の場合: `0.tcp.jp.ngrok.io:xxxxx`
 
-## ほかの関連アプリとの違い
+http の場合サブドメイン部分が、tcp の場合ポート番号が公開作業を行うごとにランダムで設定されます。
+
+無料プランにおいては、以下のように設定することでサブドメイン部分を固定値にすることができます。  
+固定値といっても、ユーザーが自由に決められるわけではなく、予約時にサービス側が勝手に割り振るような仕組みとなっています。
+
+:::message alert
+無料プランにおいては、http のみ公開ドメインの固定が可能です。tcp での公開ドメインの固定をするには有料プランが必要になります。  
+また、無料プランでは 1 つのみ公開ドメインの予約が可能です。
+:::
+
+### 1. ngrok のダッシュボードにログイン
+
+[ngrok のダッシュボード](https://dashboard.ngrok.com/) にアクセスし、登録したメールアドレスとパスワードでログインします。
+
+### 2. Domains ページにアクセス
+
+ログインしたら、左側ナビゲーションバーにて、Cloud Edge の **Domains** をクリックします。
+
+![](https://storage.googleapis.com/zenn-user-upload/58081f84e434-20240504.png)
+
+### 3. ドメインを作成（予約）
+
+**Create Domain** をクリックします。
+
+![](https://storage.googleapis.com/zenn-user-upload/b0ccdff16571-20240504.png)
+
+`Your static domain ... has been created` と表示され、右側に `Start a Tunnel` という画面が表示されます。  
+**Close** で閉じます。
+
+![](https://storage.googleapis.com/zenn-user-upload/7fe015f7a885-20240504.png)
+
+`Domain` 画面が表示されるので、**Domain** 欄のコピーアイコンをクリックします。
+
+![](https://storage.googleapis.com/zenn-user-upload/d14005d25a76-20240504.png)
+
+### 4. 予約ドメインを使ってサーバ（ポート）を公開
+
+PowerShell を開き、以下のコマンドを実行します。  
+実行前に以下の部分を置き換えてください。
+
+- `<コピーしたドメイン名>`: 先ほどコピーしたドメイン名
+- `<ポート番号>`: 公開するポートの番号。Minecraft なら 25565 など
+
+```powershell
+ngrok http --domain=<コピーしたドメイン名> <ポート番号>
+```
+
+## 有料プランについて
+
+:::message
+筆者は（こんな記事を書いておきながら）有料プランを使ったことがないので、あくまで [Pricing](https://ngrok.com/pricing) で表示されている内容のみで解釈しています。  
+詳細は [Pricing](https://ngrok.com/pricing) をご確認ください。
+:::
+
+2024/05/04 時点では、大きく固定額サブスクリプションの development プランと、利用量に応じた従量課金の production プランがあるようです。金額の記載はいずれも月額料金です。
+
+- production
+  - 18 ドルから
+- development
+  - **Personal**: 8ドル
+  - **Pro**: 20ドル
+  - **Enterprise**: 39ドル
+
+各プランの差をこの場で具体的に示すのは大変なので、詳しくは [Pricing](https://ngrok.com/pricing) をご覧ください。
