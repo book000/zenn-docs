@@ -15,6 +15,4 @@ on:
 jobs:
   node-ci:
     name: Node CI
-    uses: book000/templates/.github/workflows/reusable-nodejs-ci.yml@master
-    with:
-      disabled-jobs: depcheck
+    uses: book000/templates/.github/workflows/reusable-nodejs-ci-pnpm.yml@master
