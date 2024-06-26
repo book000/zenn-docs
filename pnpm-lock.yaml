@@ -73,8 +73,8 @@ importers:
         specifier: 10.0.1
         version: 10.0.1(textlint@14.0.4)
       textlint-rule-preset-smarthr:
-        specifier: 1.30.0
-        version: 1.30.0
+        specifier: 1.31.0
+        version: 1.31.0
       textlint-rule-prh:
         specifier: 6.0.0
         version: 6.0.0
@@ -1372,8 +1372,8 @@ packages:
     peerDependencies:
       textlint: '>= 5.6.0'
 
-  textlint-rule-preset-smarthr@1.30.0:
-    resolution: {integrity: sha512-MHuCJ/s9/DvIbbnzBitFmD7V7Grp2/zSQ6T2OtD6+e/VVW38FkqEL3b2+F6LtZccctXPQK/KBT5XQh1/HTD3KA==}
+  textlint-rule-preset-smarthr@1.31.0:
+    resolution: {integrity: sha512-iDvPsoEIOPCPaJIWIj6AdOgmBjVk5e7dkzv3c6VNVB8N55t1FWZG2WGZAiyEXwWs6o+9uNJ1C661l0G9frQTig==}
 
   textlint-rule-prh@5.3.0:
     resolution: {integrity: sha512-gdod+lL1SWUDyXs1ICEwvQawaSshT3mvPGufBIjF2R5WFPdKQDMsiuzsjkLm+aF+9d97dA6pFsiyC8gSW7mSgg==}
@@ -3293,7 +3293,7 @@ snapshots:
       textlint-rule-helper: 2.3.1
       textlint-rule-prh: 5.3.0
 
-  textlint-rule-preset-smarthr@1.30.0:
+  textlint-rule-preset-smarthr@1.31.0:
     dependencies:
       '@textlint-rule/textlint-rule-no-unmatched-pair': 2.0.2
       '@textlint/module-interop': 14.0.4
