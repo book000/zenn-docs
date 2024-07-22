@@ -41,7 +41,7 @@
     "textlint-rule-prh": "6.0.0",
     "zenn-cli": "0.1.154"
   },
-  "packageManager": "pnpm@9.5.0",
+  "packageManager": "pnpm@9.6.0",
   "dependencies": {
     "prh": "5.4.4"
   }
