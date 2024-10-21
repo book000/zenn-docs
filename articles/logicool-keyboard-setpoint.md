@@ -95,3 +95,10 @@ Visual Studio Code で、デバイスの定義フォルダを開く。
 - [Support for media keys when using Logitech Setpoint software](https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-/issues/1306)
 
 [^1]: ただし、発生しない環境もある。同じキーボードを使っているが、社用パソコンでは発生し、自宅パソコンでは発生しなかった。
+
+## 余談
+
+別の理由として、Chrome の拡張機能 [Hotkeys for YouTube Music™](https://chromewebstore.google.com/detail/hotkeys-for-youtube-music/ggjkoecdjegahefiaibfnjgkebhijgpf) などがショートカットキーを握っていることがあるようです。
+
+[キーボードショートカット設定画面](chrome://extensions/shortcuts) にアクセスし、メディアキー関連のショートカット（メディアの再生/一時停止、メディアの停止 など）のショートカットを外すとうまく動作することがあります。
+ショートカットは該当のショートカットの右側鉛筆ボタンをクリック、Escキーで外せます。
