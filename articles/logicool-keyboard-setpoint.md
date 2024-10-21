@@ -100,5 +100,5 @@ Visual Studio Code で、デバイスの定義フォルダを開く。
 
 別の理由として、Chrome の拡張機能 [Hotkeys for YouTube Music™](https://chromewebstore.google.com/detail/hotkeys-for-youtube-music/ggjkoecdjegahefiaibfnjgkebhijgpf) などがショートカットキーを握っていることがあるようです。
 
-[キーボードショートカット設定画面](chrome://extensions/shortcuts) にアクセスし、メディアキー関連のショートカット（メディアの再生/一時停止、メディアの停止 など）のショートカットを外すとうまく動作することがあります。
-ショートカットは該当のショートカットの右側鉛筆ボタンをクリック、Escキーで外せます。
+[キーボードショートカット設定画面](chrome://extensions/shortcuts) にアクセスし、メディアキー関連のショートカット（メディアの再生/一時停止、メディアの停止など）のショートカットを外すとうまく動作することがあります。
+ショートカットは該当のショートカットの右側鉛筆ボタンをクリック、Esc キーで外せます。
