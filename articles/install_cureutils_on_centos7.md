@@ -7,7 +7,7 @@ published: true
 ---
 
 この記事は Linux でのジョークプログラムとして割と有名で、[Twitter のシェル芸 Bot](https://twitter.com/minyoruminyon) でも一時期使われてた [Cureutils](https://github.com/greymd/cureutils) を CentOS 7 にインストールする備忘録記事です。
-CentOS 7 では Python2.7 が入っており、なにもしてないとインストール時にエラーを吐くので `rbenv` を使ったバージョン変更も解説します。
+CentOS 7 では Python2.7 が入っており、なにもしていないとインストール時にエラーを吐くので `rbenv` を使ったバージョン変更も解説します。
 
 どうでもよいけど Cureutils のロゴ良すぎるよね。（[Cureutils の GitHub の README.md](https://github.com/greymd/cureutils/blob/master/README.md) で見られます）
 
