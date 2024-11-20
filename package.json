@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/book000/zenn-docs#readme",
   "devDependencies": {
-    "@textlint-ja/textlint-rule-no-dropping-i": "2.0.1",
+    "@textlint-ja/textlint-rule-no-dropping-i": "3.0.0",
     "@textlint-ja/textlint-rule-no-filler": "1.1.0",
     "@textlint-ja/textlint-rule-no-insert-dropping-sa": "2.0.1",
     "@textlint-ja/textlint-rule-no-insert-re": "1.0.2",
