@@ -216,7 +216,7 @@ print_r(getSysInfo("<トークン>", "<デバイスID>"));
 - `updating`: 多分アップデート中か否か。
 - `icon_hash`: 不明。アイコンのハッシュ値かと思ったが私の環境では空。
 - `rssi`: Wi-Fi の RSSI(Received signal strength indication)値。小さいほど強い
-- `led_off`: LED？スマートライトだと使えるのかも。
+- `led_off`: LED？　スマートライトだと使えるのかも。
 - `longitude_i`: 現在地点の経度
 - `latitude_i`: 現在地点の緯度
 - `hwId`: ハードウェア ID？

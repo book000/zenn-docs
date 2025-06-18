@@ -140,7 +140,7 @@ Renovate を設定し運用し始めたら、基本的には Dependabot は不�
 
 [^1]:
     ここでは、Dependabot alerts ・管理設定・オーガニゼーションのメタデータへのアクセス、
-    Pull Request の Workflow チェック状態（？）・リポジトリのコード・コミットの状態・ Issue ・ Pull Request・GitHub ワークフローへのアクセスと書き込み権限、ユーザーのメールアドレスへのアクセス権限を付与します。
+    Pull Request の Workflow チェック状態（詳細不明）・リポジトリのコード・コミットの状態・ Issue ・ Pull Request・GitHub ワークフローへのアクセスと書き込み権限、ユーザーのメールアドレスへのアクセス権限を付与します。
 
 [^2]:
     具体的には、`yarn.lock` のみに定義されている依存パッケージ（依存パッケージが依存するパッケージ）を Renovate は追跡しません。
