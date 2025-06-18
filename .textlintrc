@@ -109,8 +109,8 @@
       "rulePaths": [
         // 日本語タイポルール
         "node_modules/prh/prh-rules/languages/ja/typo.yml",
-        // SmartHRのルール
-        "node_modules/textlint-rule-preset-smarthr/dict/prh-idiomatic-usage.yml"
+        // SmartHRのカスタムルール（問題のあるルールを除外）
+        ".textlint/smarthr-custom.yml"
       ]
     }
   },
