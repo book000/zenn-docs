@@ -33,6 +33,11 @@
           "pattern": "/docker-compose/",
           "replace": "docker compose",
           "forceCode": true
+        },
+        {
+          "message": "Prevent period after colon from automatic correction",
+          "pattern": "/[：:]。/",
+          "replace": "。"
         }
       ]
     },
