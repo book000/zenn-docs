@@ -34,11 +34,11 @@ Minecraft でなくても、TCP というプロトコルで通信する場合は
 まず、[ngrok.com](https://ngrok.com/) へアクセスします。  
 [Sign Up](https://dashboard.ngrok.com/signup) にて、以下の項目を入力し、**Sign up** をクリックしてください。
 
-- **Name**: 適当な名前（ハンネなどでよい）を入力
-- **Email**: 受信可能・有効なメールアドレスを入力
-- **Password**: 任意のパスワードを入力
+- Name: 適当な名前（ハンネなどでよい）を入力
+- Email: 受信可能・有効なメールアドレスを入力
+- Password: 任意のパスワードを入力
 - ロボット認証を実施
-- **I accept the terms of service and privacy policy**: チェックをいれる
+- I accept the terms of service and privacy policy: チェックをいれる
 
 ### 2. ngrok のコマンドラインツールをダウンロード
 
@@ -214,8 +214,8 @@ ngrok http --domain=<コピーしたドメイン名> <ポート番号>
 - production
   - 18 ドルから
 - development
-  - **Personal**: 8 ドル
-  - **Pro**: 20 ドル
-  - **Enterprise**: 39 ドル
+  - Personal: 8 ドル
+  - Pro: 20 ドル
+  - Enterprise: 39 ドル
 
 各プランの差をこの場で具体的に示すのは大変なので、詳しくは [Pricing](https://ngrok.com/pricing) をご覧ください。
