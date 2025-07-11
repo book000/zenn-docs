@@ -112,7 +112,9 @@
         // SmartHRのカスタムルール（問題のあるルールを除外）
         ".textlint/smarthr-custom.yml"
       ]
-    }
+    },
+    // AI 文章作成時のルールプリセット: https://github.com/textlint-rule/textlint-rule-preset-ai-writing
+    "preset-ai-writing": true
   },
   "filters": {
     // 任意の単語を許可する: https://github.com/textlint/textlint-filter-rule-allowlist
