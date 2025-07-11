@@ -32,7 +32,7 @@
 
 ### Conventional Commits
 
-コミットメッセージと PR タイトルは以下の形式に従う：。
+コミットメッセージと PR タイトルは以下の形式に従う。
 
 ```text
 <type>(<scope>): <description>
@@ -46,7 +46,7 @@ test: テスト追加・修正
 chore: その他のメンテナンス
 ```
 
-例：。
+例。
 
 - `feat(articles): add new article about Docker setup`
 - `fix(textlint): update custom rules for better Japanese detection`
@@ -56,7 +56,7 @@ chore: その他のメンテナンス
 
 ### Zenn記法
 
-基本的な Markdown に加えて、以下の Zenn 独自記法を使用できます：。
+基本的な Markdown に加えて、以下の Zenn 独自記法を使用できます。
 
 #### 画像
 
@@ -108,7 +108,7 @@ const code = "example";
 
 ### 文章品質基準
 
-textlint による自動チェックが設定済み。以下の観点で品質を維持：。
+textlint による自動チェックが設定済み。以下の観点で品質を維持。
 
 - 日本語文法はい抜き言葉・サ抜き表現・敬語の誤用をチェック
 - 技術文書品質は 7 つの C 原則に準拠
@@ -138,7 +138,7 @@ pnpm run fix           # 自動修正可能な問題を修正
 
 ### 記事メタデータ
 
-各記事の先頭に以下のメタデータを記載：。
+各記事の先頭に以下のメタデータを記載。
 
 ```yaml
 ---
