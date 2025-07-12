@@ -10,14 +10,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Read Node.js version
-        id: node-version
-        run: echo "version=$(cat .node-version)" >> $GITHUB_OUTPUT
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ steps.node-version.outputs.version }}
+          node-version-file: .node-version
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
