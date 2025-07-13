@@ -22,7 +22,7 @@ jobs:
           node-version-file: .node-version
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           package_json_file: package.json
           run_install: false
