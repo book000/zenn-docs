@@ -40,7 +40,7 @@
     "textlint-rule-preset-ja-technical-writing": "12.0.2",
     "textlint-rule-preset-smarthr": "1.36.1",
     "textlint-rule-prh": "6.1.0",
-    "zenn-cli": "0.2.9"
+    "zenn-cli": "0.2.10"
   },
   "packageManager": "pnpm@10.20.0+sha512.cf9998222162dd85864d0a8102e7892e7ba4ceadebbf5a31f9c2fce48dfce317a9c53b9f6464d1ef9042cba2e02ae02a9f7c143a2b438cd93c91840f0192b9dd",
   "dependencies": {
