@@ -13,7 +13,7 @@ published: true
 
 以下の事象が発生していました。
 
-- 端末: iPad Air (M2), MUWE3J/A。iPad OS 18.6.2
+- 端末: iPad Air (M2), MUWE3J/A。iPadOS 18.6.2
 - 事象: M365 Copilot アプリでサインインを行うと、サインイン操作完了後にサインイン画面に戻される
 
 実際に操作している画面が以下です。
@@ -25,7 +25,7 @@ published: true
 Microsoft に問い合わせ (サポートリクエスト) を行い、以下を試しましたが改善しませんでした。
 
 - 個人用 Microsoft アカウントについて、プライマリメールアドレスを別のメールアドレスに変更
-- 設定アプリから、`アプリ` > `M365 Copilot` > `M365 Copilot のリセット` > *すべてのトグルスイッチをオン* で、資格情報などを削除して、再サインイン
+- 設定アプリから、`アプリ` > `M365 Copilot` > `M365 Copilot のリセット` > **すべてのトグルスイッチをオン** で、資格情報などを削除して、再サインイン
 - M365 Copilot アプリをアンインストールして、再インストール。再度サインイン
 - 他の Microsoft アプリ群をすべてアンインストールしたうえで、M365 Copilot のみインストールして、再度サインイン
 
@@ -59,7 +59,7 @@ Accounts in Token Services を参照すると、この端末で今までにサ�
 
 ![](https://storage.googleapis.com/zenn-user-upload/cb9b789f813c-20251128.png)
 
-### 4. 特殊ページ内でRemoveAllAccounts を押下
+### 4. 特殊ページ内で RemoveAllAccounts を押下
 
 ページ下部にある、Remove All accounts セクションにある `RemoveAllAccounts` をタップします。  
 タップしても特に変化はありませんが、これで端末内のサインイン情報を削除できているので次に進みます。
@@ -68,7 +68,7 @@ Accounts in Token Services を参照すると、この端末で今までにサ�
 
 ### 5. Edge を一度終了し、再度特殊ページを開く
 
-Microsoft Edge を iPad OS のタスクキル操作によって終了したあと、Microsoft Edge を再度開きます。  
+Microsoft Edge を iPadOS のタスクキル操作によって終了したあと、Microsoft Edge を再度開きます。  
 その後、先ほどアクセスしていた `edge://signin-internals` にアクセスします。
 
 タスクキル操作の方法は以下を参照ください。
