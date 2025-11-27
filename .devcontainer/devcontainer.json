@@ -24,7 +24,7 @@
     },
     "extensions": [
       "yzhang.markdown-all-in-one",
-      "taichi.vscode-textlint",
+      "3w36zj6.textlint",
       "bierner.markdown-mermaid",
       "DavidAnson.vscode-markdownlint",
       "esbenp.prettier-vscode",
@@ -45,7 +45,7 @@
       },
       "extensions": [
         "yzhang.markdown-all-in-one",
-        "taichi.vscode-textlint",
+        "3w36zj6.textlint",
         "bierner.markdown-mermaid",
         "DavidAnson.vscode-markdownlint",
         "esbenp.prettier-vscode",
