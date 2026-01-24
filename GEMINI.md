@@ -15,7 +15,19 @@
 - 日本語と英数字の間には半角スペースを入れる。
 
 ## プロジェクト概要
-- 目的: https://zenn.dev/book000
+Documentation repository for Zenn.dev that contains technical articles and books with Japanese language linting and quality checks.
+
+### 技術スタック
+- **言語**: Markdown, YAML
+- **フレームワーク**: Zenn CLI
+- **パッケージマネージャー**: pnpm
+- **主要な依存関係**:
+  - zenn-cli@0.4.0
+  - textlint@15.5.1
+  - textlint-rule-preset-ja-technical-writing@12.0.2
+  - textlint-rule-preset-ja-spacing@2.4.3
+  - @textlint-ja/*
+  - markdownlint (implied)
 
 ## コーディング規約
 - フォーマット: 既存設定（ESLint / Prettier / formatter）に従う。
@@ -23,12 +35,20 @@
 - コメント言語: 日本語
 - エラーメッセージ: 英語
 
-## 開発コマンド
+### 開発コマンド
 ```bash
-# 依存関係のインストール
+# install
 pnpm install
 
-# 開発 / テスト / Lint は README を確認してください
+# dev
+zenn preview --host 0.0.0.0
+
+# lint
+textlint articles/ books/
+
+# fix
+textlint --fix articles/ books/
+
 ```
 
 ## 注意事項
@@ -37,3 +57,13 @@ pnpm install
 - 既存のプロジェクトルールがある場合はそれを優先する。
 
 ## リポジトリ固有
+- **note**: Zenn.dev documentation with Japanese content
+- **platform**: Zenn.dev publishing platform
+**content_types:**
+  - articles
+  - books
+- **language_focus**: Japanese
+**quality_focus:**
+  - Japanese grammar and spacing
+  - Technical writing standards
+  - Consistency and accessibility

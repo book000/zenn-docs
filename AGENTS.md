@@ -25,3 +25,13 @@
 - ログに機密情報を出力しない。
 
 ## リポジトリ固有
+- **note**: Zenn.dev documentation with Japanese content
+- **platform**: Zenn.dev publishing platform
+**content_types:**
+  - articles
+  - books
+- **language_focus**: Japanese
+**quality_focus:**
+  - Japanese grammar and spacing
+  - Technical writing standards
+  - Consistency and accessibility
