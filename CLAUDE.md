@@ -37,8 +37,8 @@
 
 - **コミットメッセージ**: [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) に従う
   - 形式: `<type>(<scope>): <description>`
-  - `<description>` は日本語で記載
-  - 例: `docs(articles): Docker セットアップ記事を追加`
+  - `<description>` は英語で記載（Conventional Commits 準拠）
+  - 例: `docs(articles): add article about Docker setup`
 - **ブランチ命名**: [Conventional Branch](https://conventional-branch.github.io) に従う
   - 形式: `<type>/<description>`
   - `<type>` は短縮形 (feat, fix, docs) を使用
@@ -111,7 +111,7 @@ pnpm run lint
 pnpm run fix
 ```
 
-**重要**: `pnpm run fix` によって自動修正されたことにより、文章として不成立な状態・意味不明な文章になっていないかはよく確認してください。特に、"。" に置き換わるルールがあるが、これによって違和感のある文章となっていないかは確認してください。例えば「例。」が「例。」になることがあるが、これは「以下は例。」と文章として成立させる必要があります。
+**重要**: `pnpm run fix` によって自動修正されたことにより、文章として不成立な状態・意味不明な文章になっていないかはよく確認してください。特に、"。" に置き換わるルールがあるため、これによって違和感のある文章となっていないかを確認してください。例えば「例」が「例。」のように末尾に句点が自動付与されることがありますが、この場合は「以下は例。」のように文として成立する形に修正する必要があります。
 
 ## アーキテクチャと主要ファイル
 

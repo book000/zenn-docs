@@ -37,8 +37,8 @@
 
 - **コミットメッセージ**: [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) に従う
   - 形式: `<type>(<scope>): <description>`
-  - `<description>` は日本語で記載
-  - 例: `docs(articles): Docker セットアップ記事を追加`
+  - `<description>` は英語で記載
+  - 例: `docs(articles): add article about Docker setup`
 - **ブランチ命名**: [Conventional Branch](https://conventional-branch.github.io) に従う
   - 形式: `<type>/<description>`
   - 例: `docs/add-docker-article`
@@ -168,7 +168,7 @@ pnpm run fix
 3. `pnpm run lint` で品質確認
 4. **手動レビュー**: 自動修正で文章が壊れていないか確認
 
-特に、`pnpm run fix` によって「。」に置き換わるルールがあるが、これによって違和感のある文章となっていないかは確認する必要があります。例えば「例。」が「例。」になることがあるが、これは「以下は例。」と文章として成立させる必要があります。
+特に、`pnpm run fix` によって「。」に置き換わるルールがあるため、これによって違和感のある文章となっていないかを確認する必要があります。例えば「例」が自動で「例。」になることがありますが、この場合は「以下は例。」のように、文として自然な形に修正する必要があります。
 
 ## Zenn 独自 Markdown 記法
 

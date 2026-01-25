@@ -17,8 +17,8 @@
 
 - **コミットメッセージ**: [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) に従う
   - 形式: `<type>(<scope>): <description>`
-  - `<description>` は日本語で記載
-  - 例: `docs(articles): Docker セットアップ記事を追加`
+  - `<description>` は英語で記載
+  - 例: `docs(articles): add article about Docker setup`
 
 ## 判断記録のルール
 
