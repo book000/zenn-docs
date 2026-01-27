@@ -254,7 +254,7 @@ const code = "example";
 
 以下を必ず確認してください：
 
-1. コミットメッセージが [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) に従っていること。ただし、`<description>` は日本語で記載する
+1. コミットメッセージが [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) に従っていること。ただし、`<description>` は英語で記載する
 2. コミット内容にセンシティブな情報が含まれていないこと
 3. Lint / Format エラーが発生しないこと
 4. 動作確認を行い、期待通り動作すること
