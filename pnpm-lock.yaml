@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       prh:
-        specifier: 6.0.4
-        version: 6.0.4
+        specifier: 6.0.5
+        version: 6.0.5
     devDependencies:
       '@textlint-ja/textlint-rule-no-dropping-i':
         specifier: 3.0.0
@@ -1361,8 +1361,8 @@ packages:
     resolution: {integrity: sha512-UATF+R/2H8owxwPvF12Knihu9aYGTuZttGHrEEq5NBWz38mREh23+WvCVKX3fhnIZIMV7ye6E1fnqAl+V6WYEw==}
     hasBin: true
 
-  prh@6.0.4:
-    resolution: {integrity: sha512-XgzSauYFVSSGYq9487yPQAy0AO7DRUzoivrvZBYxvgS7bJp31q1tlzvPi/OjR/Xgycx2mgCuZUA4mKfr4r3How==}
+  prh@6.0.5:
+    resolution: {integrity: sha512-11bAKoD4krtjQ7fSATv+dol+3rxtFN0sdd49BRZO7DLZmM0CzTrwXJKjoiyGtUErwzAdcgDt5TaQYZgF7RIicg==}
     engines: {node: '>=22'}
     hasBin: true
 
@@ -3521,7 +3521,7 @@ snapshots:
       diff: 4.0.4
       js-yaml: 3.14.2
 
-  prh@6.0.4:
+  prh@6.0.5:
     dependencies:
       commander: 14.0.3
       diff: 8.0.4
