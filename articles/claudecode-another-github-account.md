@@ -53,7 +53,7 @@ GitHub を CLI で操作できる gh コマンドを多用するので gh コマ
   - 生成 AI エージェント用 GitHub アカウントはすでに作成済み
   - GitHub からのクローン・プッシュは HTTPS ではなく SSH で認証している
 
-今回は Windows 環境で作業しているが、OS 依存の設定ではないので Linux 環境などでも実施可能な手順である。
+今回は Windows 環境で作業しているが、OS 依存の設定ではないので Linux 環境などでも実施可能な手順である。Windows 以外で行う際は適宜読み替えること。
 
 ## やること
 
@@ -205,7 +205,7 @@ Hi akubiusa! You've successfully authenticated, but GitHub does not provide shel
 - `GIT_AUTHOR_NAME`: Git のコード執筆者の名前
 - `GIT_AUTHOR_EMAIL`: Git のコード執筆者のメールアドレス
 - `GIT_COMMITTER_NAME`: Git のコミットした人の名前
-- `GIT_COMMITTER_EMAIL`: Git のコード執筆者の名前
+- `GIT_COMMITTER_EMAIL`: Git のコミットした人のメールアドレス
 - `GIT_SSH_COMMAND`: Git における SSH コマンドとパラメータを変える
 
 ```json
