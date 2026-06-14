@@ -139,7 +139,8 @@
         "あと", // ja-no-orthographic-variants: 「あと」と「後」の表記ゆれ検知を抑制
         "行為", // SmartHR: 「為に」が該当してしまう
         "・・・", // ja-no-successive-word
-        "でで" // typo prh
+        "でで", // typo prh
+        "正しく" // textlint-rule-ja-hiragana-fukushi: 「正しく」が「まさしく」に変換されるのを抑制
       ]
     }
   }
