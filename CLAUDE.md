@@ -37,7 +37,7 @@ pnpm run fix            # textlint で自動修正
 
 - パッケージマネージャー: `pnpm@11.10.0`（`packageManager` フィールドで固定）
 - Node.js: `.node-version` で固定（Dev Container が自動採用）
-- 主要ツール: zenn-cli、textlint（`textlint-rule-preset-smarthr` / `-ja-technical-writing` / `-ja-spacing` / `-ai-writing`、`prh` ほか）
+- 主要ツール: zenn-cli、textlint（`.textlintrc` で `preset-ja-technical-writing` / `preset-ja-spacing` / `preset-ai-writing` / `prh`（SmartHR カスタム辞書 `.textlint/smarthr-custom.yml` を併用）ほかを有効化）
 
 ## コンテンツ規約
 
