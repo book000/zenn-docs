@@ -65,7 +65,13 @@
       "ja-space-around-code": {
         "before": true,
         "after": true
-      }
+      },
+      // v3 で追加された、プリセット内蔵の ja-space-around-link は既存記事のスペース規約と衝突するため無効化する
+      // （リンク前後のスペースは下の "ja-space-around-link" ルールで別途強制している）
+      "ja-space-around-link": false,
+      // v3 で新規追加されたルール。既存記事は未対応のため一旦無効化する
+      "ja-space-around-strong": false,
+      "ja-no-space-around-slash": false
     },
     // リンクの前後にはスペースを入れる
     "ja-space-around-link": {
