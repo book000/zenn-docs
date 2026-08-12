@@ -1457,9 +1457,6 @@ packages:
   textlint-rule-ja-space-around-link@3.0.3:
     resolution: {integrity: sha512-zNqRbu37idDDVOY227kKQtQDT7gyf/upBo0/wRbygLuBHYoU9H56Igxy0X+5isRTJd4FM21myb+pA+ZBqfizaA==}
 
-  textlint-rule-ja-space-around-link@3.0.3:
-    resolution: {integrity: sha512-zNqRbu37idDDVOY227kKQtQDT7gyf/upBo0/wRbygLuBHYoU9H56Igxy0X+5isRTJd4FM21myb+pA+ZBqfizaA==}
-
   textlint-rule-ja-space-around-strong@3.0.3:
     resolution: {integrity: sha512-0kOQl1qjHakyGXgVlvOIgLsU40GDgxajm+Q0oFm1RoWSopS+fF0Cfcod9BDL3AjKQYs8kJvD9v4wcgE9izVvgg==}
 
@@ -3516,10 +3513,6 @@ snapshots:
       textlint-rule-helper: 2.5.0
 
   textlint-rule-ja-space-around-emphasis@3.0.3:
-    dependencies:
-      textlint-rule-helper: 2.5.0
-
-  textlint-rule-ja-space-around-link@3.0.3:
     dependencies:
       textlint-rule-helper: 2.5.0
 
