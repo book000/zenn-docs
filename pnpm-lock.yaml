@@ -183,8 +183,8 @@ importers:
         specifier: 6.1.0
         version: 6.1.0
       zenn-cli:
-        specifier: 0.5.3
-        version: 0.5.3(supports-color@7.2.0)
+        specifier: 0.5.4
+        version: 0.5.4(supports-color@7.2.0)
 
 packages:
 
@@ -1935,8 +1935,8 @@ packages:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
     engines: {node: '>=0.4'}
 
-  zenn-cli@0.5.3:
-    resolution: {integrity: sha512-WcIf3PlZNnrR/NjGbEnwv3CQGpeLfuIFFKxT+U1BosHTvD3bCm7OxCRHd6UDl103ZTp8ZEpICcFdJzE5rGxT8A==}
+  zenn-cli@0.5.4:
+    resolution: {integrity: sha512-YqoGZa7xhJ0Wx9ZomPBuVeKhnbkb5HYHtnzEg0xP2L1U43hUMwi0xRWjO5+zIlq8yBlumkMo5WfhT5BStL3zAQ==}
     engines: {node: '>=22.12.0'}
     hasBin: true
 
@@ -4414,7 +4414,7 @@ snapshots:
 
   xtend@4.0.2: {}
 
-  zenn-cli@0.5.3(supports-color@7.2.0):
+  zenn-cli@0.5.4(supports-color@7.2.0):
     dependencies:
       '@ai-sdk/fireworks': 3.0.47(zod@4.5.4)
       '@ai-sdk/openai': 4.0.59(zod@4.5.4)
