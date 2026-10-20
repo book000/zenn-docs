@@ -219,8 +219,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0
       textlint-rule-ja-space-around-link:
-        specifier: 3.0.3
-        version: 3.0.3
+        specifier: 3.0.4
+        version: 3.0.4
       textlint-rule-no-mixed-zenkaku-and-hankaku-alphabet:
         specifier: 1.0.1
         version: 1.0.1
@@ -2313,8 +2313,8 @@ packages:
   textlint-rule-ja-space-around-emphasis@3.0.4:
     resolution: {integrity: sha512-mIj1CBgFI05IgLSphEXlkZKLL6zZCaWBiwvIqL13GECztQRD1zjHRXDTSN+Dfbvy7lxLkLcqKG3PfQoXmyfvhw==}
 
-  textlint-rule-ja-space-around-link@3.0.3:
-    resolution: {integrity: sha512-zNqRbu37idDDVOY227kKQtQDT7gyf/upBo0/wRbygLuBHYoU9H56Igxy0X+5isRTJd4FM21myb+pA+ZBqfizaA==}
+  textlint-rule-ja-space-around-link@3.0.4:
+    resolution: {integrity: sha512-NsEgUPEEPbHZY5cn6JC3CUmjveJ0NvDcRvc5tIRW3e+nFzcM8w35PqUWiDKDEiPd67hp4u9nmdtYozPMC6PAFw==}
 
   textlint-rule-ja-space-around-strong@3.0.4:
     resolution: {integrity: sha512-TBT0Jb5+C497KAzeaQUB/TyR/MqJpe3cm8r6D/TiyIYhTntKY/+Dl/fFDHov1DugVrDw0OtsEcn0ipTs5/8SWw==}
@@ -5313,7 +5313,7 @@ snapshots:
     dependencies:
       textlint-rule-helper: 2.5.0
 
-  textlint-rule-ja-space-around-link@3.0.3:
+  textlint-rule-ja-space-around-link@3.0.4:
     dependencies:
       textlint-rule-helper: 2.5.0
 
@@ -5430,7 +5430,7 @@ snapshots:
       textlint-rule-ja-space-after-question: 3.0.4
       textlint-rule-ja-space-around-code: 3.0.4
       textlint-rule-ja-space-around-emphasis: 3.0.4
-      textlint-rule-ja-space-around-link: 3.0.3
+      textlint-rule-ja-space-around-link: 3.0.4
       textlint-rule-ja-space-around-strong: 3.0.4
       textlint-rule-ja-space-between-half-and-full-width: 3.0.4
 
