@@ -240,19 +240,13 @@ importers:
         specifier: 6.1.1
         version: 6.1.1
       zenn-cli:
-        specifier: 0.5.9
-        version: 0.5.9(@types/markdown-it@14.2.0)(supports-color@10.2.2)
+        specifier: 0.5.10
+        version: 0.5.10(@types/markdown-it@14.2.0)(supports-color@10.2.2)
 
 packages:
 
   '@ai-sdk/amazon-bedrock@5.0.127':
     resolution: {integrity: sha512-IHchjslPRnh/+tlTbig/4Lvikv7LrNEN1eo2veFMjNYlMQu5nW4E0St1IWDAM53Rbkl99OkjBhhmgjEVynVygA==}
-    engines: {node: '>=22'}
-    peerDependencies:
-      zod: ^3.25.76 || ^4.1.8
-
-  '@ai-sdk/anthropic@4.0.88':
-    resolution: {integrity: sha512-7h/rI3jLCfLbQsjVt37Q5PCEGOHrpVgrO2zl+y///UpUcWfiRDcqk8DL7br//OFxiEhyxgeIoU/5ulsN1llOyg==}
     engines: {node: '>=22'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
@@ -307,12 +301,6 @@ packages:
 
   '@ai-sdk/openai-compatible@3.0.80':
     resolution: {integrity: sha512-FoFoYodwufDyuOlPrFBnGD6HNA8nIB5a6HofyTJoPUJn9NBtDmloWudbNDyf4hYV8YTPOyR5iPfn1ufK2XD2Zg==}
-    engines: {node: '>=22'}
-    peerDependencies:
-      zod: ^3.25.76 || ^4.1.8
-
-  '@ai-sdk/openai@4.0.102':
-    resolution: {integrity: sha512-8hvs5UO6OgGSR0HASptyopqoJYgdCccVfksUlBLeJ8/h2KoKYU2ZiFjArOkS6ciJbmnDz3G+Zoo4KiI4rlQSoA==}
     engines: {node: '>=22'}
     peerDependencies:
       zod: ^3.25.76 || ^4.1.8
@@ -2944,13 +2932,13 @@ packages:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
     engines: {node: '>=0.4'}
 
-  zenn-cli@0.5.9:
-    resolution: {integrity: sha512-ZpsqEl0YHQoBIgv0KYjtIPmAcNtoe28/pse1lHN7Df6EEbprOlYlb+IDNglrYoIs1mGyBckM02EHNm0NCJWJWw==}
+  zenn-cli@0.5.10:
+    resolution: {integrity: sha512-OrLUCMxBn99YE+iReVs3n+OL5E+o6ixD3S1eEjndHrLSg1+a2/X2QftkhYknCkrRNI3FRAVFoMhcIVbkhPxLmQ==}
     engines: {node: '>=22.12.0'}
     hasBin: true
 
-  zenn-markdown-html@0.5.9:
-    resolution: {integrity: sha512-KEiAfVjvjA28CsedIaAf8PtcQHSjuuLsJzuQoWjlHKQb54dkRxFxp2s9+b/81CZ8GfJHwrbZzy0EdrBNOmigeg==}
+  zenn-markdown-html@0.5.10:
+    resolution: {integrity: sha512-Quh3wgV7bttiYMFJtuzpqdKwsf/WOtAjuokaefyRt13n+aGzIbc44EC9NQWdzfTd9rsU35OMz0Bk9isCUkatKw==}
     engines: {node: '>=22.12.0'}
 
   zlibjs@0.2.0:
@@ -2979,12 +2967,6 @@ snapshots:
       '@smithy/eventstream-codec': 4.5.2
       '@smithy/util-utf8': 4.5.2
       aws4fetch: 1.0.20
-      zod: 4.6.7
-
-  '@ai-sdk/anthropic@4.0.88(zod@4.6.7)':
-    dependencies:
-      '@ai-sdk/provider': 4.0.34
-      '@ai-sdk/provider-utils': 5.0.68(zod@4.6.7)
       zod: 4.6.7
 
   '@ai-sdk/anthropic@4.0.91(zod@4.6.7)':
@@ -3049,12 +3031,6 @@ snapshots:
     dependencies:
       '@ai-sdk/provider': 4.0.34
       '@ai-sdk/provider-utils': 5.0.70(zod@4.6.7)
-      zod: 4.6.7
-
-  '@ai-sdk/openai@4.0.102(zod@4.6.7)':
-    dependencies:
-      '@ai-sdk/provider': 4.0.34
-      '@ai-sdk/provider-utils': 5.0.68(zod@4.6.7)
       zod: 4.6.7
 
   '@ai-sdk/openai@4.0.104(zod@4.6.7)':
@@ -6646,14 +6622,14 @@ snapshots:
 
   xtend@4.0.2: {}
 
-  zenn-cli@0.5.9(@types/markdown-it@14.2.0)(supports-color@10.2.2):
+  zenn-cli@0.5.10(@types/markdown-it@14.2.0)(supports-color@10.2.2):
     dependencies:
       '@ai-sdk/amazon-bedrock': 5.0.127(zod@4.6.7)
-      '@ai-sdk/anthropic': 4.0.88(zod@4.6.7)
+      '@ai-sdk/anthropic': 4.0.91(zod@4.6.7)
       '@ai-sdk/azure': 4.0.112(zod@4.6.7)
       '@ai-sdk/fireworks': 3.0.81(zod@4.6.7)
       '@ai-sdk/google-vertex': 5.0.126(supports-color@10.2.2)(zod@4.6.7)
-      '@ai-sdk/openai': 4.0.102(zod@4.6.7)
+      '@ai-sdk/openai': 4.0.104(zod@4.6.7)
       '@aws-sdk/credential-providers': 3.1159.0
       '@azure/identity': 4.14.0(supports-color@10.2.2)
       '@openrouter/ai-sdk-provider': 3.1.0(ai@7.0.153(zod@4.6.7))(zod@4.6.7)
@@ -6674,7 +6650,7 @@ snapshots:
       open: 11.0.4
       package-manager-detector: 1.9.0
       ws: 8.22.0
-      zenn-markdown-html: 0.5.9(@types/markdown-it@14.2.0)
+      zenn-markdown-html: 0.5.10(@types/markdown-it@14.2.0)
       zod: 4.6.7
     transitivePeerDependencies:
       - '@types/markdown-it'
@@ -6682,7 +6658,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  zenn-markdown-html@0.5.9(@types/markdown-it@14.2.0):
+  zenn-markdown-html@0.5.10(@types/markdown-it@14.2.0):
     dependencies:
       cheerio: 1.2.0
       markdown-it: 15.0.3
