@@ -228,8 +228,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0
       textlint-rule-ja-space-around-link:
-        specifier: 3.0.4
-        version: 3.0.4
+        specifier: 3.1.0
+        version: 3.1.0
       textlint-rule-no-mixed-zenkaku-and-hankaku-alphabet:
         specifier: 1.0.1
         version: 1.0.1
@@ -806,6 +806,7 @@ packages:
   '@typespec/ts-http-runtime@0.3.10':
     resolution: {integrity: sha512-vddvvtZ7sejSlCv+OIkn2ztjB1O31Fc2JsxI/YK725r3elXXlF/J3o3lbXJFRhoeWRWK1tjdZ+GTi6Fdtrp+EA==}
     engines: {node: '>=22.0.0'}
+    deprecated: A newer version 0.3.11 has been published.
 
   '@ungap/structured-clone@1.4.0':
     resolution: {integrity: sha512-1mEZtMKPM09vDmQt5y7YvmN2+DFTP7Tg0EWXdic8/C6VRnpb33e4ghisCIE3WZjsE2N8mf+QV1Zqh7ZFYLWInQ==}
@@ -2615,8 +2616,8 @@ packages:
   textlint-rule-ja-space-around-emphasis@3.0.4:
     resolution: {integrity: sha512-mIj1CBgFI05IgLSphEXlkZKLL6zZCaWBiwvIqL13GECztQRD1zjHRXDTSN+Dfbvy7lxLkLcqKG3PfQoXmyfvhw==}
 
-  textlint-rule-ja-space-around-link@3.0.4:
-    resolution: {integrity: sha512-NsEgUPEEPbHZY5cn6JC3CUmjveJ0NvDcRvc5tIRW3e+nFzcM8w35PqUWiDKDEiPd67hp4u9nmdtYozPMC6PAFw==}
+  textlint-rule-ja-space-around-link@3.1.0:
+    resolution: {integrity: sha512-193PZ7kuWJxBGEPfowMRzs6ItDyz3d5vn+hChN1GsnkdUYfBSP1rAUQLM8lMqtaw1e0453QkagShyW/Bg26FLg==}
 
   textlint-rule-ja-space-around-strong@3.0.4:
     resolution: {integrity: sha512-TBT0Jb5+C497KAzeaQUB/TyR/MqJpe3cm8r6D/TiyIYhTntKY/+Dl/fFDHov1DugVrDw0OtsEcn0ipTs5/8SWw==}
@@ -6071,7 +6072,7 @@ snapshots:
     dependencies:
       textlint-rule-helper: 2.5.0
 
-  textlint-rule-ja-space-around-link@3.0.4:
+  textlint-rule-ja-space-around-link@3.1.0:
     dependencies:
       textlint-rule-helper: 2.5.0
 
@@ -6188,7 +6189,7 @@ snapshots:
       textlint-rule-ja-space-after-question: 3.0.4
       textlint-rule-ja-space-around-code: 3.0.4
       textlint-rule-ja-space-around-emphasis: 3.0.4
-      textlint-rule-ja-space-around-link: 3.0.4
+      textlint-rule-ja-space-around-link: 3.1.0
       textlint-rule-ja-space-around-strong: 3.0.4
       textlint-rule-ja-space-between-half-and-full-width: 3.0.4
 
