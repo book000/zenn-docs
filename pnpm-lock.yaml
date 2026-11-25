@@ -186,8 +186,8 @@ importers:
         specifier: 1.1.0
         version: 1.1.0
       '@textlint-ja/textlint-rule-no-insert-dropping-sa':
-        specifier: 2.0.1
-        version: 2.0.1
+        specifier: 2.0.2
+        version: 2.0.2
       '@textlint-ja/textlint-rule-no-insert-re':
         specifier: 1.0.2
         version: 1.0.2
@@ -615,8 +615,8 @@ packages:
   '@textlint-ja/textlint-rule-no-filler@1.1.0':
     resolution: {integrity: sha512-4yWdtS378xxBrkzmQWYZf2u6GefNMAv5xORSIY+xXVqDseddaDKm/m6n0JQFbbNvZQgFyXQotF+ILn6O5wy7CQ==}
 
-  '@textlint-ja/textlint-rule-no-insert-dropping-sa@2.0.1':
-    resolution: {integrity: sha512-ayBSq7K54TeA23dJt/oZeC4532+IwJ6J7ejHvbLV3AgdqlyXEC3xkVsBFmxT90sUegWxpzJwu9qBeByfVXR2FA==}
+  '@textlint-ja/textlint-rule-no-insert-dropping-sa@2.0.2':
+    resolution: {integrity: sha512-ZLAau3xtPiwtIeQ/SjO6s6yVy9SuID0zteHY0TEmBKsbrEJGOgRv2fcvyvcNx4N9KB+DONcgqhe+6NcClYn3Tg==}
 
   '@textlint-ja/textlint-rule-no-insert-re@1.0.2':
     resolution: {integrity: sha512-kMqopVUoMMbQAzrlfSU5ZXShvkFGLemJrtsJqg7IDUHflFExdDm7MKoj5vj4ra5u1VAyfQotFW7yFLiFdNWYiw==}
@@ -1804,6 +1804,9 @@ packages:
 
   kuromojin@3.0.1:
     resolution: {integrity: sha512-E4rLmbTid8ZGH8Fw421UXvfgCe0IXGFKhUw/IosBVW6ootxVGKGbtb0UPQAvPswgsXX/8UuPiE+amz1NN11Uzg==}
+
+  kuromojin@3.1.0:
+    resolution: {integrity: sha512-czp55A9IINhX8uGjD5zE9IKr+/oy4q8mUtUQi/xUkUkE93ER3COB92PONzX0CHiY4mrzjyuPeTg2swn7mUWEkg==}
 
   launder@1.7.2:
     resolution: {integrity: sha512-DLg3HPnHUfBi5/MxMLmJD12dmlMpFEC2HgMW6vkZ/9JR0RU00kXoRGvDxAvFmdO0o610OA77i4FgNTLucmhDVg==}
@@ -3480,10 +3483,10 @@ snapshots:
       sentence-splitter: 3.2.3
       textlint-util-to-string: 3.3.4
 
-  '@textlint-ja/textlint-rule-no-insert-dropping-sa@2.0.1':
+  '@textlint-ja/textlint-rule-no-insert-dropping-sa@2.0.2':
     dependencies:
       array-find-index: 1.0.2
-      kuromojin: 3.0.1
+      kuromojin: 3.1.0
       morpheme-match-all: 2.0.5
 
   '@textlint-ja/textlint-rule-no-insert-re@1.0.2':
@@ -4957,6 +4960,8 @@ snapshots:
       '@kvs/env': 2.2.2
       kuromoji: 0.1.2
       lru_map: 0.4.1
+
+  kuromojin@3.1.0: {}
 
   launder@1.7.2:
     dependencies:
