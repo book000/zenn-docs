@@ -222,8 +222,8 @@ importers:
         specifier: 1.1.0
         version: 1.1.0
       textlint-rule-ja-no-inappropriate-words:
-        specifier: 2.0.0
-        version: 2.0.0
+        specifier: 2.0.1
+        version: 2.0.1
       textlint-rule-ja-no-orthographic-variants:
         specifier: 2.0.0
         version: 2.0.0
@@ -1805,6 +1805,9 @@ packages:
   kuromojin@3.0.1:
     resolution: {integrity: sha512-E4rLmbTid8ZGH8Fw421UXvfgCe0IXGFKhUw/IosBVW6ootxVGKGbtb0UPQAvPswgsXX/8UuPiE+amz1NN11Uzg==}
 
+  kuromojin@3.1.0:
+    resolution: {integrity: sha512-czp55A9IINhX8uGjD5zE9IKr+/oy4q8mUtUQi/xUkUkE93ER3COB92PONzX0CHiY4mrzjyuPeTg2swn7mUWEkg==}
+
   launder@1.7.2:
     resolution: {integrity: sha512-DLg3HPnHUfBi5/MxMLmJD12dmlMpFEC2HgMW6vkZ/9JR0RU00kXoRGvDxAvFmdO0o610OA77i4FgNTLucmhDVg==}
 
@@ -2509,8 +2512,8 @@ packages:
   textlint-rule-ja-no-abusage@3.0.0:
     resolution: {integrity: sha512-DIqPZgYTwTsvjX6Bgj7GA8vlwGMObagJpNoUtkucOaoy7E7GwUOL+knqFjcTtlkWSmoKpIkw5OWW5CV3kivlfQ==}
 
-  textlint-rule-ja-no-inappropriate-words@2.0.0:
-    resolution: {integrity: sha512-gS2g8BqXv33D0QDz301aZh7EgWc2Vz70qBGJG0T3Dbtzxj/omqQCpxJtpVs5JKoGIBNkmxN5L+l0nf5TZ/luAw==}
+  textlint-rule-ja-no-inappropriate-words@2.0.1:
+    resolution: {integrity: sha512-tVSIASQJBnLG/Upids2OuRk0hdElfyLA7TX3AKQj3vXky3VUHwX+ss87LcG9oM4ObHPme8/YVF3BXZcD/dr0zQ==}
 
   textlint-rule-ja-no-mixed-period@3.0.2:
     resolution: {integrity: sha512-/WHRvbAXPJxjDAmVYjIp5qBHPS7Uqv3H+fH0oGMWzujEV4n2URtXmxqTUv7nd4giTRqeV2yuMZWYRRgA9Mh0Sg==}
@@ -4958,6 +4961,8 @@ snapshots:
       kuromoji: 0.1.2
       lru_map: 0.4.1
 
+  kuromojin@3.1.0: {}
+
   launder@1.7.2:
     dependencies:
       dayjs: 1.11.23
@@ -5848,9 +5853,9 @@ snapshots:
       morpheme-match-textlint: 2.0.6
       textlint-rule-prh: 5.3.0
 
-  textlint-rule-ja-no-inappropriate-words@2.0.0:
+  textlint-rule-ja-no-inappropriate-words@2.0.1:
     dependencies:
-      kuromojin: 3.0.1
+      kuromojin: 3.1.0
 
   textlint-rule-ja-no-mixed-period@3.0.2:
     dependencies:
